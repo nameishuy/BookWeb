@@ -5,6 +5,7 @@
 .toolbar{
     background-color: white;
     box-shadow: 0 0 10px 1px black;
+    font-family: 'Nunito Sans', sans-serif;
 }
     .toolbar__right{
         display: flex;
