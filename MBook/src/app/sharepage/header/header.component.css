@@ -1,0 +1,37 @@
+.spacer {
+    flex: 1 1 auto;
+}
+  
+.toolbar{
+    background-color: white;
+    box-shadow: 0 0 10px 1px black;
+}
+    .toolbar__right{
+        display: flex;
+    }
+    .toolbar__left{
+        display: flex;
+        justify-content: space-around;
+        width: 490px;
+    }
+        .toolbar-brand{
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+        }
+            .Logo_icon{
+                font-size: 30px;
+            }
+        .btn__cart{
+            margin-right: 10px !important;
+        }
+        .btn_signup{
+            color: white;
+            background-color: black;
+
+        }
+        .btn_signin{
+            color: black;
+            border: 2px solid black;
+            margin-right: 10px !important;
+        }
