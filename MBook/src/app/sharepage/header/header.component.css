@@ -1,38 +1,47 @@
-.spacer {
-    flex: 1 1 auto;
+.navbar{
+    font-size: 17px;
+    box-shadow: 0 0 10px 0 black;
 }
-  
-.toolbar{
-    background-color: white;
-    box-shadow: 0 0 10px 1px black;
-    font-family: 'Nunito Sans', sans-serif;
+.navbar-brand{
+    display: flex;
+    align-items: center;
+    font-family: 'Akaya Telivigala', cursive;
+    font-size: 35px;
 }
-    .toolbar__right{
-        display: flex;
+.Logo_icon {
+        font-size: 30px;
     }
-    .toolbar__left{
-        display: flex;
-        justify-content: space-around;
-        width: 490px;
-    }
-        .toolbar-brand{
-            display: flex;
-            align-items: center;
-            font-size: 30px;
-        }
-            .Logo_icon{
-                font-size: 30px;
-            }
-        .btn__cart{
-            margin-right: 10px !important;
-        }
-        .btn_signup{
-            color: white;
-            background-color: black;
 
-        }
-        .btn_signin{
+.nav__shopping{
+    display: flex !important;
+    flex-direction: row !important;
+    width: fit-content;
+
+}
+    .btn__cart {
+        margin-right: 10px !important;
+    }
+
+    .btn_signin:hover,
+    .btn_signup:hover{
+        text-decoration: none;
+    }
+    .btn_signup {
+        color: white;
+        background-color: black;
+
+    }
+
+    .btn_signin {
+        color: black;
+        border: 2px solid black;
+        margin-right: 10px !important;
+    }
+
+    
+    .dropdown{
+
+    }
+        .Account{
             color: black;
-            border: 2px solid black;
-            margin-right: 10px !important;
         }

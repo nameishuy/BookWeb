@@ -17,6 +17,7 @@
 h3{
     border-bottom: 2px solid white;
     width: fit-content;
+    user-select: none;
 }
 .Footer_Body{
     display: flex;
@@ -29,6 +30,8 @@ h3{
     font-family: 'Akaya Telivigala', cursive;
     font-size: 45px;
     margin-bottom: 20px;
+    text-decoration: none;
+    color: white;
 }
 .Footer__About-Contact{
     display: flex;
@@ -48,6 +51,8 @@ h3{
     align-items: center;
     font-size: 13px;
     margin-bottom: 5px;
+    text-decoration: none;
+    color: white;
 }
 .Footer__About-Link{
     list-style-type: none;

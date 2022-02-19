@@ -13,12 +13,16 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './sharepage/header/header.component';
 import { FooterComponent } from './sharepage/footer/footer.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ProductComponent } from './pages/product/product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

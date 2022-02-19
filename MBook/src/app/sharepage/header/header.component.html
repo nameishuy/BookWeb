@@ -1,19 +1,42 @@
-<mat-toolbar class="toolbar">
-    <div class="toolbar__right">
-      <button mat-icon-button aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span class="toolbar-brand" style="font-family: 'Akaya Telivigala', cursive;">
-        <mat-icon class="Logo_icon">bookmark_border</mat-icon>MBook
-      </span>
-    </div>
-    <span class="spacer"></span>
-    <div class="toobar__left">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <mat-icon class="Logo_icon">bookmark_border</mat-icon>MBook
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Product</a>
+      </li>
+
+    </ul>
+    <div class="nav__shopping">
       <button mat-icon-button class="btn__cart">
         <mat-icon matBadge="0" matBadgeColor="warn">add_shopping_cart</mat-icon>
       </button>
-      <a mat-stroked-button class="btn_signin" href="">Đăng Nhập</a>
-      <a mat-flat-button class="btn_signup" href="">Đăng Ký</a>
+      <div>
+        <a mat-stroked-button class="btn_signin" href="">Đăng Nhập</a>
+        <a mat-flat-button class="btn_signup" href="">Đăng Ký</a>
+      </div>
+      <div class="dropdown" style="display: none;">
+        <a class="nav-link dropdown-toggle Account" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-expanded="false">
+          Username
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="#">Admin</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Sign out</a>
+        </div>
+      </div>
     </div>
-  
-  </mat-toolbar>
+  </div>
+</nav>
