@@ -45,3 +45,24 @@
         .Account{
             color: black;
         }
+
+        #navbarMenu ul li a{
+            position: relative;
+        }
+        
+        #navbarMenu ul li a::after{
+            content: '';
+            display: block;
+            height: 2px;
+            background-color: black;
+            width: 0px;
+            margin-top: 1px;
+        }
+        #navbarMenu ul li a:hover{
+            color: black;
+        }
+        #navbarMenu ul li a:hover::after{
+            
+            width: 100%;
+            transition: .5s;
+        }

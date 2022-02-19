@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
@@ -27,7 +26,6 @@ import { ProductComponent } from './pages/product/product.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatToolbarModule,
     MatIconModule,
     MatButtonModule,
     MatBadgeModule,
