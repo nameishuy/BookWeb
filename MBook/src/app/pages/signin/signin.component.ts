@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BookStoreAPI } from '../../services/bookstore.services';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -7,11 +9,12 @@ import { BookStoreAPI } from '../../services/bookstore.services';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private bookstore:BookStoreAPI){}
+  constructor(private bookstore:BookStoreAPI,private router:Router){}
   UserLogined:any;
   username:String='';
   password:String='';
 
+  @Output()  redirect:EventEmitter<any> = new EventEmitter<any>();
   ngOnInit(){
 
   }
@@ -21,8 +24,10 @@ export class SigninComponent implements OnInit {
     .subscribe(
       data =>{
         this.UserLogined = data;
-        console.log(this.UserLogined);
-        alert(data.Messenger);
+        localStorage.setItem('id',this.UserLogined.id);
+        localStorage.setItem('userName',this.UserLogined.HoTen);
+        alert(this.UserLogined.Messenger);
+        this.router.navigate(['']); 
       }
     )
   }

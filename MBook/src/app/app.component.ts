@@ -9,7 +9,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'MBook';
 
-  getChildData($event:any) {
-    console.log($event);
-  }
 }
