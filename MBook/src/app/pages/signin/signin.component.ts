@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { BookStoreAPI } from '../../services/bookstore.services';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SigninComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bookstore:BookStoreAPI){}
+  UserLogined:any;
+  username:String='';
+  password:String='';
 
-  ngOnInit(): void {
+  ngOnInit(){
+
+  }
+
+  clickme(){
+    this.bookstore.getLogin(this.username,this.password)
+    .subscribe(
+      data =>{
+        this.UserLogined = data;
+        console.log(this.UserLogined);
+        alert(data.Messenger);
+      }
+    )
   }
 
 }
