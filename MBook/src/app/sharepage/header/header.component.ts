@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Account } from 'src/app/services/Classes/Login';
+import { ShareService } from 'src/app/sharepage/share.Service';
 import { BookStoreAPI } from '../../services/bookstore.services';
 
 @Component({
@@ -8,32 +8,31 @@ import { BookStoreAPI } from '../../services/bookstore.services';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  data: any
+  username: any;
+  id: any;
 
-  username:any;
-  id:any;
-
-  constructor(private bookstore:BookStoreAPI) { }
+  constructor(private bookstore: BookStoreAPI, private share: ShareService) { }
+  UserLogined: any;
 
   ngOnInit(): void {
-
-    this.username = localStorage.getItem('userName');
-    this.id = localStorage.getItem('id');
-
   }
-  
-  isLogined(){
-    if(this.username != null && this.id != null){
+
+  isLogined() {
+    this.data = this.share.getshare();
+    if (this.data.HoTen != null && this.data.id != null) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }
 
-  Signout(){
+  Signout() {
     localStorage.removeItem('userName');
     localStorage.removeItem('id');
     this.username = null;
     this.id = null;
+    this.share.setshare(null, null)
   }
-  
+
 }
