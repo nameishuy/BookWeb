@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Account, reqRegister, resRegister } from "./Classes/Login";
 
@@ -7,21 +7,20 @@ import { Account, reqRegister, resRegister } from "./Classes/Login";
 @Injectable({
     providedIn: 'root'
 })
-export class BookStoreAPI
-{
-    constructor(private httclient:HttpClient){}
+export class BookStoreAPI {
+    constructor(private httclient: HttpClient) { }
 
-    url = "https://bookingapiiiii.herokuapp.com"; 
-    
-    getLogin(username:String, password:String):Observable<any>{
-        
+    url = "https://bookingapiiiii.herokuapp.com";
 
-        return this.httclient.get<Account>( this.url + "/login" + "/" + username + "/" + password );
+    postLogin(username: String, password: String): Observable<any> {
+
+
+        return this.httclient.post<Account>(this.url + "/login", { Taikhoan: username, Matkhau: password });
     }
 
-    postRegister(bodyRegister:reqRegister){
+    postRegister(bodyRegister: reqRegister) {
 
-        return this.httclient.post<resRegister>(this.url + "/khachhang",bodyRegister);
+        return this.httclient.post<resRegister>(this.url + "/khachhang", bodyRegister);
     }
 
 }

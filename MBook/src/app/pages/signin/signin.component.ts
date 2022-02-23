@@ -18,11 +18,11 @@ export class SigninComponent implements OnInit {
 
   }
   clickme() {
-    this.bookstore.getLogin(this.username, this.password)
+    this.bookstore.postLogin(this.username, this.password)
       .subscribe(
         data => {
           this.UserLogined = data;
-          this.share.setshare(this.UserLogined.HoTen, this.UserLogined.id,this.UserLogined.Role);
+          this.share.setshare(this.UserLogined.HoTen, this.UserLogined.id, this.UserLogined.Role);
           alert(this.UserLogined.Messenger);
           this.router.navigate(['']);
         }
