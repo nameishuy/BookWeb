@@ -23,16 +23,16 @@
       </button>
       <div *ngIf="!isLogined()">
         <a mat-stroked-button class="btn_signin" routerLink="login">Đăng Nhập</a>
-        <a mat-flat-button class="btn_signup" href="">Đăng Ký</a>
+        <a mat-flat-button class="btn_signup" routerLink="signup">Đăng Ký</a>
       </div>
       <div class="dropdown" *ngIf="isLogined()">
         <a class="nav-link dropdown-toggle Account" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-expanded="false">
-          Welcome {{data.HoTen}}
+          Chào {{data.HoTen}}
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Profile</a>
-          <a class="dropdown-item" href="#">Admin</a>
+          <a class="dropdown-item" routerLink="profile" (click)="goProfile()">Profile</a>
+          <a class="dropdown-item" *ngIf="isAdmin()">Admin</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" (click)="Signout()">Sign out</a>
         </div>

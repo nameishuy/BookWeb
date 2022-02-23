@@ -6,12 +6,14 @@ import { Injectable } from '@angular/core';
 export class ShareService {
 
     constructor() { }
-    HoTen: any = null;
-    id: any = null;
+    HoTen: any;
+    id: any;
+    Role:any;
 
-    setshare(HoTen: any, id: any) {
+    setshare(HoTen: any, id: any, Role:any) {
         this.HoTen = HoTen
         this.id = id
+        this.Role=Role;
     }
 
     getshare() {
