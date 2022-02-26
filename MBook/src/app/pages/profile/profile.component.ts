@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ShareService } from '../../services/share.service'
+import { BookStoreAPI } from '../../services/bookstore.services';
+import { resprofile, reqprofile } from '../../services/Classes/profile'
+import {reqpass,respass }from '../../services/Classes/changepass'
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -7,9 +10,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private Share: ShareService, private bookstoreapi: BookStoreAPI) { }
+  data:any 
+  hovaten : any;
+  Email :any;
+  diachi :any;
+  sdt :any;
+  date :any;
 
-  ngOnInit(): void {
+  resProfile: resprofile | undefined;
+
+  matkhauhientai: any;
+  matkhaumoi:any;
+  xacnhanmatkhau:any;
+  resPass:respass | undefined;
+
+  ngOnInit() {
+    console.log(this.Share.getshare());
   }
-
+  clickme() {
+    let bodyProfile = new reqprofile(this.Share.getshare().id, this.hovaten, this.Email, this.diachi, this.sdt, this.date);
+    this.bookstoreapi.putupdateprofile(bodyProfile).subscribe(
+      data => {
+        this.resProfile = data;
+        alert(this.resProfile.Messenger);      
+      }
+    )
+  }
+  UpdataPass() {
+    let bodypass = new reqpass(this.Share.getshare().id,this.matkhauhientai,this.matkhaumoi,this.xacnhanmatkhau);
+    this.bookstoreapi.putupdatapass(bodypass).subscribe(
+      data => {
+        this.resPass = data;
+        alert(this.resPass.Messenger);      
+      }
+    )
+  }
 }

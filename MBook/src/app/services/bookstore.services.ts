@@ -2,7 +2,13 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Account, reqRegister, resRegister } from "./Classes/Login";
+
 import { BookSold, Category } from "./Classes/Book";
+
+
+
+import { reqprofile, resprofile } from "./Classes/profile";
+import {reqpass,respass }from './Classes/changepass'
 
 
 @Injectable({
@@ -32,5 +38,15 @@ export class BookStoreAPI {
     }
     getCategory():Observable<any>{
         return this.httclient.get<Category>(this.url + "/chude");
+    }
+    // cập nhật tài khoản put 
+    putupdateprofile(bodyProfile: reqprofile) {
+
+        return this.httclient.put<resprofile>(this.url + "/khachhang", bodyProfile);
+    }
+    //cập nhật pass put 
+    putupdatapass(bodyProfile: reqpass) {
+
+        return this.httclient.put<respass>(this.url + "/khachhangmk", bodyProfile);
     }
 }
