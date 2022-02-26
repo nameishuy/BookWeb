@@ -7,9 +7,8 @@
             <div class="profile-tab-nav border-right">
                 <div class="p-4">
                     <div class="img-circle text-center mb-3">
-                        <img src="img/user2.jpg" alt="Image" class="shadow">
+                        <img src="https://i.imgur.com/6eIvKOg.jpg" alt="Image" class="shadow">
                     </div>
-                    <h4 class="text-center">Kiran Acharya</h4>
                 </div>
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab"
@@ -31,36 +30,36 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Họ Và Tên</label>
-                                <input type="text" class="form-control" value="Kiran">
+                                <input type="text" class="form-control" required [(ngModel)]="hovaten">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="text" class="form-control" value="Acharya">
+                                <input type="text" class="form-control" required [(ngModel)]="Email">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Địa Chỉ</label>
-                                <input type="text" class="form-control" value="kiranacharya287@gmail.com">
+                                <input type="text" class="form-control" required [(ngModel)]="diachi">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Số Điện Thoại</label>
-                                <input type="text" class="form-control" value="+91 9876543215">
+                                <input type="text" class="form-control" required [(ngModel)]="sdt">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Ngày Sinh</label>
-                                <input type="date" class="form-control" value="+91 9876543215">
+                                <input type="date" class="form-control" required [(ngModel)]="date">
                             </div>
                         </div>
                     </div>
                     <div>
-                        <button class="btn btn-primary" >Update</button>
+                        <button class="btn btn-primary" (click)="clickme()">Update</button>
                         <button class="btn btn-light">Cancel</button>
                     </div>
                 </div>
@@ -70,7 +69,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Old password</label>
-                                <input type="password" class="form-control">
+                                <input type="password" class="form-control" required [(ngModel)]="matkhauhientai">
                             </div>
                         </div>
                     </div>
@@ -78,18 +77,18 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>New password</label>
-                                <input type="password" class="form-control">
+                                <input type="password" class="form-control" required [(ngModel)]="matkhaumoi">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Confirm password</label>
-                                <input type="password" class="form-control">
+                                <input type="password" class="form-control" required [(ngModel)]="xacnhanmatkhau">
                             </div>
                         </div>
                     </div>
                     <div>
-                        <button class="btn btn-primary">Update</button>
+                        <button class="btn btn-primary" (click)="UpdataPass()">Update</button>
                         <button class="btn btn-light">Cancel</button>
                     </div>
                 </div>
