@@ -1,9 +1,9 @@
-
 <mat-tab-group>
     <mat-tab label="Thông tin cá nhân">
         <div class="center">
             <form method="post" action="#">
-                <h3> Thông tin cá nhân </h3>
+                <h3> Thông tin cá nhân </h3>  
+                           
                 <div class="txt_field">
                     <input type="text" name="hovaten" id="" autocomplete="off" required [(ngModel)]="hovaten">
                     <label for="label-account">Họ và tên</label>
@@ -33,9 +33,10 @@
     <mat-tab label="Đổi mật khẩu">
         <div class="center">
             <form method="post" action="#">
-                <h3> Đổi mật khẩu  </h3>
+                <h3> Đổi mật khẩu </h3>
                 <div class="txt_field">
-                    <input type="password" name="matkhauhientai" id="" autocomplete="off" required [(ngModel)]="matkhauhientai">
+                    <input type="password" name="matkhauhientai" id="" autocomplete="off" required
+                        [(ngModel)]="matkhauhientai">
                     <label for="label-account">Mật khẩu hiện tại</label>
                 </div>
                 <div class="txt_field">
@@ -43,14 +44,14 @@
                     <label for="label-account">Mật khẩu mới</label>
                 </div>
                 <div class="txt_field">
-                    <input type="password" name="xacnhanmatkhau" id="" autocomplete="off" required [(ngModel)]="xacnhanmatkhau">
+                    <input type="password" name="xacnhanmatkhau" id="" autocomplete="off" required
+                        [(ngModel)]="xacnhanmatkhau">
                     <label for="label-account">Xác nhận mật khẩu</label>
                 </div>
-                
+
                 <input type="submit" name="" value="Cập nhật" (click)="UpdataPass()">
             </form>
         </div>
     </mat-tab>
 
 </mat-tab-group>
-
