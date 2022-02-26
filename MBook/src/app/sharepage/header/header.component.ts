@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  data: any
+  data: any;
   username: any;
   id: any;
 
@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   UserLogined: any;
 
   ngOnInit(): void {
+    console.log(typeof this.share.getshare)
   }
 
   isAdmin(){

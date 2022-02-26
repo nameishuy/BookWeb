@@ -11,7 +11,7 @@ import { reqpass, respass } from '../../services/Classes/changepass'
 export class ProfileComponent implements OnInit {
 
   constructor(private Share: ShareService, private bookstoreapi: BookStoreAPI) { }
-  data:any;
+
   hovaten: any;
   Email: any;
   diachi: any;
@@ -36,12 +36,11 @@ export class ProfileComponent implements OnInit {
         this.diachi = res.DiachiKH
         this.sdt = res.DienthoaiKH
         this.date = res.Ngaysinh
-        this.data = res
       })
     }
   }
 
-  clickme() {
+  updateInfo() {
     let bodyProfile = new reqprofile(this.Share.getshare().id, this.hovaten, this.Email, this.diachi, this.sdt, this.date);
     this.bookstoreapi.putupdateprofile(bodyProfile).subscribe(
       data => {
@@ -55,9 +54,6 @@ export class ProfileComponent implements OnInit {
     this.bookstoreapi.putupdatapass(bodypass).subscribe(
       data => {
         this.resPass = data;
-        this.matkhauhientai = '';
-        this.matkhaumoi = '';
-        this.xacnhanmatkhau = '';
         alert(this.resPass.Messenger);
       }
     )
