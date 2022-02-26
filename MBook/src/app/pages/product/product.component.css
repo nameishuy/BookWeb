@@ -4,6 +4,7 @@
     padding-top: 50px;
     padding-bottom: 50px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     font-family: 'Nunito Sans', sans-serif;
     font-size: 16px;
@@ -28,21 +29,58 @@
             color: black;
             font-weight: 400;
             cursor: pointer;
+            position: relative;
         }
             .Product__ListCategory ul li a:hover{
                 color: orange;
             }
+            .Product__ListCategory ul li a:hover::after
+            {
+                background-color: orange;
+                transition: .5s;
+                width: 100%;
+            }
+        .Product__ListCategory ul li a::after{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            display: block;
+            width: 0%;
+        }
 .Product__ListProduct{
     width: 70%;
     box-shadow: 0 0 .2rem 0 rgba(0, 0, 0, 0.582);
     border-radius: .5rem;
     height: fit-content;
 }
+    .Product__ListProduct-Sort{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px;
+        position: relative;
+    }
+        .Product__ListProduct-Sort::after{
+            content: '';
+            width: 90%;
+            height: 1px;
+            background-color: rgb(190, 190, 190);
+            position: absolute;
+            display: block;
+            bottom: 0;
+            transform: translateY(-50px);
+        }
+        .Product__ListProduct-Sort p{
+            margin-right: 10px;
+        }
     .Product__List{
-        padding: 100px 50px 100px 50px;
+        padding: 0px 50px 50px 50px;
         display: flex;
         flex-wrap: wrap;
         font-family: 'Nunito Sans', sans-serif;
+        transition: 1s;
     }
         .Book{
             width: 170px;
@@ -51,8 +89,11 @@
             border-radius: .5rem;
             cursor: pointer;
             margin: 20px 20px 20px 20px;
-            box-shadow: 0 0 .2rem 0 rgba(0, 0, 0, 0.582);
+            box-shadow: 0 0 .2rem 0 rgba(105, 105, 105, 0.582);
         }
+            .Book:hover{
+                box-shadow: 0 0 .7rem 0 rgba(0, 0, 0, 0.582);
+            }
                 .Book__Img img{
                     width: 100%;
                     height: 220px !important;
@@ -76,3 +117,22 @@
                         font-size: 17px !important;
                         font-weight: 700;
                     }
+
+@media screen and (max-width:413px) {
+    .Product__Container{
+        padding: 0;
+        margin: 0 auto;
+        flex-direction: column;
+    }
+        .Product__ListCategory,
+        .Product__ListProduct{
+            width: 100%;
+        }
+        .Product__ListCategory{
+            margin-bottom: 20px;
+        }
+            .Product__List{
+                padding: 0;
+                justify-content: center;
+            }
+}

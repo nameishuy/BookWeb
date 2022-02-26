@@ -1,14 +1,20 @@
 <div class="Product__Container">
     <div class="Product__ListCategory">
         <h4>THỂ LOẠI SẢN PHẨM</h4>
-        <ul>
-            <li><a>Giả Tưởng</a></li>
-            <li><a>Cổ Tích</a></li>
+        <ul *ngFor="let category of categories">
+            <li><a>{{category.TenChuDe}}</a></li>
         </ul>
     </div>
     <div class="Product__ListProduct">
         <div class="Product__ListProduct-Sort">
-
+            <p>Sắp xếp theo: </p>
+            <mat-form-field appearance="fill">
+                <mat-label>--Loại Sắp Xếp--</mat-label>
+                <mat-select>
+                  <mat-option>Giá Tăng Dần</mat-option>
+                  <mat-option>Giá Giảm Dần</mat-option>
+                </mat-select>
+              </mat-form-field>
         </div>
         <div class="Product__List">
             <div class="Book">

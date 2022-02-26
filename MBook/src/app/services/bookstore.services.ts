@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Account, reqRegister, resRegister } from "./Classes/Login";
-import { BookSold } from "./Classes/Book";
+import { BookSold, Category } from "./Classes/Book";
 
 
 @Injectable({
@@ -25,9 +25,12 @@ export class BookStoreAPI {
 
     //get
     getbooksold1(): Observable<any> {
-        return this.httclient.get<BookSold>(this.url + "/sachbanchayfirst")
+        return this.httclient.get<BookSold>(this.url + "/sachbanchayfirst");
     }
     getbooksold2(): Observable<any> {
-        return this.httclient.get<BookSold>(this.url + "/sachbanchaysecond")
+        return this.httclient.get<BookSold>(this.url + "/sachbanchaysecond");
+    }
+    getCategory():Observable<any>{
+        return this.httclient.get<Category>(this.url + "/chude");
     }
 }

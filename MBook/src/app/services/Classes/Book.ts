@@ -4,3 +4,8 @@ export interface BookSold {
     Anh: string;
     TenTG: string;
 }
+
+export interface Category{
+    id:string;
+    TenChuDe:string;
+}

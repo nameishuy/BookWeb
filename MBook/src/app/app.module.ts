@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatSelectModule} from '@angular/material/select';
 
 import { HeaderComponent } from './sharepage/header/header.component';
 import { FooterComponent } from './sharepage/footer/footer.component';
@@ -43,7 +44,8 @@ import { AdminComponent } from './pages/admin/admin.component';
     MatBadgeModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

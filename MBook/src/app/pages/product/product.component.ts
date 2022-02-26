@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BookStoreAPI } from 'src/app/services/bookstore.services';
 
 @Component({
   selector: 'app-product',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private bookapi:BookStoreAPI) { }
+  categories:any;
   ngOnInit(): void {
+    
+    this.bookapi.getCategory()
+    .subscribe(data => {
+      
+      this.categories = data;
+
+    })
   }
+
+
 
 }
