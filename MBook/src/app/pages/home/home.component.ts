@@ -22,4 +22,12 @@ export class HomeComponent implements OnInit {
       this.BookSold2 = data
     })
   }
+
+  isLoading(){
+    if(this.BookSold1 == null){
+      return true;
+    }else{
+      return false;
+    }
+  }
 }

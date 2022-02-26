@@ -5,6 +5,7 @@
     margin-top: 25px;
     box-shadow: 0 0 5px 0 black;
     border-radius: 1rem;
+    font-family: 'Nunito Sans', sans-serif;
 }
 .Banner__Container{
     width: 100%;
@@ -57,7 +58,7 @@
 }
 .SellingBook{
     width: 250px;
-    border-radius: 1.5rem 1.5rem 0 0;
+    border-radius: 1rem 1rem 0 0;
     overflow: hidden;
     margin-top: 40px;
     margin-bottom: 40px;
@@ -77,6 +78,7 @@
             height: 100%;
         }
     .BookTitle{
+        font-weight: 600;
         padding-left: 10px;
         padding-right: 10px;
         padding-top: 10px;
@@ -97,6 +99,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         word-break: break-word;
+        font-size: 13px;
     }
 .Good__Book{
     width: 90%;

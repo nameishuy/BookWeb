@@ -1,0 +1,78 @@
+.Product__Container{
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 16px;
+}
+
+.Product__ListCategory{
+    width: 25%;
+    height: fit-content;
+    box-shadow: 0 0 .2rem 0 rgba(0, 0, 0, 0.582);
+    padding-left: 20px;
+    padding-top: 20px;
+    border-radius: .5rem;
+}
+    .Product__ListCategory h4{
+        font-weight: 600;
+    }
+    .Product__ListCategory ul{
+        list-style-type: none;
+    }
+        .Product__ListCategory ul li a{
+            text-decoration: none;
+            color: black;
+            font-weight: 400;
+            cursor: pointer;
+        }
+            .Product__ListCategory ul li a:hover{
+                color: orange;
+            }
+.Product__ListProduct{
+    width: 70%;
+    box-shadow: 0 0 .2rem 0 rgba(0, 0, 0, 0.582);
+    border-radius: .5rem;
+    height: fit-content;
+}
+    .Product__List{
+        padding: 100px 50px 100px 50px;
+        display: flex;
+        flex-wrap: wrap;
+        font-family: 'Nunito Sans', sans-serif;
+    }
+        .Book{
+            width: 170px;
+            height: fit-content;
+            overflow: hidden;
+            border-radius: .5rem;
+            cursor: pointer;
+            margin: 20px 20px 20px 20px;
+            box-shadow: 0 0 .2rem 0 rgba(0, 0, 0, 0.582);
+        }
+                .Book__Img img{
+                    width: 100%;
+                    height: 220px !important;
+                }
+                .Book__Content-BookName{
+                    padding-left: 10px;
+                    padding-top: 5px;
+                    padding-bottom: 10px;
+                }
+                    .Book__Content-BookName h3{
+                        font-weight: 600;
+                        font-size: 17px;
+                    }
+                    .Book__Content-Author{
+                        font-size: 11px;
+                        margin-top: -20px;
+                    }
+                    .Book__Content-Price{
+                        color: red;
+                        font-family: 'Nunito Sans', sans-serif;
+                        font-size: 17px !important;
+                        font-weight: 700;
+                    }
