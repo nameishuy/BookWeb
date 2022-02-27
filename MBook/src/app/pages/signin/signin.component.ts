@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BookStoreAPI } from '../../services/bookstore.services';
 import { Router } from '@angular/router';
-import { ShareService } from '../../services/share.service';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -9,7 +8,7 @@ import { ShareService } from '../../services/share.service';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private bookstore: BookStoreAPI, private router: Router, private share: ShareService) { }
+  constructor(private bookstore: BookStoreAPI, private router: Router) { }
   UserLogined: any;
   username: String = '';
   password: String = '';
@@ -22,7 +21,7 @@ export class SigninComponent implements OnInit {
       .subscribe(
         data => {
           this.UserLogined = data;
-          this.share.setshare(this.UserLogined.HoTen, this.UserLogined.id, this.UserLogined.Role);
+          sessionStorage.setItem('UserLogin', JSON.stringify(data))        
           alert(this.UserLogined.Messenger);
           this.router.navigate(['']);
         }

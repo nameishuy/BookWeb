@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ShareService } from '../../services/share.service';
+
 import { BookStoreAPI } from '../../services/bookstore.services';
 import { Router } from '@angular/router';
 
@@ -10,38 +10,32 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   data: any;
-  username: any;
-  id: any;
 
-  constructor(private bookstore: BookStoreAPI, private share: ShareService, private router:Router) { }
+  constructor(private bookstore: BookStoreAPI, private router: Router) { }
   UserLogined: any;
 
   ngOnInit(): void {
-    console.log(typeof this.share.getshare)
   }
 
-  isAdmin(){
-    return this.share.Role;
+  isAdmin() {
+    return this.data.Role;
   }
   isLogined() {
-    this.data = this.share.getshare();
-    if (this.data.HoTen != null && this.data.id != null) {
+    if (sessionStorage.getItem('UserLogin') != null) {
+      this.data = JSON.parse(sessionStorage.getItem('UserLogin')!);
       return true;
     } else {
       return false;
     }
   }
 
-  goProfile(){
-    console.log(this.share.id);
+  goProfile() {
+    //console.log(this.share.id);
   }
 
   Signout() {
-    localStorage.removeItem('userName');
-    localStorage.removeItem('id');
-    this.username = null;
-    this.id = null;
-    this.share.setshare(null, null, null);
+    sessionStorage.removeItem('UserLogin');
+    //  this.share.setshare(null, null, null);
     this.router.navigate(['/login']);
   }
 
