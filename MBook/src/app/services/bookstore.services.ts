@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Account, reqRegister, resRegister } from "./Classes/Login";
 import { BookSold, Category } from "./Classes/Book";
@@ -16,6 +16,8 @@ export class BookStoreAPI {
 
     url = "https://bookingapiiiii.herokuapp.com";
 
+
+ 
     postLogin(username: String, password: String): Observable<any> {
         return this.httclient.post<Account>(this.url + "/login", { Taikhoan: username, Matkhau: password });
     }

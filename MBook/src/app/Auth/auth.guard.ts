@@ -9,8 +9,10 @@ export class AuthGuard implements CanActivate {
   constructor() { }
   canActivate() {
     if (sessionStorage.getItem('UserLogin') != null) {
-      JSON.parse(sessionStorage.getItem('UserLogin')!);
-      return true;
+      let data = JSON.parse(sessionStorage.getItem('UserLogin')!);
+      if (data != null) {
+        return true;
+      } else return false;
     }
     else return false;
   }

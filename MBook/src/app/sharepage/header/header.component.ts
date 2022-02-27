@@ -20,10 +20,14 @@ export class HeaderComponent implements OnInit {
   isAdmin() {
     return this.data.Role;
   }
-  isLogined() {
+  isLogined() {   
     if (sessionStorage.getItem('UserLogin') != null) {
       this.data = JSON.parse(sessionStorage.getItem('UserLogin')!);
-      return true;
+      if (this.data.HoTen != null) {
+        return true;
+      } else {
+        return false;
+      }
     } else {
       return false;
     }
@@ -35,7 +39,6 @@ export class HeaderComponent implements OnInit {
 
   Signout() {
     sessionStorage.removeItem('UserLogin');
-    //  this.share.setshare(null, null, null);
     this.router.navigate(['/login']);
   }
 

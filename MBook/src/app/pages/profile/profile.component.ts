@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
   date: any;
 
   data: any
-
+  img: any = "https://i.imgur.com/6eIvKOg.jpg"
   resProfile: resprofile | undefined;
 
   matkhauhientai: any;
@@ -26,16 +26,26 @@ export class ProfileComponent implements OnInit {
   xacnhanmatkhau: any;
   resPass: respass | undefined;
 
+  onFileSelected(event: any) {
+    if (event.target.files) {
+      const reader = new FileReader()
+      reader.readAsDataURL(event.target.files[0])
+      reader.onload = (e) => {
+        this.img = e.target?.result
+      }
+    }
+  }
+
   ngOnInit() {
     if (sessionStorage.getItem('UserLogin') != null) {
       this.data = JSON.parse(sessionStorage.getItem('UserLogin')!);
-
       this.bookstoreapi.getProfile(this.data.id).subscribe(res => {
         this.hovaten = res.HoTen
         this.Email = res.Email
         this.diachi = res.DiachiKH
         this.sdt = res.DienthoaiKH
         this.date = res.Ngaysinh
+        this.img = res.Anh
       })
     } else {
       console.log("Rỗng")
@@ -45,7 +55,7 @@ export class ProfileComponent implements OnInit {
   updateInfo() {
     if (this.data.id != null) {
       console.log(this.data.id)
-      let bodyProfile = new reqprofile(this.data.id, this.hovaten, this.Email, this.diachi, this.sdt, this.date);
+      let bodyProfile = new reqprofile(this.data.id, this.img, this.hovaten, this.Email, this.diachi, this.sdt, this.date);
       this.bookstoreapi.putupdateprofile(bodyProfile).subscribe(
         data => {
           this.resProfile = data;
@@ -56,6 +66,7 @@ export class ProfileComponent implements OnInit {
     }
 
   }
+
   UpdataPass() {
     if (this.data.id != null) {
       console.log(this.data.id)
