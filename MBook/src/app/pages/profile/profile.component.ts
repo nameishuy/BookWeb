@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
   date: any;
 
   data: any
-  img: any = "https://i.imgur.com/6eIvKOg.jpg"
+  img: any = "https://firebasestorage.googleapis.com/v0/b/chat-1e086.appspot.com/o/default.jpg?alt=media&token=b2f7e2de-5a7e-4bd6-8c29-443015246589"
   resProfile: resprofile | undefined;
 
   matkhauhientai: any;
