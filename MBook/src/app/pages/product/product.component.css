@@ -89,7 +89,7 @@
             border-radius: .5rem;
             cursor: pointer;
             margin: 20px 20px 20px 20px;
-            box-shadow: 0 0 .2rem 0 rgba(105, 105, 105, 0.582);
+            box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.1) !important;
         }
             .Book:hover{
                 box-shadow: 0 0 .7rem 0 rgba(0, 0, 0, 0.582);
@@ -117,7 +117,6 @@
                         font-size: 17px !important;
                         font-weight: 700;
                     }
-
 @media screen and (max-width:413px) {
     .Product__Container{
         padding: 0;
