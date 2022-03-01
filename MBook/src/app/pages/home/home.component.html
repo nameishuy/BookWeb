@@ -24,12 +24,11 @@
             <div class="Slide__Book">
                 <div class="SellingBook" *ngFor="let book of BookSold1">
                     <div class="ImgBook">
-                        <img src="{{book.Anh}}"
-                            alt="">
+                        <img src="{{book.Anh}}" alt="">
                     </div>
                     <div class="BookContent">
                         <p class="BookTitle">
-                           {{book.Tensach}}
+                            {{book.Tensach}}
                         </p>
                         <p class="Author">
                             {{book.TenTG}}
@@ -42,18 +41,17 @@
             <div class="Slide__Book">
                 <div class="SellingBook" *ngFor="let book2 of BookSold2">
                     <div class="ImgBook">
-                        <img src="{{book2.Anh}}"
-                            alt="">
+                        <img src="{{book2.Anh}}" alt="">
                     </div>
                     <div class="BookContent">
                         <p class="BookTitle">
                             {{book2.Tensach}}
                         </p>
                         <p class="Author">
-                           {{book2.TenTG}}
+                            {{book2.TenTG}}
                         </p>
                     </div>
-                </div>             
+                </div>
             </div>
         </div>
     </div>
@@ -71,62 +69,18 @@
 <p class="Title">SÁCH HAY</p>
 <div id="carouselGoodBook" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-        <div class="carousel-item active">
+        <div class="carousel-item" *ngFor="let newbook of newbook; let isFirst = first" [class.active]="isFirst">
             <div class="Good__Book">
                 <div class="Good__Book-image">
-                    <img src="https://toplist.vn/images/800px/dac-nhan-tam-116541.jpg" alt="">
+                    <img src="{{newbook.Anh}}" alt="">
                 </div>
                 <div class="Good__Book-about">
                     <div class="Good__Book-header">
-                        <h1>ĐẮC NHÂN TÂM</h1>
-                        <p>Nguyễn Văn Phước</p>
+                        <h1>{{newbook.Tensach}}</h1>
+                        <p>Tác Giả: {{newbook.TenTG}}</p>
                     </div>
                     <div class="Good__Book-body">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est at beatae nisi impedit error.
-                        Corrupti, animi assumenda neque optio quos recusandae praesentium odio consectetur. Quos illo
-                        perferendis beatae nesciunt accusantium?
-                    </div>
-                    <div class="Good__Book-readnow">
-                        <a>Đọc Ngay</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="Good__Book">
-                <div class="Good__Book-image">
-                    <img src="https://toplist.vn/images/800px/dac-nhan-tam-116541.jpg" alt="">
-                </div>
-                <div class="Good__Book-about">
-                    <div class="Good__Book-header">
-                        <h1>ĐẮC NHÂN TÂM</h1>
-                        <p>Nguyễn Văn Phước</p>
-                    </div>
-                    <div class="Good__Book-body">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est at beatae nisi impedit error.
-                        Corrupti, animi assumenda neque optio quos recusandae praesentium odio consectetur. Quos illo
-                        perferendis beatae nesciunt accusantium?
-                    </div>
-                    <div class="Good__Book-readnow">
-                        <a>Đọc Ngay</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="Good__Book">
-                <div class="Good__Book-image">
-                    <img src="https://toplist.vn/images/800px/dac-nhan-tam-116541.jpg" alt="">
-                </div>
-                <div class="Good__Book-about">
-                    <div class="Good__Book-header">
-                        <h1>ĐẮC NHÂN TÂM</h1>
-                        <p>Nguyễn Văn Phước</p>
-                    </div>
-                    <div class="Good__Book-body">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est at beatae nisi impedit error.
-                        Corrupti, animi assumenda neque optio quos recusandae praesentium odio consectetur. Quos illo
-                        perferendis beatae nesciunt accusantium?
+                        {{newbook.Mota}}
                     </div>
                     <div class="Good__Book-readnow">
                         <a>Đọc Ngay</a>

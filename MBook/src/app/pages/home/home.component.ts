@@ -8,6 +8,7 @@ import { BookStoreAPI } from "../../services/bookstore.services"
 export class HomeComponent implements OnInit {
   BookSold1: any;
   BookSold2: any;
+  newbook: any;
   constructor(private bookstore: BookStoreAPI) { }
 
   ngOnInit(): void {
@@ -21,12 +22,15 @@ export class HomeComponent implements OnInit {
     this.bookstore.getbooksold2().subscribe(data => {
       this.BookSold2 = data
     })
+    this.bookstore.get3newbook().subscribe(data => {
+      this.newbook = data
+    })
   }
 
-  isLoading(){
-    if(this.BookSold1 == null){
+  isLoading() {
+    if (this.BookSold1 == null) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }

@@ -4,8 +4,15 @@ export interface BookSold {
     Anh: string;
     TenTG: string;
 }
+export interface newBook {
+    id: string;
+    Tensach: string;
+    Mota: string,
+    Anh: string;
+    TenTG: string;
+}
 
-export interface Category{
-    id:string;
-    TenChuDe:string;
+export interface Category {
+    id: string;
+    TenChuDe: string;
 }

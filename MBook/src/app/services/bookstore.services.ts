@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Account, reqRegister, resRegister } from "./Classes/Login";
-import { BookSold, Category } from "./Classes/Book";
+import { BookSold, Category, newBook } from "./Classes/Book";
 import { reqprofile, resprofile } from "./Classes/profile";
 import { reqpass, respass } from './Classes/changepass'
 
@@ -17,7 +17,7 @@ export class BookStoreAPI {
     url = "https://bookingapiiiii.herokuapp.com";
 
 
- 
+
     postLogin(username: String, password: String): Observable<any> {
         return this.httclient.post<Account>(this.url + "/login", { Taikhoan: username, Matkhau: password });
     }
@@ -33,6 +33,9 @@ export class BookStoreAPI {
     }
     getbooksold2(): Observable<any> {
         return this.httclient.get<BookSold>(this.url + "/sachbanchaysecond");
+    }
+    get3newbook(): Observable<any> {
+        return this.httclient.get<newBook>(this.url + "/sachtimestamps");
     }
     getCategory(): Observable<any> {
         return this.httclient.get<Category>(this.url + "/chude");
