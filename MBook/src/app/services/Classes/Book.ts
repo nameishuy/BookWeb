@@ -4,6 +4,13 @@ export interface BookSold {
     Anh: string;
     TenTG: string;
 }
+export interface Book {
+    id: string;
+    Tensach: string;
+    Giaban: Number;
+    Anh: string;
+    TenTG: string;
+}
 export interface newBook {
     id: string;
     Tensach: string;

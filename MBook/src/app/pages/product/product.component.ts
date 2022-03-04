@@ -8,18 +8,24 @@ import { BookStoreAPI } from 'src/app/services/bookstore.services';
 })
 export class ProductComponent implements OnInit {
 
-  constructor(private bookapi:BookStoreAPI) { }
-  categories:any;
+  constructor(private bookapi: BookStoreAPI) { }
+  categories: any;
+  Book: any;
   ngOnInit(): void {
-    
-    this.bookapi.getCategory()
-    .subscribe(data => {
-      
-      this.categories = data;
-
-    })
+    this.getCategory();
+    this.getbook()
   }
 
+  getCategory() {
+    this.bookapi.getCategory()
+      .subscribe(data => {
+        this.categories = data;
+      })
+  }
 
-
+  getbook() {
+    this.bookapi.getAllBook().subscribe(data => {
+      this.Book = data
+    })
+  }
 }
