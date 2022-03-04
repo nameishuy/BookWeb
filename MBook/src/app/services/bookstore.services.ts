@@ -42,6 +42,10 @@ export class BookStoreAPI {
         return this.httclient.get<Book>(this.url + "/sach");
     }
 
+    getBookByChuDe(id: string): Observable<any> {
+        return this.httclient.get<Book>(this.url + "/sachbyCD/" + id);
+    }
+
     getCategory(): Observable<any> {
         return this.httclient.get<Category>(this.url + "/chude");
     }

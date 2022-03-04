@@ -11,6 +11,7 @@ export class ProductComponent implements OnInit {
   constructor(private bookapi: BookStoreAPI) { }
   categories: any;
   Book: any;
+  Messager: any = "";
   ngOnInit(): void {
     this.getCategory();
     this.getbook()
@@ -26,6 +27,19 @@ export class ProductComponent implements OnInit {
   getbook() {
     this.bookapi.getAllBook().subscribe(data => {
       this.Book = data
+    })
+  }
+
+  GetByChuDe(id: string) {
+    this.bookapi.getBookByChuDe(id).subscribe(data => {
+      if (data.Messager != null) {
+        this.Messager = data.Messager;
+      } else {
+        this.Messager="";
+        console.log(this.Messager)
+        this.Book = data;
+        console.log(this.Book)
+      }
     })
   }
 }

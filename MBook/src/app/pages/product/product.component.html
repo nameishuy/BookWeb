@@ -2,7 +2,7 @@
     <div class="Product__ListCategory">
         <h4>THỂ LOẠI SẢN PHẨM</h4>
         <ul *ngFor="let category of categories">
-            <li><a>{{category.TenChuDe}}</a></li>
+            <li><a (click)="GetByChuDe(category._id)">{{category.TenChuDe}}</a></li>
         </ul>
     </div>
     <div class="Product__ListProduct">
@@ -16,7 +16,10 @@
                 </mat-select>
             </mat-form-field>
         </div>
-        <div class="Product__List">
+        <div class="Product__List" *ngIf="Messager !=null">
+            {{Messager}}
+        </div>
+        <div class="Product__List" *ngIf="Messager == '' ">
             <div class="Book" *ngFor="let book of Book">
                 <div class="Book__Img">
                     <img src="{{book.Anh}}" alt="">
