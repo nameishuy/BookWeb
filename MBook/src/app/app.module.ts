@@ -26,6 +26,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 
 import {MatTabsModule} from '@angular/material/tabs';
 import { AuthGuard, isLogined } from './Auth/auth.guard';
+import { BookdetailsComponent } from './pages/bookdetails/bookdetails.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { AuthGuard, isLogined } from './Auth/auth.guard';
     SigninComponent,
     ProfileComponent,
     SignupComponent,
-    AdminComponent
+    AdminComponent,
+    BookdetailsComponent
   ],
   imports: [
     BrowserModule,
