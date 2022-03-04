@@ -48,7 +48,7 @@ export class ProfileComponent implements OnInit {
         this.img = res.Anh
       })
     } else {
-      console.log("Rỗng")
+      console.log("Rỗng");
     }
   }
 

@@ -25,7 +25,7 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { AdminComponent } from './pages/admin/admin.component';
 
 import {MatTabsModule} from '@angular/material/tabs';
-import { AuthGuard } from './Auth/auth.guard';
+import { AuthGuard, isLogined } from './Auth/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +51,7 @@ import { AuthGuard } from './Auth/auth.guard';
     MatTabsModule
 
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,isLogined],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
