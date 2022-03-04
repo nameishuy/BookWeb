@@ -12,6 +12,7 @@ export class ProductComponent implements OnInit {
   categories: any;
   Book: any;
   Messager: any = "";
+  Search: any = "";
   ngOnInit(): void {
     this.getCategory();
     this.getbook()

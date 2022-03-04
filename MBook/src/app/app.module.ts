@@ -9,7 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatSelectModule} from '@angular/material/select';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { HeaderComponent } from './sharepage/header/header.component';
 import { FooterComponent } from './sharepage/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -48,8 +48,8 @@ import { BookdetailsComponent } from './pages/bookdetails/bookdetails.component'
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    MatSelectModule
-
+    MatSelectModule,
+    Ng2SearchPipeModule
   ],
   providers: [AuthGuard,isLogined],
   bootstrap: [AppComponent]

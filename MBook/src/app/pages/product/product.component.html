@@ -7,6 +7,12 @@
     </div>
     <div class="Product__ListProduct">
         <div class="Product__ListProduct-Sort">
+            <input
+            type="text"
+            class="form-control"
+            placeholder="Search..."
+            [(ngModel)]="Search"
+          />
             <p>Sắp xếp theo: </p>
             <mat-form-field appearance="fill">
                 <mat-label>--Loại Sắp Xếp--</mat-label>
@@ -20,7 +26,7 @@
             {{Messager}}
         </div>
         <div class="Product__List" *ngIf="Messager == '' ">
-            <div class="Book" *ngFor="let book of Book">
+            <div class="Book" *ngFor="let book of Book  | filter: Search">
                 <div class="Book__Img">
                     <img src="{{book.Anh}}" alt="">
                 </div>
