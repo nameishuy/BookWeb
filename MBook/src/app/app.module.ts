@@ -24,7 +24,6 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { AdminComponent } from './pages/admin/admin.component';
 
-import {MatTabsModule} from '@angular/material/tabs';
 import { AuthGuard, isLogined } from './Auth/auth.guard';
 import { BookdetailsComponent } from './pages/bookdetails/bookdetails.component';
 @NgModule({
@@ -49,8 +48,7 @@ import { BookdetailsComponent } from './pages/bookdetails/bookdetails.component'
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    MatSelectModule,
-    MatTabsModule
+    MatSelectModule
 
   ],
   providers: [AuthGuard,isLogined],
