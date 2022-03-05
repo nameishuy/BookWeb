@@ -13,6 +13,7 @@ export class ProductComponent implements OnInit {
   Book: any;
   Messager: any = "";
   Search: any = "";
+  p: any = "";
   ngOnInit(): void {
     this.getCategory();
     this.getbook()
