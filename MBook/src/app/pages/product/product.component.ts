@@ -37,11 +37,19 @@ export class ProductComponent implements OnInit {
       if (data.Messager != null) {
         this.Messager = data.Messager;
       } else {
-        this.Messager="";
+        this.Messager = "";
         console.log(this.Messager)
         this.Book = data;
         console.log(this.Book)
       }
     })
+  }
+  key = "Giaban";
+  reverse: boolean = false;
+  sort() {
+    this.reverse = false
+  }
+  sort2() {
+    this.reverse = true
   }
 }
