@@ -7,18 +7,13 @@
     </div>
     <div class="Product__ListProduct">
         <div class="Product__ListProduct-Sort">
-            <input
-            type="text"
-            class="form-control"
-            placeholder="Search..."
-            [(ngModel)]="Search"
-          />
+            <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="Search" />
             <p>Sắp xếp theo: </p>
             <mat-form-field appearance="fill">
                 <mat-label>--Loại Sắp Xếp--</mat-label>
                 <mat-select>
-                    <mat-option>Giá Tăng Dần</mat-option>
-                    <mat-option>Giá Giảm Dần</mat-option>
+                    <mat-option (click)="sort()">Giá Tăng Dần</mat-option>
+                    <mat-option (click)="sort2()">Giá Giảm Dần</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
@@ -26,7 +21,8 @@
             {{Messager}}
         </div>
         <div class="Product__List" *ngIf="Messager == '' ">
-            <div class="Book" *ngFor="let book of Book  | filter: Search | paginate: { itemsPerPage: 4, currentPage: p }">
+            <div class="Book"
+                *ngFor="let book of Book |orderBy: key :reverse | filter: Search | paginate: { itemsPerPage: 4, currentPage: p }">
                 <div class="Book__Img">
                     <img src="{{book.Anh}}" alt="">
                 </div>
@@ -34,10 +30,10 @@
                     <div class="Book__Content-BookName">
                         <h3>{{book.Tensach}}</h3>
                         <p class="Book__Content-Author">{{book.TenTG}}</p>
-                        <p class="Book__Content-Price">{{book.Giaban}}đ</p>
+                        <p class="Book__Content-Price">{{book.Giaban}} ngàn đồng</p>
                     </div>
-                </div>               
-            </div>         
+                </div>
+            </div>
         </div>
         <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
     </div>
