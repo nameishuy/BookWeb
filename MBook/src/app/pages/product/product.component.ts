@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookStoreAPI } from 'src/app/services/bookstore.services';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -8,7 +8,7 @@ import { BookStoreAPI } from 'src/app/services/bookstore.services';
 })
 export class ProductComponent implements OnInit {
 
-  constructor(private bookapi: BookStoreAPI) { }
+  constructor(private bookapi: BookStoreAPI, private router:Router) { }
   categories: any;
   Book: any;
   Messager: any = "";
@@ -42,5 +42,10 @@ export class ProductComponent implements OnInit {
         console.log(this.Book)
       }
     })
+  }
+
+  goDetails(id:string){
+    console.log('was clicked');
+    this.router.navigate(['detail',id]);
   }
 }
