@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { BookStoreAPI } from "../../services/bookstore.services"
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,7 +10,7 @@ export class HomeComponent implements OnInit {
   BookSold1: any;
   BookSold2: any;
   newbook: any;
-  constructor(private bookstore: BookStoreAPI) { }
+  constructor(private bookstore: BookStoreAPI, private router:Router) { }
 
   ngOnInit(): void {
     this.getbooksold1()
@@ -33,5 +34,10 @@ export class HomeComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  goDetails(id:string){
+    console.log('was clicked');
+    this.router.navigate(['detail',id]);
   }
 }

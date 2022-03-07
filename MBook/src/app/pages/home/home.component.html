@@ -23,16 +23,18 @@
         <div class="carousel-item active" data-interval="10000">
             <div class="Slide__Book">
                 <div class="SellingBook" *ngFor="let book of BookSold1">
-                    <div class="ImgBook">
-                        <img src="{{book.Anh}}" alt="">
-                    </div>
-                    <div class="BookContent">
-                        <p class="BookTitle">
-                            {{book.Tensach}}
-                        </p>
-                        <p class="Author">
-                            {{book.TenTG}}
-                        </p>
+                    <div class="Book__Details" (click)="goDetails(book.id)">
+                        <div class="ImgBook">
+                            <img src="{{book.Anh}}" alt="">
+                        </div>
+                        <div class="BookContent">
+                            <p class="BookTitle">
+                                {{book.Tensach}}
+                            </p>
+                            <p class="Author">
+                                {{book.TenTG}}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -40,16 +42,18 @@
         <div class="carousel-item" data-interval="2000">
             <div class="Slide__Book">
                 <div class="SellingBook" *ngFor="let book2 of BookSold2">
-                    <div class="ImgBook">
-                        <img src="{{book2.Anh}}" alt="">
-                    </div>
-                    <div class="BookContent">
-                        <p class="BookTitle">
-                            {{book2.Tensach}}
-                        </p>
-                        <p class="Author">
-                            {{book2.TenTG}}
-                        </p>
+                    <div class="Book__Details"  (click)="goDetails(book2.id)">
+                        <div class="ImgBook">
+                            <img src="{{book2.Anh}}" alt="">
+                        </div>
+                        <div class="BookContent">
+                            <p class="BookTitle">
+                                {{book2.Tensach}}
+                            </p>
+                            <p class="Author">
+                                {{book2.TenTG}}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -82,7 +86,7 @@
                     <div class="Good__Book-body">
                         {{newbook.Mota}}
                     </div>
-                    <div class="Good__Book-readnow">
+                    <div class="Good__Book-readnow"  (click)="goDetails(newbook.id)">
                         <a>Đọc Ngay</a>
                     </div>
                 </div>
