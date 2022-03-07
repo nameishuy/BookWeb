@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Account, reqRegister, resRegister } from "./Classes/Login";
-import { Book, BookSold, Category, newBook } from "./Classes/Book";
+import { Book, Book1, BookSold, Category, newBook } from "./Classes/Book";
 import { reqprofile, resprofile } from "./Classes/profile";
 import { reqpass, respass } from './Classes/changepass'
 
@@ -41,7 +41,9 @@ export class BookStoreAPI {
     getAllBook(): Observable<any> {
         return this.httclient.get<Book>(this.url + "/sach");
     }
-
+    get1Book(id: string): Observable<any> {
+        return this.httclient.get<Book1>(this.url + "/sachbyid/" + id);
+    }
     getBookByChuDe(id: string): Observable<any> {
         return this.httclient.get<Book>(this.url + "/sachbyCD/" + id);
     }
