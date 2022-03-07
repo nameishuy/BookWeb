@@ -18,7 +18,15 @@ export interface newBook {
     Anh: string;
     TenTG: string;
 }
-
+export interface Book1 {
+    id: string;
+    Tensach: string;
+    Mota: string,
+    Giaban: Number;
+    Anh: string;
+    TenTG: string;
+    TenNXB: string;
+}
 export interface Category {
     id: string;
     TenChuDe: string;
