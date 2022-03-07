@@ -15,11 +15,10 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="product">Sách</a>
       </li>
-
     </ul>
     <div class="nav__shopping">
       <button mat-icon-button class="btn__cart">
-        <mat-icon matBadge="0" matBadgeColor="warn">add_shopping_cart</mat-icon>
+        <mat-icon [matBadge]="count" matBadgeColor="warn">add_shopping_cart</mat-icon>
       </button>
       <div *ngIf="!isLogined()">
         <a mat-stroked-button class="btn_signin" routerLink="login">Đăng Nhập</a>

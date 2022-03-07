@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Account, reqRegister, resRegister } from "./Classes/Login";
-import { Book, Book1, BookSold, Category, newBook } from "./Classes/Book";
+import { Book, Book1, BookSold, Category, itemCart, newBook } from "./Classes/Book";
 import { reqprofile, resprofile } from "./Classes/profile";
 import { reqpass, respass } from './Classes/changepass'
 
@@ -13,7 +13,6 @@ import { reqpass, respass } from './Classes/changepass'
 export class BookStoreAPI {
     [x: string]: any;
     constructor(private httclient: HttpClient) { }
-
     url = "https://bookingapiiiii.herokuapp.com";
 
 
@@ -65,4 +64,5 @@ export class BookStoreAPI {
 
         return this.httclient.put<respass>(this.url + "/khachhangmk", bodyProfile);
     }
+
 }

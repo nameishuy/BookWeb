@@ -10,13 +10,20 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   data: any;
-
+  listCart:any;
+  count:any;
   constructor(private bookstore: BookStoreAPI, private router: Router) { }
   UserLogined: any;
-
   ngOnInit(): void {
+    this.getCountCart()
   }
 
+  getCountCart(){
+    if(sessionStorage.getItem('listCart') != null){
+      this.listCart = JSON.parse(sessionStorage.getItem('listCart')!);
+      this.count = this.listCart.length;
+    }
+  }
   isAdmin() {
     return this.data.Role;
   }

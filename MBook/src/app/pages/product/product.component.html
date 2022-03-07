@@ -30,7 +30,7 @@
         </div>
         <div class="Product__List" *ngIf="Messager == '' ">
             <div class="Book"
-                *ngFor="let book of Book |orderBy: key :reverse | filter: Search | paginate: { itemsPerPage: 4, currentPage: p }">
+                *ngFor="let book of Book |orderBy: key :reverse | filter: Search | paginate: { itemsPerPage: 8, currentPage: p }">
                 <div class="Book__Details" (click)="goDetails(book.id)">
                     <div class="Book__Img">
                         <img src="{{book.Anh}}" alt="">

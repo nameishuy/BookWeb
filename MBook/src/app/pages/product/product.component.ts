@@ -58,4 +58,6 @@ export class ProductComponent implements OnInit {
     console.log('was clicked');
     this.router.navigate(['detail',id]);
   }
+
+  
 }

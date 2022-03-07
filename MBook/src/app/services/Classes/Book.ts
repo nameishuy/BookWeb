@@ -31,3 +31,20 @@ export interface Category {
     id: string;
     TenChuDe: string;
 }
+
+export class itemCart{
+    idcart:string='';
+    count:number=0;
+    setIdCart(idcart:string){
+        this.idcart=idcart;
+    }
+    setCount(count:number){
+        this.count = count;
+    }
+    getIdCart(){
+        return this.idcart;
+    }
+    getCount(){
+        return this.count;
+    }
+}

@@ -12,7 +12,6 @@
         display: flex;
         flex-flow: row wrap;
         margin: 0 auto;
-        justify-content: space-around;
         animation: toVisible 3s 1 ease-in-out forwards;
     }
         .Book__image{
@@ -88,6 +87,23 @@
         .Book__info-About h3{
             font-weight: 600;
         }
+@media screen and (max-width:821px) {  
+    .Book__image,
+    .Book__info{
+        margin: 0 auto;
+    }
+    .Book__info{
+        margin-top: 40px;
+    }
+    .Book__info-Pay,
+    .Book__info-Price,
+    .Book__info-Name,
+    .Book__info-Author,
+    .Book__info-Publishing-company{
+        width: 100% !important;
+    }
+    
+}
 @media screen and (max-width: 413px) {
     .container{
         width: 100vw;
