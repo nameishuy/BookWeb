@@ -13,6 +13,10 @@ export class ProductComponent implements OnInit {
   Book: any;
   Messager: any = "";
   Search: any = "";
+  p: any = "";
+  
+  key = "Giaban";
+  reverse: boolean = false;
   ngOnInit(): void {
     this.getCategory();
     this.getbook()
@@ -36,7 +40,7 @@ export class ProductComponent implements OnInit {
       if (data.Messager != null) {
         this.Messager = data.Messager;
       } else {
-        this.Messager="";
+        this.Messager = "";
         console.log(this.Messager)
         this.Book = data;
         console.log(this.Book)
@@ -44,6 +48,12 @@ export class ProductComponent implements OnInit {
     })
   }
 
+  sort() {
+    this.reverse = false
+  }
+  sort2() {
+    this.reverse = true
+  }
   goDetails(id:string){
     console.log('was clicked');
     this.router.navigate(['detail',id]);
