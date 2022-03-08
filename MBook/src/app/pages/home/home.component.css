@@ -164,7 +164,7 @@
     .Good__Book{
         width: 100%;
         display: flex;
-        flex-flow: column wrap;
+        flex-flow: column nowrap;
         justify-content: center;
         align-items: center;
         padding: 100px 50px;
@@ -200,7 +200,7 @@
     .Good__Book{
         width: 100%;
         display: flex;
-        flex-flow: column wrap;
+        flex-flow: column nowrap;
         justify-content: center;
         align-items: center;
         padding: 100px 50px;
