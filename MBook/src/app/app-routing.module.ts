@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard, isLogined } from './Auth/auth.guard';
 import { AdminComponent } from './pages/admin/admin.component';
 import { BookdetailsComponent } from './pages/bookdetails/bookdetails.component';
+import { CartinfoComponent } from './pages/cartinfo/cartinfo.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProductComponent } from './pages/product/product.component';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path:'profile', component:ProfileComponent, canActivate:[AuthGuard] },
   { path:'signup', component:SignupComponent, canActivate:[isLogined] },
   { path:'admin', component:AdminComponent },
-  { path:'detail/:id', component:BookdetailsComponent }
+  { path:'detail/:id', component:BookdetailsComponent },
+  { path:'cart', component:CartinfoComponent }
 ];
 
 @NgModule({

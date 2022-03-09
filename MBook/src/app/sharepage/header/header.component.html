@@ -17,10 +17,10 @@
       </li>
     </ul>
     <div class="nav__shopping">
-      <button mat-icon-button class="btn__cart" *ngIf="isHasCart()">
+      <button mat-icon-button class="btn__cart" *ngIf="isHasCart()" routerLink="cart">
         <mat-icon [matBadge]="count" matBadgeColor="warn">add_shopping_cart</mat-icon>
       </button>
-      <button mat-icon-button class="btn__cart" *ngIf="!isHasCart()">
+      <button mat-icon-button class="btn__cart" *ngIf="!isHasCart()" routerLink="cart">
         <mat-icon [matBadge]="0" matBadgeColor="warn">add_shopping_cart</mat-icon>
       </button>
       <div *ngIf="!isLogined()">

@@ -29,6 +29,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 
 import { AuthGuard, isLogined } from './Auth/auth.guard';
 import { BookdetailsComponent } from './pages/bookdetails/bookdetails.component';
+import { CartinfoComponent } from './pages/cartinfo/cartinfo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { BookdetailsComponent } from './pages/bookdetails/bookdetails.component'
     ProfileComponent,
     SignupComponent,
     AdminComponent,
-    BookdetailsComponent
+    BookdetailsComponent,
+    CartinfoComponent
   ],
   imports: [
     BrowserModule,
