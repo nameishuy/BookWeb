@@ -28,7 +28,7 @@
             height: 30px;
         }
             .Cart__Products-Header span{
-                flex-basis: 60%;
+                flex-basis: 58%;
             }
             .Title__Count{
                 text-align: center;
@@ -170,7 +170,14 @@
             border-radius: 1rem;
             background-color: red;
         }
-
+@media screen and (max-width:821px) {
+    .Cart__Products-Header span{
+        flex-basis: 45%;
+    }
+    .Title__Count{
+        flex-basis: 25%;
+    }
+}
 @media screen and (max-width:413px) {
     .Cart__Body{
         flex-flow: column nowrap;

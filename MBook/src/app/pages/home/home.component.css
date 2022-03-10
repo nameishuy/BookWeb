@@ -159,16 +159,17 @@
             height: 40px;
             text-align: center;
             padding-top: 10px;
-            background-color: red;
+            background-color: rgba(255, 0, 0, 0.726);
             color: white;
             font-weight: 600;
             border: 1px solid red;
             margin: 10px 0 0 0;
+            transition: 1s;
         }
             .Good__Book-readnow:hover{
                 cursor: pointer;
-                background-color: rgba(255, 0, 0, 0.781);
-                box-shadow: 0 0 5px 0 black;
+                background-color: red;
+                box-shadow: 0 0 10px 0 red;
             }
 @media screen and (max-width:821px) {
     #carouselGoodBook{
