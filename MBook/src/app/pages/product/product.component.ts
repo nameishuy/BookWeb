@@ -8,13 +8,13 @@ import { Router } from '@angular/router';
 })
 export class ProductComponent implements OnInit {
 
-  constructor(private bookapi: BookStoreAPI, private router:Router) { }
+  constructor(private bookapi: BookStoreAPI, private router: Router) { }
   categories: any;
   Book: any;
   Messager: any = "";
   Search: any = "";
   p: any = "";
-  
+
   key = "Giaban";
   reverse: boolean = false;
   ngOnInit(): void {
@@ -37,13 +37,12 @@ export class ProductComponent implements OnInit {
 
   GetByChuDe(id: string) {
     this.bookapi.getBookByChuDe(id).subscribe(data => {
-      if (data.Messager != null) {
-        this.Messager = data.Messager;
+      if (data[0].Messager != null) {
+        this.Messager = data[0].Messager;
       } else {
         this.Messager = "";
-        console.log(this.Messager)
         this.Book = data;
-        console.log(this.Book)
+        this.p = 1
       }
     })
   }
@@ -54,10 +53,10 @@ export class ProductComponent implements OnInit {
   sort2() {
     this.reverse = true
   }
-  goDetails(id:string){
+  goDetails(id: string) {
     console.log('was clicked');
-    this.router.navigate(['detail',id]);
+    this.router.navigate(['detail', id]);
   }
 
-  
+
 }

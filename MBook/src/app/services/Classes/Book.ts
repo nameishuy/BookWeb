@@ -32,19 +32,33 @@ export interface Category {
     TenChuDe: string;
 }
 
-export class itemCart{
-    idcart:string='';
-    count:number=0;
-    setIdCart(idcart:string){
-        this.idcart=idcart;
+export class itemCart {
+    idcart: string = '';
+    count: number = 0;
+    unitprice: number = 0;
+
+    setIdCart(idcart: string) {
+        this.idcart = idcart;
     }
-    setCount(count:number){
+
+    setCount(count: number) {
         this.count = count;
     }
-    getIdCart(){
+
+    setunitprice(unitprice: number) {
+        this.unitprice = unitprice;
+    }
+
+    getIdCart() {
         return this.idcart;
     }
-    getCount(){
+
+    getCount() {
         return this.count;
     }
+
+    getunitprice() {
+        return this.unitprice;
+    }
+
 }

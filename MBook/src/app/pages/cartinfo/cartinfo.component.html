@@ -11,33 +11,34 @@
                 <div class="Title__Price">Giá</div>
                 <div style="flex-basis: 5%;"></div>
             </div>
-            <div class="Cart__Products-Body">
+            <div class="Cart__Products-Body" *ngFor="let book of ArrayBook;let i = index">
                 <div class="Cart__Products-item">
                     <div class="checkbox__product">
                         <input type="checkbox" name="" class="checkbox" id="checkbox__product">
                     </div>
                     <div class="imgbook">
-                        <img src="https://cdn0.fahasa.com/media/catalog/product/cache/1/image/400x400/9df78eab33525d08d6e5fb8d27136e95/b/_/b_-s_ch-ctst_1_3.jpg" class="Img__Book" alt="">
+                        <img src="{{book[0].Anh}}" class="Img__Book" alt="">
                     </div>
                     <a class="Cart__Products-BookName">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa culpa a adipisci quia debitis sint expedita quisquam, assumenda asperiores dolorem, id ratione explicabo qui earum non aliquam maxime, corrupti illum!
+                        {{book[0].Mota}}
                     </a>
                     <div class="Cart__Products-group-product-info">
 
                         <div class="Cart__Products-Count">
                             <div class="Cart__Products-Button">
-                                <button (click)="lessProducts()">
+                                <button (click)="lessProducts(i)">
                                     <img src="https://frontend.tikicdn.com/_desktop-next/static/img/pdp_revamp_v2/icons-remove.svg"
                                         alt="remove-icon" width="20" height="20">
                                 </button>
-                                <input type="text" value="1" id="inputNum" placeholder="1" class="input">
-                                <button (click)="moreProducts()">
+                                <input type="text" value="{{Arraylength[i]}}" id="inputNum" placeholder="1"
+                                    class="input">
+                                <button (click)="moreProducts(i)">
                                     <img src="https://frontend.tikicdn.com/_desktop-next/static/img/pdp_revamp_v2/icons-add.svg"
                                         alt="add-icon" width="20" height="20">
                                 </button>
                             </div>
                         </div>
-                        <span>186.000đ</span>
+                        <span>{{book[0].Giaban * Arraylength[i]|number:'1.3'}}đ</span>
                         <mat-icon>remove_shopping_cart</mat-icon>
                     </div>
 
@@ -62,7 +63,7 @@
             </div>
             <div class="Cart__Bill-Pay">
                 <div class="Cart__Bill-Pay-Price">
-                    Tổng <span>186.000đ</span>
+                    Tổng <span>{{Total|number:'1.3'}}đ</span>
                 </div>
                 <div class="Cart__Bill-Pay-BtnPay">
                     Thanh Toán
