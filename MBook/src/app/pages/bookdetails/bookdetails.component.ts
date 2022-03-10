@@ -10,7 +10,6 @@ import { Book, itemCart } from 'src/app/services/Classes/Book';
 export class BookdetailsComponent implements OnInit {
   id: any;
   book: any;
-  number: number = 1;
   listCart:itemCart[] = [];
 
   constructor(private route: ActivatedRoute, private bookapi: BookStoreAPI) { }
@@ -25,16 +24,17 @@ export class BookdetailsComponent implements OnInit {
   }
 
   lessProducts() {
-    if (this.number == 1) {
-      this.number = 1;
+    let inputNum = <HTMLInputElement> document.getElementById("inputNum");
+    if (inputNum.value == "1") {
+    inputNum.value = "1";
     } else {
-      this.number--;
+    inputNum.value = "" + (Number(inputNum.value) - 1);
     }
   }
 
   moreProducts() {
-    let input = (<HTMLInputElement>document.querySelector("body > app-root > app-bookdetails > div > div > div.Book__info > div.Book__info-Count > div > input"));
-    this.number++;
+    let inputNum = <HTMLInputElement> document.getElementById("inputNum");
+    inputNum.value= "" + (Number(inputNum.value) + 1);;
   }
 
   getBook(id: any) {
@@ -44,9 +44,10 @@ export class BookdetailsComponent implements OnInit {
   }
 
   addCart(){
+    let inputNum = <HTMLInputElement> document.getElementById("inputNum");
     let newItem:itemCart = new itemCart();
     newItem.idcart=this.id;
-    newItem.count=this.number;
+    newItem.count=Number(inputNum.value);
     let listSess = JSON.parse(sessionStorage.getItem('listCart')!)
     if(listSess != null){
       let obj = listSess.findIndex((x:any) => x.idcart === newItem.idcart)

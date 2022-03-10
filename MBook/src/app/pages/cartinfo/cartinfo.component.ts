@@ -7,22 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartinfoComponent implements OnInit {
 
-  number: number = 1;
   constructor() { }
 
   ngOnInit(): void {
   }
   lessProducts() {
-    if (this.number == 1) {
-      this.number = 1;
+    let inputNum = <HTMLInputElement> document.getElementById("inputNum");
+    if (inputNum.value == "1") {
+    inputNum.value = "1";
     } else {
-      this.number--;
+    inputNum.value = "" + (Number(inputNum.value) - 1);
     }
   }
 
   moreProducts() {
-    let input = (<HTMLInputElement>document.querySelector("body > app-root > app-bookdetails > div > div > div.Book__info > div.Book__info-Count > div > input"));
-    this.number++;
+    let inputNum = <HTMLInputElement> document.getElementById("inputNum");
+    inputNum.value= "" + (Number(inputNum.value) + 1);;
   }
 
   onCheckAll(){
