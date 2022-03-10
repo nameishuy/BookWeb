@@ -1,1 +1,35 @@
-<p>admin works!</p>
+<div class="Admin__Container">
+    <mat-tab-group>
+        <mat-tab label="Tài Khoản"> 
+            <div class="Admin__Account-Header">
+                <div class="Checkbox__All-Account">
+                    <input type="checkbox" name="" class="checkbox" id="checkbox__all-account" (click)="onCheckAll()"> All
+                </div>
+                <div class="Title__info">
+                    <div class="Title__username">Tài Khoản</div>
+                    <div class="Title__email">Email</div>
+                    <div class="Title__role">Loại Tài Khoản</div>
+                </div>
+                <div class="Title__setting">Thiết Lập</div>
+            </div>
+            <div class="Admin__Account-Body">
+                <div class="Admin__Account-Account-Details">
+                    <div class="Checkbox__Account">
+                        <input type="checkbox" name="" class="checkbox" id="checkbox__account">
+                    </div>
+                    <div class="User__info">
+                        <div class="User__username">Tên Tài Khoản</div>
+                        <div class="User__email">Email</div>
+                        <div class="User__role">Loại Tài Khoản</div>
+                    </div>
+                    <div class="User__setting">Thiết Lập</div>
+                </div>
+                <div class="UpdateAll__Setting" *ngIf="ifCheckAll()">
+                    Thay Đổi Toàn Bộ
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Lịch Sử Giao Dịch"> Content 2 </mat-tab>
+        <mat-tab label="Thiết Lập"> Content 3 </mat-tab>
+    </mat-tab-group>
+</div>

@@ -40,4 +40,20 @@ export class isLogined implements CanActivate{
   }
 }
 
+@Injectable({
+  providedIn: 'root'
+})
 
+export class isAdmin implements CanActivate{
+  constructor(private router:Router){}
+  canActivate():boolean {
+    if (sessionStorage.getItem('UserLogin') != null) {
+      let data = JSON.parse(sessionStorage.getItem('UserLogin')!);
+      if (data.id != null && data.Role == true) {
+        return true;
+      }else{ 
+          return false; 
+      }
+    }else return false;
+  }
+}

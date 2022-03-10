@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2OrderModule } from 'ng2-order-pipe';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { HeaderComponent } from './sharepage/header/header.component';
 import { FooterComponent } from './sharepage/footer/footer.component';
@@ -56,7 +57,8 @@ import { CartinfoComponent } from './pages/cartinfo/cartinfo.component';
     MatSelectModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
-    Ng2OrderModule
+    Ng2OrderModule,
+    MatTabsModule
   ],
   providers: [AuthGuard, isLogined],
   bootstrap: [AppComponent]

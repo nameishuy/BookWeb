@@ -64,6 +64,7 @@
     margin-bottom: 40px;
     padding-bottom: 20px;
     box-shadow: 0 0 2px 0 black;
+    transition: .5s;
 }
     .SellingBook:hover{
         transform: translateY(-10px);
@@ -117,6 +118,18 @@
         width: 30%;
         transform: rotate(-20deg) skew(-20deg,-3deg);
         box-shadow: -10px 0 20px 3px black;
+        animation: toUpAndDown 1s infinite;
+    }
+    @keyframes toUpAndDown{
+    	0%{
+    	   transform: rotate(-20deg) skew(-20deg,-3deg) translateY(0px);
+    	}
+    	50%{
+    		transform: rotate(-20deg) skew(-20deg,-3deg) translateY(10px);
+    	}
+    	100%{
+    	    		transform: rotate(-20deg) skew(-20deg,-3deg) translateY(0px);
+    	}
     }
         .Good__Book-image img{
             width: 100%;

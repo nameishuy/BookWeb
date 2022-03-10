@@ -34,7 +34,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" routerLink="profile" (click)="goProfile()">Profile</a>
-          <a class="dropdown-item" *ngIf="isAdmin()">Admin</a>
+          <a class="dropdown-item" routerLink="admin" *ngIf="isAdmin()">Admin</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" (click)="Signout()">Sign out</a>
         </div>
