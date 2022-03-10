@@ -154,10 +154,22 @@
             .Cart__Bill-Pay-Price span{
                 color: red;
                 font-size: 20px;
+                margin-top: 5px;
             }
     mat-icon{
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         cursor: pointer;
+        transition: 1s;
     }
+        mat-icon:hover{
+            color: white;
+            border-radius: 1rem;
+            background-color: red;
+        }
 
 @media screen and (max-width:413px) {
     .Cart__Body{
@@ -170,6 +182,15 @@
         width: 100%;
         border-radius: 0rem;
     }
+        .Cart__Container h3{
+            margin: 10px;
+        }
+        .Cart__Products-Footer{
+            margin-left: 10px;
+        }
+        .Cart__Bill{
+            padding: 0 10px 0 10px;
+        }
     .Cart__Products-Body{
         border-radius: 0rem;
     }

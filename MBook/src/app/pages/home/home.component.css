@@ -118,7 +118,7 @@
         width: 30%;
         transform: rotate(-20deg) skew(-20deg,-3deg);
         box-shadow: -10px 0 20px 3px black;
-        animation: toUpAndDown 1s infinite;
+        animation: toUpAndDown 2s infinite;
     }
     @keyframes toUpAndDown{
     	0%{
