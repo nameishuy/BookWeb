@@ -10,7 +10,8 @@ import { Book, itemCart } from 'src/app/services/Classes/Book';
 export class BookdetailsComponent implements OnInit {
   id: any;
   book: any;
-  listCart:itemCart[] = [];
+  unitprice: number = 0;
+  listCart: itemCart[] = [];
 
   constructor(private route: ActivatedRoute, private bookapi: BookStoreAPI) { }
 
@@ -24,46 +25,48 @@ export class BookdetailsComponent implements OnInit {
   }
 
   lessProducts() {
-    let inputNum = <HTMLInputElement> document.getElementById("inputNum");
+    let inputNum = <HTMLInputElement>document.getElementById("inputNum");
     if (inputNum.value == "1") {
-    inputNum.value = "1";
+      inputNum.value = "1";
     } else {
-    inputNum.value = "" + (Number(inputNum.value) - 1);
+      inputNum.value = "" + (Number(inputNum.value) - 1);
     }
   }
 
   moreProducts() {
-    let inputNum = <HTMLInputElement> document.getElementById("inputNum");
-    inputNum.value= "" + (Number(inputNum.value) + 1);;
+    let inputNum = <HTMLInputElement>document.getElementById("inputNum");
+    inputNum.value = "" + (Number(inputNum.value) + 1);;
   }
 
   getBook(id: any) {
     this.bookapi.get1Book(id).subscribe(data => {
       this.book = data
+      this.unitprice = data[0].Giaban;
     })
   }
 
-  addCart(){
-    let inputNum = <HTMLInputElement> document.getElementById("inputNum");
-    let newItem:itemCart = new itemCart();
-    newItem.idcart=this.id;
-    newItem.count=Number(inputNum.value);
+  addCart() {
+    let inputNum = <HTMLInputElement>document.getElementById("inputNum");
+    let newItem: itemCart = new itemCart();
+    newItem.idcart = this.id;
+    newItem.count = Number(inputNum.value);
+    newItem.unitprice = this.unitprice;
     let listSess = JSON.parse(sessionStorage.getItem('listCart')!)
-    if(listSess != null){
-      let obj = listSess.findIndex((x:any) => x.idcart === newItem.idcart)
-      if(obj == -1){
+    if (listSess != null) {
+      let obj = listSess.findIndex((x: any) => x.idcart === newItem.idcart)
+      if (obj == -1) {
         listSess.push(newItem);
         sessionStorage.setItem('listCart', JSON.stringify(listSess))
-      }else{
+      } else {
         listSess[obj].count += newItem.count
         sessionStorage.setItem('listCart', JSON.stringify(listSess))
       }
-     
-    }else{
+
+    } else {
       this.listCart.push(newItem);
       sessionStorage.setItem('listCart', JSON.stringify(this.listCart))
     }
-  
+
   }
 }
 
