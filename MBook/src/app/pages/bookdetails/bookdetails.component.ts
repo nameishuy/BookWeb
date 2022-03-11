@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookStoreAPI } from 'src/app/services/bookstore.services';
-import { Book, itemCart } from 'src/app/services/Classes/Book';
+import { itemCart } from 'src/app/services/Classes/Book';
 @Component({
   selector: 'app-bookdetails',
   templateUrl: './bookdetails.component.html',
@@ -13,11 +13,11 @@ export class BookdetailsComponent implements OnInit {
   unitprice: number = 0;
   listCart: itemCart[] = [];
 
-  constructor(private route: ActivatedRoute, private bookapi: BookStoreAPI) { }
+  constructor(private router: ActivatedRoute, private bookapi: BookStoreAPI) { }
 
   ngOnInit(): void {
     //Get param id on router link /detail/:id
-    this.id = "" + this.route.snapshot.params['id'];
+    this.id = "" + this.router.snapshot.params['id'];
 
     //You can call api details book with that id in the following line down here:
     //Code:
@@ -66,7 +66,6 @@ export class BookdetailsComponent implements OnInit {
       this.listCart.push(newItem);
       sessionStorage.setItem('listCart', JSON.stringify(this.listCart))
     }
-
   }
 }
 

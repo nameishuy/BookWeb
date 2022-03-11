@@ -5,6 +5,7 @@ import { Account, reqRegister, resRegister } from "./Classes/Login";
 import { Book, Book1, BookSold, Category, itemCart, newBook } from "./Classes/Book";
 import { reqprofile, resprofile } from "./Classes/profile";
 import { reqpass, respass } from './Classes/changepass'
+import { reqCTDonHang, reqDatHang, resCTDonHang, resDatHang } from "./Classes/DonHang";
 
 
 @Injectable({
@@ -64,5 +65,15 @@ export class BookStoreAPI {
 
         return this.httclient.put<respass>(this.url + "/khachhangmk", bodyProfile);
     }
+
+    //Đặt Hàng
+    DatHang(bodyDatHang: any) {
+        return this.httclient.post<resDatHang>(this.url + "/DonHang", bodyDatHang);
+    }
+    //Chi Tiết Đơn Hàng
+    CTDatHang(bodyCTDatHang: reqCTDonHang) {
+        return this.httclient.post<resCTDonHang>(this.url + "/CTDonHang", bodyCTDatHang);
+    }
+
 
 }
