@@ -1,5 +1,5 @@
 <div class="Cart__Container">
-    <h2>{{Messager}}</h2>
+    <h2 *ngIf="check_Session_Mess()"></h2>
     <h3>GIỎ HÀNG</h3>
     <div class="Cart__Body">
         <div class="Cart__Products">
@@ -55,18 +55,35 @@
                 Xóa Tất Cả
             </div>
         </div>
-        <div class="Cart__Bill">
+        <div class="Cart__Bill" *ngIf="checkUserLogin()">
             <h2>HÓA ĐƠN</h2>
-            <div class="Cart__Bill-Info">
+            <div class="Cart__Bill-Info" *ngFor="let User of UserLogin">
                 <span class="Cart__Bill-Info-Name">
-                    Tên: {{name}}
+                    Tên: {{User.HoTen}}
                 </span>
                 <span class="Cart__Bill-Info-Email">
-                    Email: yourname@gmail.com
+                    Email: {{User.Email}}
                 </span>
                 <span class="Cart__Bill-Info-Phone">
-                    SDT: 0933226682
+                    SDT: {{User.DienthoaiKH}}
                 </span>
+                <span class="Cart__Bill-Info-Date">
+                    Ngày Giao Dịch: {{Date}}
+                </span>
+            </div>
+            <div class="Cart__Bill-Pay">
+                <div class="Cart__Bill-Pay-Price">
+                    Tổng <span>{{Total|number:'1.3'}}đ</span>
+                </div>
+                <div class="Cart__Bill-Pay-BtnPay" (click)="DatHang()">
+                    Thanh Toán
+                </div>
+            </div>
+        </div>
+        <div class="Cart__Bill" *ngIf="!checkUserLogin()">
+            <h2>HÓA ĐƠN</h2>
+            <div class="Cart__Bill-Info">
+                <span>Vui Lòng Đăng Nhập</span>
                 <span class="Cart__Bill-Info-Date">
                     Ngày Giao Dịch: {{Date}}
                 </span>
