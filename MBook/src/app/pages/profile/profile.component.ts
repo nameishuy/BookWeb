@@ -37,6 +37,10 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.action_In_ngOnInit()
+  }
+
+  action_In_ngOnInit() {
     if (sessionStorage.getItem('UserLogin') != null) {
       this.data = JSON.parse(sessionStorage.getItem('UserLogin')!);
       this.bookstoreapi.getProfile(this.data.id).subscribe(res => {
@@ -59,7 +63,11 @@ export class ProfileComponent implements OnInit {
       this.bookstoreapi.putupdateprofile(bodyProfile).subscribe(
         data => {
           this.resProfile = data;
-          console.log(data)
+          if (sessionStorage.getItem("UserLogin")) {
+            const UserLogin = JSON.parse(sessionStorage.getItem("UserLogin")!)
+            UserLogin.HoTen = data.HoTen;
+            sessionStorage.setItem("UserLogin", JSON.stringify(UserLogin));
+          }
           alert(this.resProfile.Messenger);
         }
       )
@@ -77,7 +85,6 @@ export class ProfileComponent implements OnInit {
           this.matkhauhientai = '';
           this.matkhaumoi = '';
           this.xacnhanmatkhau = '';
-          console.log(data)
           alert(this.resPass.Messenger);
         }
       )

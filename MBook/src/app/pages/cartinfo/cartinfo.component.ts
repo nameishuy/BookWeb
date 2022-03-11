@@ -10,7 +10,7 @@ import { resDatHang, reqDatHang, reqDatHangnodategiao, reqCTDonHang } from '../.
 export class CartinfoComponent implements OnInit {
 
   constructor(private bookapi: BookStoreAPI, private router: Router) { }
-  name: any
+  UserLogin: any
   Date: any
   Messager: any = [];
   IDMaDonHang: any
@@ -20,24 +20,63 @@ export class CartinfoComponent implements OnInit {
   Total: number = 0;
 
   ngOnInit(): void {
-    if (sessionStorage.getItem("UserLogin")) {
-      let data = JSON.parse(sessionStorage.getItem("UserLogin")!)
-      if (data.HoTen != null) {
-        this.name = data.HoTen
-      }
-    }
+    this.actionIn_ngOnInit();
+  }
 
+  actionIn_ngOnInit() {
+    sessionStorage.removeItem("Mess")
     this.Date = new Date().toLocaleDateString();
     this.getbook();
     this.Sum();
+    this.checkUserLogin();
+    this.get_Profile_User();
+    this.check_Session_Mess();
   }
+
+  check_Session_Mess() {
+    if (sessionStorage.getItem("Mess")) {
+      alert("Đặt Hàng Thành Công")
+      sessionStorage.removeItem("Mess")
+      return true;
+    }
+    return false;
+  }
+
+  get_Profile_User() {
+    if (this.checkUserLogin()) {
+      this.bookapi.getProfile(JSON.parse(sessionStorage.getItem("UserLogin")!).id).subscribe(data => {
+        this.UserLogin = [data]
+      })
+    }
+  }
+
+  checkUserLogin() {
+    if (sessionStorage.getItem("UserLogin")) {
+      let data = JSON.parse(sessionStorage.getItem("UserLogin")!)
+      if (data.id != null) {
+        return true;
+      }
+      return false;
+    }
+    return false;
+  }
+
 
   DatHang() {
     this.Messager = []
-    if (this.ArrayBook.length > 0) {
-      if (sessionStorage.getItem("UserLogin")) {
+
+    let isNull_Session = sessionStorage.getItem("UserLogin") == null
+    let islength_ArrayBook = this.ArrayBook.length > 0
+
+    if (!islength_ArrayBook) {
+      alert("Giỏ Hàng Hiện Tại Đang Trống\nVui Lòng Chọn Sách Bạn Muốn Mua")
+    } else {
+      if (!isNull_Session) {
+
         let data = JSON.parse(sessionStorage.getItem("UserLogin")!);
-        if (data.id != null) {
+        let isNull_login = data.id == null
+
+        if (!isNull_login) {
           let Body = new reqDatHangnodategiao(false, false, this.Date, data.id);
           this.bookapi.DatHang(Body).subscribe(data => {
             if (data._id != null) {
@@ -48,9 +87,6 @@ export class CartinfoComponent implements OnInit {
                   sessionStorage.setItem("Mess", data.Messager);
                 })
               }
-              if (sessionStorage.getItem("Mess")) {
-                alert("Đặt Hàng " + sessionStorage.getItem("Mess"))
-              }
               sessionStorage.removeItem("listCart")
               this.Sum();
               this.getbook();
@@ -59,10 +95,15 @@ export class CartinfoComponent implements OnInit {
         } else {
           this.router.navigate(['login']);
         }
+
       } else {
         this.router.navigate(['login']);
       }
     }
+
+
+
+
   }
 
   delete(cartID: any) {
@@ -147,16 +188,16 @@ export class CartinfoComponent implements OnInit {
     }
   }
 
-  ifAllCheck(){
+  ifAllCheck() {
     let checkAll = <HTMLInputElement>document.getElementById("checkbox__all-product");
-    if(checkAll && checkAll.checked){
+    if (checkAll && checkAll.checked) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }
 
-  onDeleteAll(){
+  onDeleteAll() {
     sessionStorage.removeItem("listCart");
     let checkAll = <HTMLInputElement>document.getElementById("checkbox__all-product");
     checkAll.checked = false;
@@ -164,8 +205,8 @@ export class CartinfoComponent implements OnInit {
     this.Sum();
   }
 
-  ifEmpty(){
-    if(this.ArrayBook.length === 0) return true;
+  ifEmpty() {
+    if (this.ArrayBook.length === 0) return true;
     else return false;
   }
 }
