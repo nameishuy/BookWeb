@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
   isHasCart() {
     if (sessionStorage.getItem('listCart') != null) {
       this.listCart = JSON.parse(sessionStorage.getItem('listCart')!);
@@ -26,9 +27,11 @@ export class HeaderComponent implements OnInit {
       return false;
     }
   }
+
   isAdmin() {
     return this.data.Role;
   }
+
   isLogined() {
     if (sessionStorage.getItem('UserLogin') != null) {
       this.data = JSON.parse(sessionStorage.getItem('UserLogin')!);
