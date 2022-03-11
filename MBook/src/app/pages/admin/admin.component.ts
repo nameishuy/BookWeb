@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BookStoreAPI } from 'src/app/services/bookstore.services';
 
 @Component({
   selector: 'app-admin',
@@ -7,25 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bookapi: BookStoreAPI) { }
 
   ngOnInit(): void {
   }
-  onCheckAll(){
-    let checkAll = <HTMLInputElement> document.getElementById("checkbox__all-account");
+
+  getAllTaiKhoan() {
+
+  }
+
+  onCheckAll() {
+    let checkAll = <HTMLInputElement>document.getElementById("checkbox__all-account");
     let checkItems = document.querySelectorAll("#checkbox__account") as NodeListOf<HTMLInputElement>;
-    if(checkAll && checkAll.checked){
+    if (checkAll && checkAll.checked) {
       checkItems.forEach(item => item.checked = true);
-    }else{
+    } else {
       checkItems.forEach(item => item.checked = false);
     }
   }
-  ifCheckAll(){
-    let checkAll = <HTMLInputElement> document.getElementById("checkbox__all-account");
+  ifCheckAll() {
+    let checkAll = <HTMLInputElement>document.getElementById("checkbox__all-account");
     let checkItems = document.querySelectorAll("#checkbox__account") as NodeListOf<HTMLInputElement>;
-    if(checkAll && checkAll.checked){
+    if (checkAll && checkAll.checked) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }
