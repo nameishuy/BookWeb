@@ -45,8 +45,8 @@
 
                 </div>
             </div>
-            <div class="Cart__Products-Footer">
-                Cập Nhật Giá
+            <div class="Cart__Products-Footer" *ngIf="ifAllCheck()" (click)="onDeleteAll()">
+                Xóa Tất Cả
             </div>
         </div>
         <div class="Cart__Bill">

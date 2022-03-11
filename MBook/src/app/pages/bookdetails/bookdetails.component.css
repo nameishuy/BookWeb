@@ -72,13 +72,18 @@
             margin: 50px 0 50px 0;
             justify-content: center;
             align-items: center;
-            border: 1px solid red;
-            background-color: red;
+            background-color: rgba(255, 0, 0, 0.644);
             color: white;
             border-radius: .5rem;
             width: 250px;
             height: 40px;
+            cursor: pointer;
+            transition: 1s;
         }
+            .Book__info-btnCart:hover{
+                background-color: red;
+                box-shadow: 0 0 10px 0 red;
+            }
     .Book__info-About{
         margin: 20px 0 20px 0;
         display: flex;

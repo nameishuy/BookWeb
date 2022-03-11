@@ -146,4 +146,21 @@ export class CartinfoComponent implements OnInit {
       checkItems.forEach(item => item.checked = false);
     }
   }
+
+  ifAllCheck(){
+    let checkAll = <HTMLInputElement>document.getElementById("checkbox__all-product");
+    if(checkAll && checkAll.checked){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  onDeleteAll(){
+    sessionStorage.removeItem("listCart");
+    let checkAll = <HTMLInputElement>document.getElementById("checkbox__all-product");
+    checkAll.checked = false;
+    this.getbook();
+    this.Sum();
+  }
 }
