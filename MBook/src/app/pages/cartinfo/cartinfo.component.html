@@ -12,6 +12,12 @@
                 <div class="Title__Price">Giá</div>
                 <div style="flex-basis: 5%;"></div>
             </div>
+            <div class="Cart__Products-Empty" *ngIf="ifEmpty()">
+                <div class="Cart__Products-Empty-image">
+                    <img src="https://i.pinimg.com/originals/ec/0c/0c/ec0c0c652f7a9fb965bf08f45c4403fe.gif" alt="">
+                </div>
+                <span>Bạn hiện chưa chọn sách nào</span>
+            </div>
             <div class="Cart__Products-Body" *ngFor="let book of ArrayBook;let i = index">
                 <div class="Cart__Products-item">
                     <div class="checkbox__product">
@@ -55,8 +61,11 @@
                 <span class="Cart__Bill-Info-Name">
                     Tên: {{name}}
                 </span>
-                <span class="Cart__Bill-Info-BillID">
-                    Mã Giao Dịch: E0534
+                <span class="Cart__Bill-Info-Email">
+                    Email: yourname@gmail.com
+                </span>
+                <span class="Cart__Bill-Info-Phone">
+                    SDT: 0933226682
                 </span>
                 <span class="Cart__Bill-Info-Date">
                     Ngày Giao Dịch: {{Date}}

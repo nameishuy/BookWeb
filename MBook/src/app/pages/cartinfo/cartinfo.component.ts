@@ -163,4 +163,9 @@ export class CartinfoComponent implements OnInit {
     this.getbook();
     this.Sum();
   }
+
+  ifEmpty(){
+    if(this.ArrayBook.length === 0) return true;
+    else return false;
+  }
 }

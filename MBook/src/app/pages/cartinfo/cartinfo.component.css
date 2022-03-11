@@ -1,6 +1,7 @@
 .Cart__Container{
     width: 80%;
     margin: 0 auto;
+    height: fit-content;
     padding: 50px 0;
     display: flex;
     flex-flow: column nowrap;
@@ -102,6 +103,30 @@
                             width: 50px;
                             text-align: center;
                         }
+        .Cart__Products-Empty{
+            margin: 30px auto;
+            width: fit-content;
+            height: 180px;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-between;
+            align-items: center;
+            animation: toVisible 2s 1 forwards;
+        }
+            .Cart__Products-Empty-image{
+                width: 150px;
+                height: 150px;
+                overflow: hidden;
+                border-radius: 10rem;
+            }
+                .Cart__Products-Empty-image img{
+                    width: 100%;
+                    height: 100%;
+                }
+                .Cart__Products-Empty span{
+                    color: red;
+                    font-weight: 600;
+                }
     .Cart__Products-Footer,
     .Cart__Bill-Pay-BtnPay{
         cursor: pointer;
@@ -124,6 +149,7 @@
         }
     .Cart__Bill{
         width: 30%;
+        height: fit-content;
     }
         .Cart__Bill h2{
             width: fit-content;
@@ -135,11 +161,17 @@
             user-select: none;
             display: flex;
             flex-flow: column;
+            height:fit-content;
             padding: 0 0 20px 0;
-            height: 100px;
             justify-content: space-around;
             border-bottom: 1px solid rgba(109, 109, 109, 0.308);
         }
+            .Cart__Bill-Info-Info-Name,
+            .Cart__Bill-Info-Info-Email,
+            .Cart__Bill-Info-Info-Phone,
+            .Cart__Bill-Info-Date{
+                line-height: 25px;
+            }
         .Cart__Bill-Pay{
             display: flex;
             justify-content: space-between;
@@ -272,5 +304,13 @@
         to{
             opacity: 1;
             transform: translateX(0px);
+        }
+    }
+    @keyframes toVisible{
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
         }
     }
