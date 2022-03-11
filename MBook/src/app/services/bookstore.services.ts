@@ -75,5 +75,9 @@ export class BookStoreAPI {
         return this.httclient.post<resCTDonHang>(this.url + "/CTDonHang", bodyCTDatHang);
     }
 
+    //Khách Hàng
+    GetAll() {
+        return this.httclient.get(this.url + "/khachhang");
+    }
 
 }

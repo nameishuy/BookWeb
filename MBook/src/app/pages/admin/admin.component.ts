@@ -9,12 +9,19 @@ import { BookStoreAPI } from 'src/app/services/bookstore.services';
 export class AdminComponent implements OnInit {
 
   constructor(private bookapi: BookStoreAPI) { }
-
+  user: any
+  key = "Role";
+  reverse: boolean = false;
   ngOnInit(): void {
+    this.getAllTaiKhoan()
   }
-
+  sort() {
+    this.reverse = !this.reverse
+  }
   getAllTaiKhoan() {
-
+    this.bookapi.GetAll().subscribe(data => {
+      this.user = data
+    })
   }
 
   onCheckAll() {
