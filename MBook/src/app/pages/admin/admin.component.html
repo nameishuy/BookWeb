@@ -1,4 +1,46 @@
+<div class="DialogDetailsPay__Container" id="DialogDetailsPay__Container">
+    <div class="DialogDetailsPay">
+        <div class="DialogDetailsPay__CloseBtn" (click)="closeDialog()">
+            <mat-icon>highlight_off</mat-icon>
+        </div>
+        <div class="DialogDetailsPay__infoUser">
+            <h1>THÔNG TIN ĐƠN HÀNG</h1>
+            <div class="DialogDetailsPay__infoUser-Details">
+                <span>
+                    <span style="font-weight: bold;">Tên Khách Hàng:</span> Doãn Chí Bình
+                </span>
+                <span>
+                    <span style="font-weight: bold;">Mã Đơn Hàng:</span> E0531
+                </span>
+                <span>
+                    <span style="font-weight: bold;">Ngày Đặt Hàng:</span> 12/3/2022
+                </span>
+                <span>
+                    <span style="font-weight: bold;">Tổng Tiền:</span><span style="color: red; font-weight: 600;"> 300.000đ</span>
+                </span>
+                <span>
+                    <span style="font-weight: bold;">Tình Trạng: </span><span style="color: red; font-weight: 600;"> Chưa Thanh Toán</span> 
+                </span>
+            </div>
+        </div>
+        <div class="DialogDetailsPay__infoPay">
+            <div class="DialogDetailsPay__Title-Image">Ảnh</div>
+            <div class="DialogDetailsPay__Title-BookName">Tên Sách</div>
+            <div class="DialogDetailsPay__Title-Count">Số Lượng</div>
+            <div class="DialogDetailsPay__Title-Price">Thành Tiền</div>
+        </div>
+        <div class="DialogDetailsPay__infoPay-Details">
+            <div class="DialogDetailsPay__Image">
+                <img src="https://taisachmoi.com/wp-content/uploads/2018/12/dac-nhan-tam.jpg" alt="">
+            </div>
+            <div class="DialogDetailsPay__BookName">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, culpa, ipsum nisi tempore aliquid reprehenderit debitis harum sapiente iste.</div>
+            <div class="DialogDetailsPay__Count">3</div>
+            <div class="DialogDetailsPay__Price">300.000đ</div>
+        </div>
+    </div>
+</div>
 <div class="Admin__Container">
+
     <mat-tab-group>
         <mat-tab label="Tài Khoản">
             <div class="Admin__Account-Header">
@@ -32,7 +74,30 @@
                 </div>
             </div>
         </mat-tab>
-        <mat-tab label="Lịch Sử Giao Dịch"> Content 2 </mat-tab>
+        <mat-tab label="Lịch Sử Giao Dịch">
+            <div class="Admin__HistoryPay-Header">
+                <div class="Title__infoPay">
+                    <div class="Title__BillID">Mã Đơn</div>
+                    <div class="Title__Username">Tên Khách</div>
+                    <div class="Title__role">Thời Gian Đặt</div>
+                </div>
+                <div class="Title__Setting">Thiết Lập</div>
+            </div>
+            <div class="Admin__HistoryPay-Body">
+                <div class="Admin__HistoryPay-Details">
+                    <div class="Bill__infoPay">
+                        <div class="Bill__BillID">E531</div>
+                        <div class="Bill__Username">Doãn Chí Bình</div>
+                        <div class="Bill__DatePay">12/3/2022</div>
+                    </div>
+                    <div class="Bill__Setting">
+                        <div class="Bill__Setting-details" (click)="showDialog()">
+                            Chi Tiết
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
         <mat-tab label="Thiết Lập"> Content 3 </mat-tab>
     </mat-tab-group>
 </div>

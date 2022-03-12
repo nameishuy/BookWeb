@@ -1,6 +1,10 @@
 .navbar{
     font-size: 17px;
     box-shadow: 0 0 10px 0 black;
+    z-index: 100;
+    width: 100vw;
+    top: 0;
+    position: fixed;
 }
 .navbar-brand{
     display: flex;

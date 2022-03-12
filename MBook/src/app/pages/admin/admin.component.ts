@@ -42,4 +42,12 @@ export class AdminComponent implements OnInit {
       return false;
     }
   }
+  showDialog(){
+    let details = <HTMLElement> document.getElementById("DialogDetailsPay__Container");
+    details.style.display = "block";
+  }
+  closeDialog(){
+    let details = <HTMLElement> document.getElementById("DialogDetailsPay__Container");
+    details.style.display = "none";
+  }
 }
