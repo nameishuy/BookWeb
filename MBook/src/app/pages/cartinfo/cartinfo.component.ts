@@ -30,16 +30,6 @@ export class CartinfoComponent implements OnInit {
     this.Sum();
     this.checkUserLogin();
     this.get_Profile_User();
-    this.check_Session_Mess();
-  }
-
-  check_Session_Mess() {
-    if (sessionStorage.getItem("Mess")) {
-      alert("Đặt Hàng Thành Công")
-      sessionStorage.removeItem("Mess")
-      return true;
-    }
-    return false;
   }
 
   get_Profile_User() {
@@ -77,16 +67,16 @@ export class CartinfoComponent implements OnInit {
         let isNull_login = data.id == null
 
         if (!isNull_login) {
-          let Body = new reqDatHangnodategiao(false, false, this.Date, data.id);
+          let Body = new reqDatHangnodategiao(false, false, this.Date, this.Total, data.id);
           this.bookapi.DatHang(Body).subscribe(data => {
             if (data._id != null) {
               let sessionCart = JSON.parse(sessionStorage.getItem("listCart")!);
               for (let i = 0; i < sessionCart.length; i++) {
                 let body = new reqCTDonHang(data._id, sessionCart[i].idcart, sessionCart[i].count, sessionCart[i].unitprice);
                 this.bookapi.CTDatHang(body).subscribe(data => {
-                  sessionStorage.setItem("Mess", data.Messager);
                 })
               }
+              alert("Đặt Hàng Thành Công")
               sessionStorage.removeItem("listCart")
               this.Sum();
               this.getbook();
@@ -100,10 +90,6 @@ export class CartinfoComponent implements OnInit {
         this.router.navigate(['login']);
       }
     }
-
-
-
-
   }
 
   delete(cartID: any) {
