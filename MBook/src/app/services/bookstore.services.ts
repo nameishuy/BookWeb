@@ -26,7 +26,6 @@ export class BookStoreAPI {
 
         return this.httclient.post<resRegister>(this.url + "/khachhang", bodyRegister);
     }
-
     //get
     getbooksold1(): Observable<any> {
         return this.httclient.get<BookSold>(this.url + "/sachbanchayfirst");
@@ -70,14 +69,26 @@ export class BookStoreAPI {
     DatHang(bodyDatHang: any) {
         return this.httclient.post<resDatHang>(this.url + "/DonHang", bodyDatHang);
     }
+    //Get Đơn Đặt Hàng
+    GetDonHang() {
+        return this.httclient.get(this.url + "/DonHang");
+    }
+    //Get Đơn Đặt Hàng By Id
+    GetDonHangById(id: any) {
+        return this.httclient.get(this.url + "/DonHangbyid/" + id);
+    }
     //Chi Tiết Đơn Hàng
     CTDatHang(bodyCTDatHang: reqCTDonHang) {
         return this.httclient.post<resCTDonHang>(this.url + "/CTDonHang", bodyCTDatHang);
     }
+    //Get Chi Tiết Đơn Hàng
+    getCTDonHang(id: any) {
+        return this.httclient.get(this.url + "/CTDonHangbyid/" + id);
+    }
 
     //Khách Hàng
-    GetAll() {
-        return this.httclient.get(this.url + "/khachhang");
+    GetTk(Role: boolean) {
+        return this.httclient.get(this.url + "/khachhangforadmin/" + Role);
     }
 
 }

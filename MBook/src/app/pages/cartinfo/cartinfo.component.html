@@ -1,5 +1,4 @@
 <div class="Cart__Container">
-    <h2 *ngIf="check_Session_Mess()"></h2>
     <h3>GIỎ HÀNG</h3>
     <div class="Cart__Body">
         <div class="Cart__Products">
@@ -85,7 +84,7 @@
             <div class="Cart__Bill-Info">
                 <span>Vui Lòng Đăng Nhập</span>
                 <span class="Cart__Bill-Info-Date">
-                    Ngày Giao Dịch: {{Date}}
+                    Ngày Giao Dịch: {{Date | date: 'dd/MM/yyyy'}}
                 </span>
             </div>
             <div class="Cart__Bill-Pay">

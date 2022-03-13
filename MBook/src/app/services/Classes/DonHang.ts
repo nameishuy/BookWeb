@@ -13,15 +13,17 @@ export class reqDatHang {
     MaKH: string;
 }
 export class reqDatHangnodategiao {
-    constructor(Dathanhtoan: boolean, Tinhtranggiaohang: boolean, Ngaydat: string, MaKH: string) {
+    constructor(Dathanhtoan: boolean, Tinhtranggiaohang: boolean, Ngaydat: string, TongTien: number, MaKH: string) {
         this.Dathanhtoan = Dathanhtoan;
         this.Tinhtranggiaohang = Tinhtranggiaohang;
         this.Ngaydat = Ngaydat;
+        this.TongTien = TongTien;
         this.MaKH = MaKH;
     }
     Dathanhtoan = false;
     Tinhtranggiaohang = false;
     Ngaydat: string;
+    TongTien: number;
     MaKH: string;
 }
 
@@ -46,7 +48,7 @@ export class reqCTDonHang {
     MaDonHang = "";
     Masach = "";
     Soluong = 0;
-    Dongia = 0;    
+    Dongia = 0;
 }
 export interface resCTDonHang {
     Messager: string;
