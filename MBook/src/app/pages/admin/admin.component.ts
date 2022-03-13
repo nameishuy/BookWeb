@@ -52,24 +52,14 @@ export class AdminComponent implements OnInit {
     })
   }
 
-  onCheckAll() {
-    let checkAll = <HTMLInputElement>document.getElementById("checkbox__all-account");
-    let checkItems = document.querySelectorAll("#checkbox__account") as NodeListOf<HTMLInputElement>;
-    if (checkAll && checkAll.checked) {
-      checkItems.forEach(item => item.checked = true);
-    } else {
-      checkItems.forEach(item => item.checked = false);
-    }
-  }
-
   ifCheckAll() {
-    let checkAll = <HTMLInputElement>document.getElementById("checkbox__all-account");
+    let n=0;
     let checkItems = document.querySelectorAll("#checkbox__account") as NodeListOf<HTMLInputElement>;
-    if (checkAll && checkAll.checked) {
-      return true;
-    } else {
-      return false;
-    }
+    checkItems.forEach(checkbox => {
+      if(checkbox.checked) n++;
+    })
+    if(n>0) return true;
+    else return false;
   }
 
   showDialog(id: any) {

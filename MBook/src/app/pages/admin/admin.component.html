@@ -53,62 +53,63 @@
 
     <mat-tab-group>
         <mat-tab label="Tài Khoản">
-            <mat-label>{{select}}</mat-label>
-            <mat-select>
-                <mat-option (click)="ChooseUser()">Khách Hàng</mat-option>
-                <mat-option (click)="ChooseAdmin()">Admin</mat-option>
-            </mat-select>
+            <mat-form-field appearance="fill">
+                <mat-label>{{select}}</mat-label>
+                <mat-select>
+                    <mat-option (click)="ChooseUser()">Khách Hàng</mat-option>
+                    <mat-option (click)="ChooseAdmin()">Admin</mat-option>
+                </mat-select>
+            </mat-form-field>
             <div class="Admin__Account-Header">
-                <div class="Checkbox__All-Account">
-                    <input type="checkbox" name="" class="checkbox" id="checkbox__all-account" (click)="onCheckAll()">
-                    All
-                </div>
-                <div class="Title__info">
-                    <div class="Title__username">Tài Khoản</div>
-                    <div class="Title__email">Email</div>
-                    <div class="Title__role" (click)="sort()">Loại Tài Khoản</div>
-                </div>
+                <div class="Checkbox__All-Account"></div>
+
+                <div class="Title__username">Tài Khoản</div>
+                <div class="Title__email">Email</div>
+                <div class="Title__role" (click)="sort()">Loại Tài Khoản</div>
+
                 <div class="Title__setting">Thiết Lập</div>
             </div>
             <div class="Admin__Account-Body">
                 <div class="Admin__Account-Account-Details"
                     *ngFor="let user of user  |orderBy: key :reverse | paginate: { itemsPerPage: 3, currentPage: p }">
-                    <div class="Checkbox__Account" (click)="SetRole(user._id)">
+                    <div class="Checkbox__Account" *ngIf="!user.Role" (click)="SetRole(user._id)">
                         <input type="checkbox" name="" class="checkbox" id="checkbox__account">
                     </div>
-                    <div class="User__info">
                         <div class="User__username">{{user.Taikhoan}}</div>
                         <div class="User__email" *ngIf="user.Email !=null">{{user.Email}}</div>
                         <div class="User__email" *ngIf="user.Email ==null">Chưa Cập Nhật Email</div>
                         <div class="User__role" *ngIf="user.Role">Admin</div>
                         <div class="User__role" *ngIf="!user.Role">Khách</div>
-                    </div>
 
-                    <div class="User__setting">Thiết Lập</div>
+                    <div class="User__setting">
+                        <div class="User__setting-deleteAccount">
+                            Xóa Tài Khoản
+                        </div>
+                    </div>
+                </div>
+                <div class="UpdateAll__Setting" *ngIf="ifCheckAll()">
+                    Cấp Quyền Admin
                 </div>
                 <pagination-controls class="my-pagination" (pageChange)="p = $event">
                 </pagination-controls>
-                <div class="UpdateAll__Setting" *ngIf="ifCheckAll()">
-                    Thay Đổi Toàn Bộ
-                </div>
             </div>
         </mat-tab>
         <mat-tab label="Lịch Sử Giao Dịch">
             <div class="Admin__HistoryPay-Header">
-                <div class="Title__infoPay">
-                    <div class="Title__BillID">Mã Đơn</div>
-                    <div class="Title__Username">Tên Khách</div>
-                    <div class="Title__role">Thời Gian Đặt</div>
-                </div>
+
+                <div class="Title__BillID">Mã Đơn</div>
+                <div class="Title__Username">Tên Khách</div>
+                <div class="Title__DatePay">Thời Gian Đặt</div>
+
                 <div class="Title__Setting">Thiết Lập</div>
             </div>
             <div class="Admin__HistoryPay-Body">
                 <div class="Admin__HistoryPay-Details" *ngFor="let DonHang of DonHanglist">
-                    <div class="Bill__infoPay">
-                        <div class="Bill__BillID">{{DonHang.id}}</div>
-                        <div class="Bill__Username">{{DonHang.HoTen}}</div>
-                        <div class="Bill__DatePay">{{DonHang.Ngaydat | date: 'dd/MM/yyyy'}}</div>
-                    </div>
+
+                    <div class="Bill__BillID">{{DonHang.id}}</div>
+                    <div class="Bill__Username">{{DonHang.HoTen}}</div>
+                    <div class="Bill__DatePay">{{DonHang.Ngaydat | date: 'dd/MM/yyyy'}}</div>
+
                     <div class="Bill__Setting">
                         <div class="Bill__Setting-details" (click)="showDialog(DonHang.id)">
                             Chi Tiết

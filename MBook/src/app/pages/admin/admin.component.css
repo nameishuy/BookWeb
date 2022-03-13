@@ -1,9 +1,9 @@
 .Admin__Container {
   width: 80vw;
   padding: 30px 0;
-  margin: 30px auto;
+  margin: 80px auto;
   border-radius: 0.3rem;
-  min-height: 80vh;
+  min-height: 100vh;
   border: 1px solid rgba(161, 161, 161, 0.596);
 }
 
@@ -42,12 +42,14 @@ mat-tab-group {
   display: flex;
   flex-basis: 10%;
 }
-
-.Title__info,
-.User__info {
-  display: flex;
-  justify-content: space-around;
-  flex-basis: 60%;
+.Title__email,
+.Title__username,
+.Title__role,
+.User__username,
+.User__email,
+.User__role{
+  flex-basis: 20%;
+  text-align: center;
 }
 
 .Title__setting,
@@ -81,11 +83,17 @@ mat-tab-group {
   box-shadow: 0 0 6px 0 red;
 }
 
-.Title__infoPay,
-.Bill__infoPay {
-  display: flex;
-  flex-basis: 70%;
-  justify-content: space-around;
+.Title__DatePay,
+.Title__Username,
+.Bill__DatePay,
+.Bill__Username{
+  flex-basis: 20%;
+  text-align: center;
+}
+.Bill__BillID,
+.Title__BillID{
+  text-align: center;
+  flex-basis: 30%;
 }
 
 .Title__Setting,
@@ -94,8 +102,11 @@ mat-tab-group {
   justify-content: center;
   flex-basis: 30%;
 }
-
-.Bill__Setting-details{
+.User__setting-deleteAccount{
+  width: fit-content;
+}
+.Bill__Setting-details,
+.User__setting-deleteAccount{
   border-radius: .3rem;
   background-color: rgba(255, 166, 0, 0.705);
   color: white;
@@ -126,6 +137,7 @@ mat-tab-group {
   background-color: white;
   width: 40vw;
   min-height: 50vh;
+  padding-bottom: 50px;
   height: fit-content;
   box-shadow: 0 0 10px 0 black;
   border-radius: .5rem;
@@ -151,6 +163,9 @@ mat-tab-group {
   display: flex;
   padding-bottom: 50px;
   padding-top: 10px;
+  margin-top: 20px;
+  border-top: 1px solid rgba(109, 109, 109, 0.308);
+  border-bottom: 1px solid rgba(109, 109, 109, 0.308);
 }
 .DialogDetailsPay__Title-Image,
 .DialogDetailsPay__Image{
@@ -194,6 +209,16 @@ mat-tab-group {
 .DialogDetailsPay__CloseBtn mat-icon:hover{
   color: red;
 }
+pagination-controls{
+  margin: 20px auto;
+}
+mat-form-field{
+  margin: 20px 0 30px 0;
+}
+
+::ng-deep mat-form-field{
+  height: 20px;
+}
 /* Responsive */
 @media screen and (max-width: 413px) {
   .Admin__Container {
@@ -205,10 +230,17 @@ mat-tab-group {
   }
 
   .Title__email,
-  .Title__role,
   .User__email,
-  .Bill__DatePay{
+  .Bill__DatePay,
+  .Title__DatePay{
     display: none;
+  }
+  .Title__username,
+  .User__username,
+  .Title__role,
+  .User__role{
+    text-align: center;
+    flex-basis: 30%;
   }
   .Title__infoPay{
     flex-basis: 68%;
