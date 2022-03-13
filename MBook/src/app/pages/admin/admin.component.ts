@@ -41,8 +41,7 @@ export class AdminComponent implements OnInit {
 
   getDonHang() {
     this.bookapi.GetDonHang().subscribe(data => {
-      this.DonHanglist = data
-      console.log(data);
+      this.DonHanglist = data     
     })
   }
 
@@ -90,5 +89,8 @@ export class AdminComponent implements OnInit {
   closeDialog() {
     let details = <HTMLElement>document.getElementById("DialogDetailsPay__Container");
     details.style.display = "none";
+  }
+
+  SetRole(id: any) {
   }
 }
