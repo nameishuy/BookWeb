@@ -73,7 +73,7 @@
             <div class="Admin__Account-Body">
                 <div class="Admin__Account-Account-Details"
                     *ngFor="let user of user  |orderBy: key :reverse | paginate: { itemsPerPage: 3, currentPage: p }">
-                    <div class="Checkbox__Account">
+                    <div class="Checkbox__Account" (click)="SetRole(user._id)">
                         <input type="checkbox" name="" class="checkbox" id="checkbox__account">
                     </div>
                     <div class="User__info">
