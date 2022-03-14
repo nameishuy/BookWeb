@@ -48,7 +48,43 @@ export interface Category {
 export class itemCart {
     idcart: string = '';
     count: number = 0;
+    Anh: string = '';
+    Mota: string = '';
+    Tensach: string = '';
     unitprice: number = 0;
+    Soluongton: number = 0;
+
+    setTensach(Tensach: string) {
+        this.Tensach = Tensach;
+    }
+
+    getTensach() {
+        return this.Tensach;
+    }
+
+    setAnh(Anh: string) {
+        this.Anh = Anh;
+    }
+
+    getAnh() {
+        return this.Anh;
+    }
+    
+    setSoluongton(Soluongton: number) {
+        this.Soluongton = Soluongton;
+    }
+
+    getSoluongton() {
+        return this.Soluongton;
+    }
+
+    setMota(Mota: string) {
+        this.Mota = Mota;
+    }
+
+    getMota() {
+        return this.Mota;
+    }
 
     setIdCart(idcart: string) {
         this.idcart = idcart;

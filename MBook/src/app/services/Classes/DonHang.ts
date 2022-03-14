@@ -28,6 +28,7 @@ export class reqDatHangnodategiao {
 }
 
 export interface resDatHang {
+    Messager: string;
     Dathanhtoan: boolean;
     Tinhtranggiaohang: boolean;
     Ngaydat: Date;
