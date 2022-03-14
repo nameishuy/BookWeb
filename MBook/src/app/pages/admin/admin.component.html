@@ -50,28 +50,40 @@
     </div>
 </div>
 
-<div class="DialogDetailsPay__Container" id="Dialog_Messenger">
-    <div class="DialogDetailsPay">
-        <div class="DialogDetailsPay__CloseBtn" (click)="closeDialog()">
+<div class="DialogDeleteAccount__Container" id="Dialog_Messenger">
+    <div class="DialogDeleteAccount">
+        <div class="DialogDeleteAccount__CloseBtn" (click)="closeDialog()">
             <mat-icon>highlight_off</mat-icon>
         </div>
-        <div class="DialogDetailsPay__infoUser">
+        <div class="DialogDeleteAccount__infoUser">
             <h1 style="margin: auto;">Bạn Muốn Xóa Tài Khoản Này?</h1>
             <h1>Tất Cả Dữ Liệu Của Tài Khoản Này Sẽ Bị Mất</h1>
         </div>
-        <div class="Bill__Setting" style="float: left; padding-left: 15%;">
-            <div class="Bill__Setting-details" (click)="closeDialog()">
-                No
-            </div>
-        </div>
-        <div class="Bill__Setting">
-            <div class="Bill__Setting-details" (click)="DeleteTK()">
+        <div class="DeleteAccount__Setting">
+            <div class="DeleteAccount__Setting-details DeleteAccount__Setting-YES" (click)="DeleteTK()">
                 Yes
+            </div>
+            <div class="DeleteAccount__Setting-details" (click)="closeDialog()">
+                No
             </div>
         </div>
     </div>
 </div>
-
+<div class="DialogChangeDetailsProduct__Container" id="DialogChangeDetailsProduct__Container">
+    <div class="DialogChangeDetailsProduct">
+        <div class="DialogChangeDetailsProduct__CloseBtn" (click)="closeDialogChangeDetails()">
+            <mat-icon>highlight_off</mat-icon>
+        </div>
+        <div class="DialogChangeDetailsProduct__changeDetails">
+            <h1>Cập Nhật</h1>
+            Thêm số lượng tồn: <input type="text" name="storageNum" id="">
+            Giá: <input type="text" name="storagePrice" id="">
+        </div>
+        <div class="DialogChangeDetailsProduct__Setting-details DialogChangeDetailsProduct__Setting-YES" (click)="DeleteTK()">
+            Cập Nhật
+        </div>
+    </div>
+</div>
 <div class="Admin__Container">
     <mat-tab-group>
         <mat-tab label="Tài Khoản">
@@ -140,6 +152,70 @@
                 </div>
             </div>
         </mat-tab>
-        <mat-tab label="Thiết Lập"> Content 3 </mat-tab>
+        <mat-tab label="Hàng Tồn">
+            <div class="Admin__Storage-Header">
+
+                <div class="Title__Product-Image">Ảnh</div>
+                <div class="Title__Product-Name">Tên Sách</div>
+                <div class="Title__Product-Count">Số Lượng Tồn</div>
+                <div class="Title__Product-Price">Giá</div>
+
+                <div class="Title__Setting">Thiết Lập</div>
+            </div>
+            <div class="Admin__Storage-Body">
+                <div class="Admin__Storage-Details">
+
+                    <div class="Product__Image">
+                        <img src="https://nhasachmienphi.com/images/thumbnail/nhasachmienphi-dac-nhan-tam.jpg" alt="">
+                    </div>
+                    <div class="Product__Name">Đắc Nhân Tâm</div>
+                    <div class="Product__Count">100</div>
+                    <div class="Product__Price">39.000đ</div>
+
+                    <div class="Bill__Setting">
+                        <div class="Bill__Setting-details" (click)="showDialogChangeDetailsProduct()">
+                            Thay Đổi
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Thiết Lập">
+            <div class="Admin__Setting-Container">
+                <div class="Admin__Setting-Banner">
+                    <h1>Banner</h1>
+                    <div class="Setting__Banner">
+                        <div class="Setting__Banner-Feature">
+                            <div>Banner 1</div>
+                            <input type="file" name="Banner1" id="">
+                        </div>
+                        <img src="https://i.pinimg.com/736x/86/54/42/8654429a4fbeb82f8210de503dc299ba.jpg" alt="" *ngIf="false">
+                        <div class="Setting__Banner-Feature-Btn" *ngIf="false">
+                            Cập Nhật
+                        </div>
+                    </div>
+                    <div class="Setting__Banner">
+                        <div class="Setting__Banner-Feature">
+                            <div>Banner 2</div>
+                            <input type="file" name="Banner2" id="">
+                        </div>
+                        <img src="https://i.pinimg.com/736x/86/54/42/8654429a4fbeb82f8210de503dc299ba.jpg" alt="" *ngIf="false">
+                        <div class="Setting__Banner-Feature-Btn" *ngIf="false">
+                            Cập Nhật
+                        </div>
+                    </div>
+                    <div class="Setting__Banner">
+                        <div class="Setting__Banner-Feature">
+                            <div>Banner 3</div>
+                            <input type="file" name="Banner3" id="">
+                        </div>
+                        <img src="https://i.pinimg.com/736x/86/54/42/8654429a4fbeb82f8210de503dc299ba.jpg" alt="" *ngIf="false">
+                    </div>
+                    <div class="Setting__Banner-Feature-Btn" *ngIf="false">
+                        Cập Nhật
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
     </mat-tab-group>
 </div>

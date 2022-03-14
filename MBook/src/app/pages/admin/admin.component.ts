@@ -121,6 +121,15 @@ export class AdminComponent implements OnInit {
     this.userid = ""
   }
 
+  closeDialogChangeDetails(){
+    let dialog = <HTMLElement> document.getElementById("DialogChangeDetailsProduct__Container");
+    dialog.style.display="none";
+  }
   SetRole(id: any) {
+  }
+
+  showDialogChangeDetailsProduct(){
+    let dialog = <HTMLElement> document.getElementById("DialogChangeDetailsProduct__Container");
+    dialog.style.display="block";
   }
 }

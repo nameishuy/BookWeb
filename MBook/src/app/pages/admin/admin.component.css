@@ -16,7 +16,9 @@ mat-tab-group {
 .Admin__Account-Account-Details,
 .Admin__HistoryPay-Header,
 .Admin__HistoryPay-Details,
-.DialogDetailsPay__infoPay{
+.DialogDetailsPay__infoPay,
+.Admin__Storage-Header,
+.Admin__Storage-Details{
   margin: 20px 0 0 0;
   display: flex;
   align-items: center !important;
@@ -25,7 +27,8 @@ mat-tab-group {
 
 .Admin__Account-Header,
 .Admin__HistoryPay-Header,
-.DialogDetailsPay__infoPay{
+.DialogDetailsPay__infoPay,
+.Admin__Storage-Header{
   border-radius: 0.3rem;
   background-color: rgba(0, 0, 0, 0.815);
   color: white;
@@ -60,7 +63,8 @@ mat-tab-group {
 }
 
 .Admin__Account-Account-Details,
-.Admin__HistoryPay-Details {
+.Admin__HistoryPay-Details,
+.Admin__Storage-Details{
   padding: 30px 0;
   border-top: 1px solid rgba(109, 109, 109, 0.308);
   border-bottom: 1px solid rgba(109, 109, 109, 0.308);
@@ -106,7 +110,10 @@ mat-tab-group {
   width: fit-content;
 }
 .Bill__Setting-details,
-.User__setting-deleteAccount{
+.User__setting-deleteAccount,
+.DeleteAccount__Setting-details,
+.Setting__Banner-Feature-Btn,
+.DialogChangeDetailsProduct__Setting-details{
   border-radius: .3rem;
   background-color: rgba(255, 166, 0, 0.705);
   color: white;
@@ -115,24 +122,43 @@ mat-tab-group {
   transition: 1s;
 }
 
-.Bill__Setting-details:hover{
+.DeleteAccount__Setting,
+.DialogChangeDetailsProduct__Setting-details{
+  display: flex;
+  margin-left: 30px;
+  width: fit-content;
+}
+.DeleteAccount__Setting-YES{
+  margin-right: 20px;
+}
+
+.Bill__Setting-details:hover,
+.DeleteAccount__Setting-details:hover,
+.Setting__Banner-Feature-Btn:hover,
+.DialogChangeDetailsProduct__Setting-details:Hover{
   background-color: orange;
   box-shadow: 0 0 10px 0 orange;
 }
 
-.DialogDetailsPay__Container{
+.DialogDetailsPay__Container,
+.DialogDeleteAccount__Container,
+.DialogChangeDetailsProduct__Container{
   z-index: 2;
   background-color: rgba(0, 0, 0, 0.651);
   width: 100%;
-  min-height: 100vh;
+  min-height: 120vh;
   height: fit-content;
   position: absolute;
   transition: 1s;
   display: none;
   transition: 1s;
+  transform: translateY(-30px);
   animation: toVisible 1s 1 ease-in-out;
 }
-.DialogDetailsPay{
+
+.DialogDetailsPay,
+.DialogDeleteAccount,
+.DialogChangeDetailsProduct{
   margin: 100px auto;
   background-color: white;
   width: 40vw;
@@ -143,15 +169,30 @@ mat-tab-group {
   border-radius: .5rem;
   position: relative;
 }
-.DialogDetailsPay__infoUser{
+.DialogDeleteAccount{
+  min-height: 30vh;
+}
+.DialogDetailsPay__infoUser,
+.DialogDeleteAccount__infoUser,
+.DialogChangeDetailsProduct__changeDetails{
   padding-top: 50px;
   padding-left: 30px;
+}
+.DialogChangeDetailsProduct__changeDetails{
+  display: flex;
+  padding-bottom: 30px;
+  flex-flow: column nowrap;
+}
+.DialogChangeDetailsProduct__changeDetails input{
+  margin: 10px 0;
+  width: 100px;
 }
 .DialogDetailsPay__infoUser-Details{
   display: flex;
   flex-flow: column nowrap;
 }
-  .DialogDetailsPay__infoUser h1{
+  .DialogDetailsPay__infoUser h1,
+  .DialogDeleteAccount__infoUser h1{
     font-weight: 600;
     font-size: 20px;
   }
@@ -195,18 +236,22 @@ mat-tab-group {
   color: red;
   font-weight: 600;
 }
-.DialogDetailsPay__CloseBtn{
+.DialogDetailsPay__CloseBtn,
+.DialogDeleteAccount__CloseBtn,
+.DialogChangeDetailsProduct__CloseBtn{
   position: absolute;
   top: 0;
   right: 0;
   margin: 10px 15px 0 0;
   cursor: pointer;
 }
-.DialogDetailsPay__CloseBtn mat-icon{
+.DialogDetailsPay__CloseBtn mat-icon,
+.DialogChangeDetailsProduct__CloseBtn mat-icon{
   font-size: 30px;
   transition: 1s;
 }
-.DialogDetailsPay__CloseBtn mat-icon:hover{
+.DialogDetailsPay__CloseBtn mat-icon:hover,
+.DialogChangeDetailsProduct__CloseBtn mat-icon:hover{
   color: red;
 }
 pagination-controls{
@@ -219,8 +264,66 @@ mat-form-field{
 ::ng-deep mat-form-field{
   height: 20px;
 }
+.Admin__Setting-Container{
+  width: 70%;
+  margin: 40px auto 0px auto;
+}
+.Admin__Setting-Banner{
+  position: relative;
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: .5rem;
+}
+.Admin__Setting-Banner h1{
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(20px,-20px);
+  background-color: white;
+}
+.Setting__Banner-Feature{
+  display: flex;
+  width: fit-content;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  align-items: center;
+}
+.Setting__Banner-Feature div{
+  margin-right: 10px;
+}
+.Setting__Banner-Feature input,
+.DialogChangeDetailsProduct__Setting-details{
+  width: fit-content;
+}
+.Setting__Banner img{
+  width: 70%;
+}
+.Admin__Setting-Products{
+  margin-top: 20px;
+}
+.Setting__Banner-Feature-Btn{
+  width: fit-content;
+}
+
+.Title__Product-Image,
+.Product__Image,
+.Title__Product-Name,
+.Title__Product-Count,
+.Title__Product-Price,
+.Product__Name,
+.Product__Count,
+.Product__Price{
+  flex-basis: 20%;
+  text-align: center;
+}
+.Product__Image img{
+  width: 50%;
+}
+.DialogChangeDetailsProduct{
+  width: 15vw;
+}
 /* Responsive */
-@media screen and (max-width: 413px) {
+@media screen and (max-width: 415px) {
   .Admin__Container {
     width: 95vw;
   }
@@ -248,6 +351,15 @@ mat-form-field{
   .DialogDetailsPay{
     width: 100%;
     border-radius: 0;
+  }
+  .Setting__Banner-Feature{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .DialogChangeDetailsProduct{
+    width: 50vw;
+    min-height: 30vh;
   }
 }
 
