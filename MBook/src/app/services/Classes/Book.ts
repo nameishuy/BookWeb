@@ -11,6 +11,11 @@ export interface Book {
     Anh: string;
     TenTG: string;
 }
+export interface Banner {
+    Anh1: string;
+    Anh2: string;
+    Anh3: string;
+}
 export interface newBook {
     id: string;
     Tensach: string;
@@ -21,15 +26,18 @@ export interface newBook {
 
 
 export class reqBookSoluongTon {
-    constructor(id: any, soluongban: number) {
+    constructor(id: any, Soluongton: number, Giaban: number) {
         this.id = id;
-        this.soluongban = soluongban;
+        this.Soluongton = Soluongton;
+        this.Giaban = Giaban;
 
     }
     id: string = '';
-    soluongban: number = 0;
+    Soluongton: number = 0;
+    Giaban: number = 0;
 
 }
+
 
 export interface Book1 {
     id: string;
@@ -69,7 +77,7 @@ export class itemCart {
     getAnh() {
         return this.Anh;
     }
-    
+
     setSoluongton(Soluongton: number) {
         this.Soluongton = Soluongton;
     }

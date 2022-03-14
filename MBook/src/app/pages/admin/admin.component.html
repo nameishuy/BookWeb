@@ -69,6 +69,7 @@
         </div>
     </div>
 </div>
+
 <div class="DialogChangeDetailsProduct__Container" id="DialogChangeDetailsProduct__Container">
     <div class="DialogChangeDetailsProduct">
         <div class="DialogChangeDetailsProduct__CloseBtn" (click)="closeDialogChangeDetails()">
@@ -76,16 +77,19 @@
         </div>
         <div class="DialogChangeDetailsProduct__changeDetails">
             <h1>Cập Nhật</h1>
-            Thêm số lượng tồn: <input type="text" name="storageNum" id="">
-            Giá: <input type="text" name="storagePrice" id="">
+            Thêm số lượng tồn: <input type="text"  [(ngModel)]="SolnTon "name="storageNum" id="">
+            Giá: <input type="text" name="storagePrice" [(ngModel)]="Product__Price " id="">
         </div>
-        <div class="DialogChangeDetailsProduct__Setting-details DialogChangeDetailsProduct__Setting-YES" (click)="DeleteTK()">
+        <div class="DialogChangeDetailsProduct__Setting-details DialogChangeDetailsProduct__Setting-YES"
+            (click)="UpdateBook()">
             Cập Nhật
         </div>
     </div>
 </div>
+
 <div class="Admin__Container">
     <mat-tab-group>
+
         <mat-tab label="Tài Khoản">
             <mat-form-field appearance="fill">
                 <mat-label>{{select}}</mat-label>
@@ -94,6 +98,7 @@
                     <mat-option (click)="ChooseAdmin()">Admin</mat-option>
                 </mat-select>
             </mat-form-field>
+
             <div class="Admin__Account-Header">
                 <div class="Checkbox__All-Account"></div>
 
@@ -103,9 +108,10 @@
 
                 <div class="Title__setting">Thiết Lập</div>
             </div>
+
             <div class="Admin__Account-Body">
                 <div class="Admin__Account-Account-Details"
-                    *ngFor="let user of user | paginate: { itemsPerPage: 3, currentPage: p }">
+                    *ngFor="let user of user | paginate: { itemsPerPage: 3, currentPage: p, id: 'user'  }">
                     <div class="Checkbox__Account" *ngIf="!user.Role" (click)="SetRole(user._id)">
                         <input type="checkbox" name="" class="checkbox" id="checkbox__account">
                     </div>
@@ -124,10 +130,12 @@
                 <div class="UpdateAll__Setting" *ngIf="ifCheckAll()">
                     Cấp Quyền Admin
                 </div>
-                <pagination-controls class="my-pagination" (pageChange)="p = $event">
+                <pagination-controls class="my-pagination" (pageChange)="p = $event" id="user">
                 </pagination-controls>
             </div>
+
         </mat-tab>
+
         <mat-tab label="Lịch Sử Giao Dịch">
             <div class="Admin__HistoryPay-Header">
 
@@ -152,7 +160,9 @@
                 </div>
             </div>
         </mat-tab>
+
         <mat-tab label="Hàng Tồn">
+
             <div class="Admin__Storage-Header">
 
                 <div class="Title__Product-Image">Ảnh</div>
@@ -162,24 +172,31 @@
 
                 <div class="Title__Setting">Thiết Lập</div>
             </div>
-            <div class="Admin__Storage-Body">
-                <div class="Admin__Storage-Details">
 
+            <div class="Admin__Storage-Body">
+                <div class="Admin__Storage-Details"
+                    *ngFor="let book of HangTon  | paginate: { itemsPerPage: 2, currentPage: pHangTon, id: 'hangton' }">
                     <div class="Product__Image">
-                        <img src="https://nhasachmienphi.com/images/thumbnail/nhasachmienphi-dac-nhan-tam.jpg" alt="">
+                        <img src="{{book.Anh}}" alt="">
                     </div>
-                    <div class="Product__Name">Đắc Nhân Tâm</div>
-                    <div class="Product__Count">100</div>
-                    <div class="Product__Price">39.000đ</div>
+                    <div class="Product__Name">{{book.Tensach}}</div>
+                    <div class="Product__Count">{{book.Soluongton}} quyển</div>
+                    <div class="Product__Price">{{book.Giaban |number:'1.3'}}đ</div>
 
                     <div class="Bill__Setting">
-                        <div class="Bill__Setting-details" (click)="showDialogChangeDetailsProduct()">
+                        <div class="Bill__Setting-details"
+                            (click)="showDialogChangeDetailsProduct(book.id,book.Giaban)">
                             Thay Đổi
                         </div>
                     </div>
                 </div>
+                <pagination-controls class="my-pagination" (pageChange)="pHangTon = $event" id="hangton">
+                </pagination-controls>
             </div>
+
+
         </mat-tab>
+
         <mat-tab label="Thiết Lập">
             <div class="Admin__Setting-Container">
                 <div class="Admin__Setting-Banner">
@@ -189,7 +206,8 @@
                             <div>Banner 1</div>
                             <input type="file" name="Banner1" id="">
                         </div>
-                        <img src="https://i.pinimg.com/736x/86/54/42/8654429a4fbeb82f8210de503dc299ba.jpg" alt="" *ngIf="false">
+                        <img src="https://i.pinimg.com/736x/86/54/42/8654429a4fbeb82f8210de503dc299ba.jpg" alt=""
+                            *ngIf="false">
                         <div class="Setting__Banner-Feature-Btn" *ngIf="false">
                             Cập Nhật
                         </div>
@@ -199,7 +217,8 @@
                             <div>Banner 2</div>
                             <input type="file" name="Banner2" id="">
                         </div>
-                        <img src="https://i.pinimg.com/736x/86/54/42/8654429a4fbeb82f8210de503dc299ba.jpg" alt="" *ngIf="false">
+                        <img src="https://i.pinimg.com/736x/86/54/42/8654429a4fbeb82f8210de503dc299ba.jpg" alt=""
+                            *ngIf="false">
                         <div class="Setting__Banner-Feature-Btn" *ngIf="false">
                             Cập Nhật
                         </div>
@@ -209,7 +228,8 @@
                             <div>Banner 3</div>
                             <input type="file" name="Banner3" id="">
                         </div>
-                        <img src="https://i.pinimg.com/736x/86/54/42/8654429a4fbeb82f8210de503dc299ba.jpg" alt="" *ngIf="false">
+                        <img src="https://i.pinimg.com/736x/86/54/42/8654429a4fbeb82f8210de503dc299ba.jpg" alt=""
+                            *ngIf="false">
                     </div>
                     <div class="Setting__Banner-Feature-Btn" *ngIf="false">
                         Cập Nhật
@@ -217,5 +237,6 @@
                 </div>
             </div>
         </mat-tab>
+
     </mat-tab-group>
 </div>

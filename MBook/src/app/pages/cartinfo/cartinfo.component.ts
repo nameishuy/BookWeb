@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookStoreAPI } from 'src/app/services/bookstore.services';
 import { reqDatHangnodategiao, reqCTDonHang } from '../../services/Classes/DonHang'
-import { reqBookSoluongTon } from "../../services/Classes/Book"
 import { __await } from 'tslib';
 @Component({
   selector: 'app-cartinfo',

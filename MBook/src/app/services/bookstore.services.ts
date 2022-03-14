@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Account, reqRegister, resRegister } from "./Classes/Login";
-import { Book, Book1, BookSold, Category, newBook, reqBookSoluongTon } from "./Classes/Book";
+import { Banner, Book, Book1, BookSold, Category, newBook, reqBookSoluongTon } from "./Classes/Book";
 import { reqprofile, resprofile } from "./Classes/profile";
 import { reqpass, respass } from './Classes/changepass'
 import { reqCTDonHang, resCTDonHang, resDatHang } from "./Classes/DonHang";
@@ -16,7 +16,9 @@ export class BookStoreAPI {
     constructor(private httclient: HttpClient) { }
     url = "https://bookingapiiiii.herokuapp.com";
 
-
+    getBanner(): Observable<any> {
+        return this.httclient.get<Banner>(this.url + "/Banner")
+    }
 
     postLogin(username: String, password: String): Observable<any> {
         return this.httclient.post<Account>(this.url + "/login", { Taikhoan: username, Matkhau: password });
@@ -37,7 +39,7 @@ export class BookStoreAPI {
         return this.httclient.get<newBook>(this.url + "/sachtimestamps");
     }
     CapNhatSoLuongTon(body: reqBookSoluongTon) {
-        return this.httclient.put(this.url + "/sach", body);
+        return this.httclient.put<Book>(this.url + "/sach", body);
     }
     getAllBook(): Observable<any> {
         return this.httclient.get<Book>(this.url + "/sach");
