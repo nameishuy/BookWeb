@@ -12,7 +12,6 @@ export class CartinfoComponent implements OnInit {
   constructor(private bookapi: BookStoreAPI, private router: Router) { }
   UserLogin: any
   Date: any
-  Messager: any = [];
   IDMaDonHang: any
   Arraylength: any = [];
   ArrayBook: any = [];
@@ -53,8 +52,6 @@ export class CartinfoComponent implements OnInit {
 
 
   DatHang() {
-    this.Messager = []
-
     let isNull_Session = sessionStorage.getItem("UserLogin") == null
     let islength_ArrayBook = this.ArrayBook.length > 0
 
@@ -107,7 +104,6 @@ export class CartinfoComponent implements OnInit {
   }
 
   Sum() {
-
     if (sessionStorage.getItem("listCart")) {
       const sessionCart = JSON.parse(sessionStorage.getItem("listCart")!)
       this.Total = sessionCart.reduce((acc: any, val: any) => {

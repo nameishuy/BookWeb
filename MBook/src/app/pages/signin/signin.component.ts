@@ -21,9 +21,11 @@ export class SigninComponent implements OnInit {
       .subscribe(
         data => {
           this.UserLogined = data;
-          sessionStorage.setItem('UserLogin', JSON.stringify(data))        
+          sessionStorage.setItem('UserLogin', JSON.stringify(data))
           alert(this.UserLogined.Messenger);
-          this.router.navigate(['']);
+          if (this.UserLogined.Messenger == "Đăng Nhập Thành Công") {
+            this.router.navigate(['']);
+          }
         }
       )
   }

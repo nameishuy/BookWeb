@@ -90,5 +90,8 @@ export class BookStoreAPI {
     GetTk(Role: boolean) {
         return this.httclient.get(this.url + "/khachhangforadmin/" + Role);
     }
-
+    //Xóa Tài Khoản Khách Hàng
+    deleteTK(id: string) {
+        return this.httclient.delete(this.url + "/khachhangbyid/" + id)
+    }
 }
