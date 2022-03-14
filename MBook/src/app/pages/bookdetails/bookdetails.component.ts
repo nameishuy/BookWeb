@@ -64,6 +64,10 @@ export class BookdetailsComponent implements OnInit {
     newItem.idcart = this.id;
     newItem.count = Number(inputNum.value);
     newItem.unitprice = this.unitprice;
+    newItem.Anh = this.book[0].Anh;
+    newItem.Mota = this.book[0].Mota;
+    newItem.Soluongton = this.book[0].Soluongton;
+    newItem.Tensach = this.book[0].Tensach;
     let listSess = JSON.parse(sessionStorage.getItem('listCart')!)
     if (listSess != null) {
       let obj = listSess.findIndex((x: any) => x.idcart === newItem.idcart)
