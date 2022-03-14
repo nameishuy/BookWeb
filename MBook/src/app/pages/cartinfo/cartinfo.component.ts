@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookStoreAPI } from 'src/app/services/bookstore.services';
-import { resDatHang, reqDatHang, reqDatHangnodategiao, reqCTDonHang } from '../../services/Classes/DonHang'
+import { reqDatHangnodategiao, reqCTDonHang } from '../../services/Classes/DonHang'
+import { reqBookSoluongTon } from "../../services/Classes/Book"
 @Component({
   selector: 'app-cartinfo',
   templateUrl: './cartinfo.component.html',
@@ -64,13 +65,25 @@ export class CartinfoComponent implements OnInit {
         let isNull_login = data.id == null
 
         if (!isNull_login) {
+          let sessionCart = JSON.parse(sessionStorage.getItem("listCart")!);
+          for (let i = 0; i < sessionCart.length; i++) {
+            this.bookapi.get1Book(sessionCart[i].idcart).subscribe(data => {
+              if (data[0].Soluongton < sessionCart[i].count) {
+                alert("Hiện Sách" + data[0].Tensach + " Trong Kho Chỉ Còn:" + data[0].Soluongton)
+              }
+            })
+          }
+
+
           let Body = new reqDatHangnodategiao(false, false, this.Date, this.Total, data.id);
           this.bookapi.DatHang(Body).subscribe(data => {
             if (data._id != null) {
-              let sessionCart = JSON.parse(sessionStorage.getItem("listCart")!);
               for (let i = 0; i < sessionCart.length; i++) {
                 let body = new reqCTDonHang(data._id, sessionCart[i].idcart, sessionCart[i].count, sessionCart[i].unitprice);
+                let bodybook = new reqBookSoluongTon(sessionCart[i].idcart, sessionCart[i].count);
                 this.bookapi.CTDatHang(body).subscribe(data => {
+                })
+                this.bookapi.CapNhatSoLuongTon(bodybook).subscribe(data => {
                 })
               }
               alert("Đặt Hàng Thành Công")

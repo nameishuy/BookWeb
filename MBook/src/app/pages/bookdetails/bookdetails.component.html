@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" #scroll>
     <div class="Book__details" *ngFor="let book of book">
         <div class="Book__image">
             <img src="{{book.Anh}}" alt="">
@@ -16,7 +16,7 @@
             <div class="Book__info-Price">
                 <b class="price">{{book.Giaban|number:'1.3'}}đ</b>
             </div>
-            <div class="Book__info-Pay">
+            <div class="Book__info-Pay" *ngIf="!checkSoluongton()">
                 <b>Số Lượng:</b>
                 <div class="Book__info-Count">
                     <div class="Book__info-Button">
@@ -34,6 +34,10 @@
                 <div class="Book__info-btnCart" (click)="addCart()">
                     <span>Chọn Mua</span>
                 </div>
+            </div>
+            <div class="Book__info-Pay" *ngIf="checkSoluongton()">
+                <b>Số Lượng :</b>
+                <b style="color: red;">Đã Hết Hàng</b>
             </div>
         </div>
         <div class="Book__info-About">
