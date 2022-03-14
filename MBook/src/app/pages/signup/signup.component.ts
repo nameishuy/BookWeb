@@ -10,28 +10,30 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private bookstore:BookStoreAPI,private router:Router) { }
+  constructor(private bookstore: BookStoreAPI, private router: Router) { }
 
-  username='';
-  password='';
-  fullname='';
-  confirmpassword='';
-  
-  resRegister:resRegister | undefined;
+  username = '';
+  password = '';
+  fullname = '';
+  confirmpassword = '';
+
+  resRegister: resRegister | undefined;
   ngOnInit(): void {
   }
 
   clickme() {
-   
-    let bodyRegister = new reqRegister(this.fullname,this.username,this.password,this.confirmpassword);
+
+    let bodyRegister = new reqRegister(this.fullname, this.username, this.password, this.confirmpassword);
     this.bookstore.postRegister(bodyRegister)
 
-    .subscribe(
-      data => {
-        this.resRegister = data;
-        alert(this.resRegister.Messenger);
-        this.router.navigate(['/login']);
-      }
-    )
+      .subscribe(
+        data => {
+          this.resRegister = data;
+          alert(this.resRegister.Messenger);
+          if (this.resRegister.Messenger == "Đăng Ký Thành Công") {
+            this.router.navigate(['/login']);
+          }
+        }
+      )
   }
 }
