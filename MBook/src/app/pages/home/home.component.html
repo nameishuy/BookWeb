@@ -5,15 +5,14 @@
         <li data-target="#carousel" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner Banner__Container">
-        <div class="carousel-item Banner active">
-            <img src="https://nxbphunu.com.vn/wp-content/uploads/2020/02/banner-hoi-sach.jpg" class="" alt="...">
+        <div class="carousel-item Banner active" *ngFor="let banner of Banner">
+            <img src="{{Banner[0].Anh1}}" class="" alt="...">
         </div>
         <div class="carousel-item Banner">
-            <img src="https://amovietnam.vn/wp-content/uploads/2016/02/banner-doc-sach-vi-tuong-lai-amo-vietnam-2018.jpg"
-                class="" alt="...">
+            <img src="{{Banner[0].Anh2}}" class="" alt="...">
         </div>
         <div class="carousel-item Banner">
-            <img src="https://pvm.com.vn/wp-content/uploads/2017/11/banner-sach.jpg" class="" alt="...">
+            <img src="{{Banner[0].Anh3}}" class="" alt="...">
         </div>
     </div>
 </div>
@@ -42,7 +41,7 @@
         <div class="carousel-item" data-interval="2000">
             <div class="Slide__Book">
                 <div class="SellingBook" *ngFor="let book2 of BookSold2">
-                    <div class="Book__Details"  (click)="goDetails(book2.id)">
+                    <div class="Book__Details" (click)="goDetails(book2.id)">
                         <div class="ImgBook">
                             <img src="{{book2.Anh}}" alt="">
                         </div>
@@ -86,7 +85,7 @@
                     <div class="Good__Book-body">
                         {{newbook.Mota}}
                     </div>
-                    <div class="Good__Book-readnow"  (click)="goDetails(newbook.id)">
+                    <div class="Good__Book-readnow" (click)="goDetails(newbook.id)">
                         <a>Đọc Ngay</a>
                     </div>
                 </div>

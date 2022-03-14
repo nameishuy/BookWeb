@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
   BookSold1: any;
   BookSold2: any;
   newbook: any;
+  Banner: any;
   constructor(private bookstore: BookStoreAPI, private router:Router) { }
 
   ngOnInit(): void {
@@ -25,6 +26,9 @@ export class HomeComponent implements OnInit {
     })
     this.bookstore.get3newbook().subscribe(data => {
       this.newbook = data
+    })
+    this.bookstore.getBanner().subscribe(data => {
+      this.Banner = data
     })
   }
 

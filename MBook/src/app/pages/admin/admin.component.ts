@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookStoreAPI } from 'src/app/services/bookstore.services';
-
+import { reqBookSoluongTon } from "../../services/Classes/Book"
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -12,31 +12,60 @@ export class AdminComponent implements OnInit {
 
   user: any
   DonHanglist: any
+  HangTon: any
   DonHanglistByID: any
   BookByDonHang: any
   p: any = "";
   pdialog: any = "";
+  pHangTon: any = "";
   select: any = "Khách Hàng";
   check: boolean = false;
   mess: any;
   Role: any;
   userid: any;
+  idbook: any;
+  SolnTon: number = 0;
+  Product__Price: number = 0;
 
   ngOnInit(): void {
+    this.Action_ngOnInit()
+  }
+
+  Action_ngOnInit() {
     this.getAllTaiKhoan(this.check)
     this.getDonHang()
+    this.GetHangTon()
   }
+
+  //Get Hàng Tồn
+  GetHangTon() {
+    this.bookapi.getAllBook().subscribe(data => {
+      this.HangTon = data
+    })
+  }
+
+  //Cập Nhật Hàng Tồn
+  UpdateBook() {
+    let body = new reqBookSoluongTon(this.idbook, (Number(this.SolnTon)), this.Product__Price)
+    console.log(body)
+    this.bookapi.CapNhatSoLuongTon(body).subscribe(data => {
+      if (data.Tensach != null) {
+        alert("Cập Nhật Thành Công")
+        this.GetHangTon()
+        this.closeDialogChangeDetails()
+      }
+    })
+  }
+
   //Xóa Tài Khoản Khách Hàng
   DeleteTK() {
     let check = []
     let isNoneID = this.userid == ""
-    check.push(isNoneID)
+    check.push(!isNoneID)
     let isNUllID = this.userid == null
-    check.push(isNUllID)
-    let isNoneRole = this.Role == ""
-    check.push(isNoneRole)
+    check.push(!isNUllID)
     let isNUllRole = this.Role == null
-    check.push(isNUllRole)
+    check.push(!isNUllRole)
 
     let isTrue = (va: boolean) => va === true
     if (check.every(isTrue)) {
@@ -48,6 +77,7 @@ export class AdminComponent implements OnInit {
           alert(this.mess.Messager);
           this.getAllTaiKhoan(this.Role)
           this.getDonHang()
+          this.closeDialog()
         })
       }
     } else {
@@ -121,15 +151,18 @@ export class AdminComponent implements OnInit {
     this.userid = ""
   }
 
-  closeDialogChangeDetails(){
-    let dialog = <HTMLElement> document.getElementById("DialogChangeDetailsProduct__Container");
-    dialog.style.display="none";
+  closeDialogChangeDetails() {
+    let dialog = <HTMLElement>document.getElementById("DialogChangeDetailsProduct__Container");
+    dialog.style.display = "none";
   }
   SetRole(id: any) {
   }
 
-  showDialogChangeDetailsProduct(){
-    let dialog = <HTMLElement> document.getElementById("DialogChangeDetailsProduct__Container");
-    dialog.style.display="block";
+  showDialogChangeDetailsProduct(idbook: any, Price: number) {
+    let dialog = <HTMLElement>document.getElementById("DialogChangeDetailsProduct__Container");
+    dialog.style.display = "block";
+    this.idbook = idbook
+    this.Product__Price = Price
+    console.log()
   }
 }
