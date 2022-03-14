@@ -18,6 +18,19 @@ export interface newBook {
     Anh: string;
     TenTG: string;
 }
+
+
+export class reqBookSoluongTon {
+    constructor(id: any, soluongban: number) {
+        this.id = id;
+        this.soluongban = soluongban;
+
+    }
+    id: string = '';
+    soluongban: number = 0;
+
+}
+
 export interface Book1 {
     id: string;
     Tensach: string;

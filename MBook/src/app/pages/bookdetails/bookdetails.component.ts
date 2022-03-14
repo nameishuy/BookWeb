@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { BookStoreAPI } from 'src/app/services/bookstore.services';
 import { itemCart } from 'src/app/services/Classes/Book';
 @Component({
@@ -11,6 +11,7 @@ export class BookdetailsComponent implements OnInit {
   id: any;
   book: any;
   unitprice: number = 0;
+  Soluongton: number = 0;
   listCart: itemCart[] = [];
 
   constructor(private router: ActivatedRoute, private bookapi: BookStoreAPI) { }
@@ -35,14 +36,26 @@ export class BookdetailsComponent implements OnInit {
 
   moreProducts() {
     let inputNum = <HTMLInputElement>document.getElementById("inputNum");
-    inputNum.value = "" + (Number(inputNum.value) + 1);;
+    if (Number(inputNum.value) == this.Soluongton) {
+    } else {
+      inputNum.value = "" + (Number(inputNum.value) + 1);
+    }
   }
 
   getBook(id: any) {
     this.bookapi.get1Book(id).subscribe(data => {
       this.book = data
       this.unitprice = data[0].Giaban;
+      this.Soluongton = data[0].Soluongton;
+
     })
+  }
+
+  checkSoluongton() {
+    if (this.Soluongton <= 0) {
+      return true;
+    }
+    return false;
   }
 
   addCart() {

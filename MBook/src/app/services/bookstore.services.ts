@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Account, reqRegister, resRegister } from "./Classes/Login";
-import { Book, Book1, BookSold, Category, itemCart, newBook } from "./Classes/Book";
+import { Book, Book1, BookSold, Category, newBook, reqBookSoluongTon } from "./Classes/Book";
 import { reqprofile, resprofile } from "./Classes/profile";
 import { reqpass, respass } from './Classes/changepass'
-import { reqCTDonHang, reqDatHang, resCTDonHang, resDatHang } from "./Classes/DonHang";
+import { reqCTDonHang, resCTDonHang, resDatHang } from "./Classes/DonHang";
 
 
 @Injectable({
@@ -36,7 +36,9 @@ export class BookStoreAPI {
     get3newbook(): Observable<any> {
         return this.httclient.get<newBook>(this.url + "/sachtimestamps");
     }
-
+    CapNhatSoLuongTon(body: reqBookSoluongTon) {
+        return this.httclient.put(this.url + "/sach", body);
+    }
     getAllBook(): Observable<any> {
         return this.httclient.get<Book>(this.url + "/sach");
     }
