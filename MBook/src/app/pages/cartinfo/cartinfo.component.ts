@@ -65,9 +65,21 @@ export class CartinfoComponent implements OnInit {
         let isNull_login = data.id == null
 
         if (!isNull_login) {
-          let Body = new reqDatHangnodategiao(false, false, this.Date, this.Total, data.id);
+          //
+          const arrayidBook: any[] = [];
+          const arraycountBook: any[] = [];
+          //Push IDSACH với Số lượng mua của cuốn sách để truyền xuống api để Kiểm Số lượng tồn
+          for (const id of this.Book) {
+            arrayidBook.push(id.idcart);
+            arraycountBook.push(id.count);
+          }
+          //
+          let Body = new reqDatHangnodategiao(false, false, this.Date, this.Total, data.id, arrayidBook, arraycountBook);
           this.bookapi.DatHang(Body).subscribe(data => {
-            if (data._id != null) {
+            //Nếu Có biến Mess Tức Có Sách Bị Vượt Quá Số Lượng Hiện Có Trong Kho Hàng
+            if (data.Messager != null) {
+              alert(data.Messager)
+            } else {
               for (let book of this.Book) {
                 let body = new reqCTDonHang(data._id, book.idcart, book.count, book.unitprice);
                 this.bookapi.CTDatHang(body).subscribe(data => {
@@ -81,12 +93,8 @@ export class CartinfoComponent implements OnInit {
                   }
                 })
               }
-
             }
           })
-
-
-
         } else {
           this.router.navigate(['login']);
         }
