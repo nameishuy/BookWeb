@@ -4,15 +4,15 @@
         <li data-target="#carousel" data-slide-to="1"></li>
         <li data-target="#carousel" data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner Banner__Container">
-        <div class="carousel-item Banner active" *ngFor="let banner of Banner">
-            <img src="{{Banner[0].Anh1}}" class="" alt="...">
+    <div class="carousel-inner Banner__Container" *ngFor="let banner of Banner">
+        <div class="carousel-item Banner active">
+            <img src="{{banner.Anh1}}" class="" alt="...">
         </div>
         <div class="carousel-item Banner">
-            <img src="{{Banner[0].Anh2}}" class="" alt="...">
+            <img src="{{banner.Anh2}}" class="" alt="...">
         </div>
         <div class="carousel-item Banner">
-            <img src="{{Banner[0].Anh3}}" class="" alt="...">
+            <img src="{{banner.Anh3}}" class="" alt="...">
         </div>
     </div>
 </div>

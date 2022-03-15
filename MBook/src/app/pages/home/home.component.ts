@@ -10,8 +10,8 @@ export class HomeComponent implements OnInit {
   BookSold1: any;
   BookSold2: any;
   newbook: any;
-  Banner: any;
-  constructor(private bookstore: BookStoreAPI, private router:Router) { }
+  Banner: any[] = [];
+  constructor(private bookstore: BookStoreAPI, private router: Router) { }
 
   ngOnInit(): void {
     this.getbooksold1()
@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
       this.newbook = data
     })
     this.bookstore.getBanner().subscribe(data => {
-      this.Banner = data
+      this.Banner.push(data)
     })
   }
 
@@ -40,8 +40,8 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  goDetails(id:string){
+  goDetails(id: string) {
     console.log('was clicked');
-    this.router.navigate(['detail',id]);
+    this.router.navigate(['detail', id]);
   }
 }
