@@ -236,6 +236,28 @@
                         Cập Nhật
                     </div>
                 </div>
+
+                <div class="Admin__Setting-Author">
+                    <h1>Thêm Mới</h1>
+                    <div class="Add__Container">
+                        <div class="AddAuthor">
+                            <div>Tên Tác Giả</div>
+                            <input type="text" name="" id="">
+                        </div>
+                        <div class="Add__Btn">
+                            Thêm
+                        </div>
+                    </div>
+                    <div class="Add__Container">                        
+                        <div class="AddCategory">
+                            <div>Chủ Đề</div>
+                            <input type="text" name="" id="">
+                        </div>
+                        <div class="Add__Btn">
+                            Thêm
+                        </div>
+                    </div>
+                </div>
             </div>
         </mat-tab>
         <mat-tab label="Thêm Mới Sách">
@@ -243,7 +265,7 @@
                 <div class="AddNewBook__Body">
                     <div class="AddNewBook__Body-BookName">
                         <span>Tên Sách: </span>
-                        <input type="text" name="" id="">
+                        <textarea name="" id="" cols="25" rows="5"></textarea>
                     </div>
                     <div class="AddNewBook__Body-BookCategory">
                         <span>Thể Loại: </span>
@@ -272,7 +294,7 @@
                     <div class="AddNewBook__Body-BookImage">
                         <span>Ảnh: </span> 
                         <input type="file" name="" id="">
-                        <div class="AddNewBook__Body-Image" *ngIf="false">
+                        <div class="AddNewBook__Body-Image" *ngIf="true">
                             <img src="https://prices.vn/photos/8/product/sach-dac-nhan-tam-cua-dale-carnegie.gif" alt="">
                         </div>
                     </div>
