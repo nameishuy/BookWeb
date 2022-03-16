@@ -111,7 +111,6 @@
     font-weight: 400;
     background-color: rgba(0, 0, 0, 0.815);
     color: white;
-    height: 35px;
 }
 
 .DialogDetailsHistoryPay__infoUser {
@@ -131,7 +130,7 @@
 
 .DialogDetailsHistoryPay__infoPay-Details {
     display: flex;
-    padding-bottom: 50px;
+    padding-bottom: 10px;
     padding-top: 10px;
     margin-top: 20px;
     border-top: 1px solid rgba(109, 109, 109, 0.308);
@@ -226,6 +225,16 @@
     .HistoryPay__Bill-BillID {
         flex-basis: 40%;
         text-align: center;
+    }
+    .DialogDetailsHistoryPay{
+        width: 80vw;
+    }
+    .DialogDetailsHistoryPay__Image{
+        height: 100px;
+    }
+    .DialogDetailsHistoryPay__Image img{
+        height: 100%;
+        width: 80%;
     }
 }
 
