@@ -45,9 +45,6 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  goProfile() {
-    //console.log(this.share.id);
-  }
 
   Signout() {
     sessionStorage.removeItem('UserLogin');

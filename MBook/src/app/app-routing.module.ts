@@ -4,6 +4,7 @@ import { AuthGuard, isAdmin, isLogined } from './Auth/auth.guard';
 import { AdminComponent } from './pages/admin/admin.component';
 import { BookdetailsComponent } from './pages/bookdetails/bookdetails.component';
 import { CartinfoComponent } from './pages/cartinfo/cartinfo.component';
+import { HistorypayComponent } from './pages/historypay/historypay.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProductComponent } from './pages/product/product.component';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path:'signup', component:SignupComponent, canActivate:[isLogined] },
   { path:'admin', component:AdminComponent, canActivate:[isAdmin] },
   { path:'detail/:id', component:BookdetailsComponent },
-  { path:'cart', component:CartinfoComponent }
+  { path:'cart', component:CartinfoComponent },
+  { path:'history-pay', component:HistorypayComponent }
 ];
 
 @NgModule({

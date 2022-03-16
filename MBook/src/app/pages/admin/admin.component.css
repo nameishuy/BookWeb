@@ -255,7 +255,11 @@ mat-tab-group {
   color: red;
 }
 pagination-controls{
-  margin: 20px auto;
+  margin: 0px auto !important;
+}
+.my-pagination /deep/ .ngx-pagination .current {
+  margin: 20px !important;
+  width: fit-content;
 }
 mat-form-field{
   margin: 20px 0 30px 0;
