@@ -436,6 +436,10 @@ mat-form-field{
     width: 50vw;
     min-height: 30vh;
   }
+
+  .AddNewBook__Body{
+    width: 100%;
+  }
 }
 
 .checkbox {
