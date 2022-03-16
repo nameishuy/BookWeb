@@ -11,38 +11,38 @@ import { reqBookSoluongTon } from "../../services/Classes/Book"
 export class AdminComponent implements OnInit {
 
   constructor(private bookapi: BookStoreAPI) { }
-  Search:any;
-  user: any
-  DonHanglist: any
-  HangTon: any
-  DonHanglistByID: any
-  BookByDonHang: any
+  Search: any = '';
+  user: any = ''
+  DonHanglist: any = ''
+  HangTon: any = ''
+  DonHanglistByID: any = ''
+  BookByDonHang: any = ''
   p: any = "";
   pdialog: any = "";
   pHangTon: any = "";
   select: any = "Khách Hàng";
   check: boolean = false;
-  mess: any;
-  Role: any;
-  userid: any;
-  idbook: any;
-  CD: any;
-  TG: any;
+  mess: any = '';
+  Role: any = '';
+  userid: any = '';
+  idbook: any = '';
+  CD: any = '';
+  TG: any = '';
   SolnTon: number = 0;
   Product__Price: number = 0;
   arrayid: any[] = []
   IDCD: any[] = []
-  IDTG: any;
-  IDNXB: any;
+  IDTG: any = '';
+  IDNXB: any = '';
   Categoryselected = 'option2';
   Authorselected = 'option2';
   NXBselected = 'option2';
-  img: any
-  TenSach: any
-  Mota: any
-  Soluongton: any
-  Giaban: any
-  NXB: any
+  img: any = ''
+  TenSach: any = ''
+  Mota: any = ''
+  Soluongton: any = ''
+  Giaban: any = ''
+  NXB: any = ''
   ngOnInit(): void {
     this.Action_ngOnInit()
   }
@@ -78,19 +78,29 @@ export class AdminComponent implements OnInit {
   }
 
   InsertBook() {
+    let check = []
+    check.push(!(this.TenSach == '')); check.push(!(this.Giaban == '')); check.push(!(this.Mota == ''));
+    check.push(!(this.img == '')); check.push(!(this.Soluongton == '')); check.push(!(this.IDCD == []));
+    check.push(!(this.IDNXB == '')); check.push(!(this.IDTG == '')); check.push(!(this.Giaban == 0));
+    check.push(!(this.Soluongton == 0));
 
-    let body = new reqinsertbook(this.TenSach, this.Giaban, this.Mota, this.img, this.Soluongton, this.IDCD, this.IDNXB, this.IDTG);
-    this.bookapi.InsertBook(body).subscribe(da => {
-      if (da._id != null) {
-        alert("Thêm Thành Công")
-        this.GetHangTon();
-      } else {
-        alert("Thêm Thất Bại")
-      }
+    if (check.every(va => va === true)) {
+      let body = new reqinsertbook(this.TenSach, this.Giaban, this.Mota, this.img, this.Soluongton, this.IDCD, this.IDNXB, this.IDTG);
+      this.bookapi.InsertBook(body).subscribe(da => {
+        if (da._id != null) {
+          alert("Thêm Thành Công")
+          this.GetHangTon();
+        } else {
+          alert("Thêm Thất Bại")
+        }
 
-    })
+      })
+    } else {
+      alert("Vui Lòng Điền Đầy Đủ Thông Tin");
+    }
+
+
   }
-
 
   CallChuDe() {
     this.bookapi.GetCD().subscribe(data => {
@@ -117,15 +127,25 @@ export class AdminComponent implements OnInit {
 
   //Cập Nhật Hàng Tồn
   UpdateBook() {
-    let body = new reqBookSoluongTon(this.idbook, (Number(this.SolnTon)), this.Product__Price)
-    console.log(body)
-    this.bookapi.CapNhatSoLuongTon(body).subscribe(data => {
-      if (data.Tensach != null) {
-        alert("Cập Nhật Thành Công")
-        this.GetHangTon()
-        this.closeDialogChangeDetails()
-      }
-    })
+    let check = []
+    check.push(!(this.SolnTon == 0)); check.push(!(this.Product__Price == 0));
+    check.push((typeof this.SolnTon == "number")); check.push((typeof this.Product__Price == "number"));
+
+    if (check.every(va => va === true)) {
+      let body = new reqBookSoluongTon(this.idbook, (Number(this.SolnTon)), this.Product__Price)
+      console.log(body)
+      this.bookapi.CapNhatSoLuongTon(body).subscribe(data => {
+        if (data.Tensach != null) {
+          alert("Cập Nhật Thành Công")
+          this.GetHangTon()
+          this.closeDialogChangeDetails()
+        }
+      })
+    } else {
+      alert("Vui Lòng Điền Đầy Đủ Thông Tin")
+    }
+
+
   }
 
   //Xóa Tài Khoản Khách Hàng
@@ -226,6 +246,7 @@ export class AdminComponent implements OnInit {
     let dialog = <HTMLElement>document.getElementById("DialogChangeDetailsProduct__Container");
     dialog.style.display = "none";
   }
+
   SetRole(id: any) {
     let checkk = true
     for (let i = 0; i < this.arrayid.length; i++) {
