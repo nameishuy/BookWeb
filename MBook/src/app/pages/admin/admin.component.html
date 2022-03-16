@@ -127,7 +127,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="UpdateAll__Setting" *ngIf="ifCheckAll()">
+                <div (click)="CapQuyen()" class="UpdateAll__Setting" *ngIf="ifCheckAll()">
                     Cấp Quyền Admin
                 </div>
                 <pagination-controls class="my-pagination" (pageChange)="p = $event" id="user">
@@ -177,8 +177,9 @@
             </div>
 
             <div class="Admin__Storage-Body">
+                <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="Search" />
                 <div class="Admin__Storage-Details"
-                    *ngFor="let book of HangTon  | paginate: { itemsPerPage: 2, currentPage: pHangTon, id: 'hangton' }">
+                    *ngFor="let book of HangTon  | filter: Search  | paginate: { itemsPerPage: 2, currentPage: pHangTon, id: 'hangton' }">
                     <div class="Product__Image">
                         <img src="{{book.Anh}}" alt="">
                     </div>
@@ -248,7 +249,7 @@
                             Thêm
                         </div>
                     </div>
-                    <div class="Add__Container">                        
+                    <div class="Add__Container">
                         <div class="AddCategory">
                             <div>Chủ Đề</div>
                             <input type="text" name="" id="">
@@ -265,17 +266,26 @@
                 <div class="AddNewBook__Body">
                     <div class="AddNewBook__Body-BookName">
                         <span>Tên Sách: </span>
-                        <textarea name="" id="" cols="25" rows="5"></textarea>
+                        <textarea name="" id="" cols="25" rows="5" [required]="true" [(ngModel)]="TenSach"></textarea>
+                    </div>
+                    <div class="AddNewBook__Body-BookName">
+                        <span>Mô Tả: </span>
+                        <textarea name="" id="" cols="25" rows="5" [required]="true" [(ngModel)]="Mota"></textarea>
+                    </div>
+                    <div class="AddNewBook__Body-BookName">
+                        <span>Giá: </span>
+                        <input type="number" [required]="true" [(ngModel)]="Giaban">
+                    </div>
+                    <div class="AddNewBook__Body-BookName">
+                        <span>số Lượng: </span>
+                        <input type="number" [required]="true" [(ngModel)]="Soluongton">
                     </div>
                     <div class="AddNewBook__Body-BookCategory">
                         <span>Thể Loại: </span>
                         <mat-form-field appearance="fill">
                             <mat-label>Select an option</mat-label>
-                            <mat-select [(value)]="Categoryselected">
-                                <mat-option>None</mat-option>
-                                <mat-option value="option1">Option 1</mat-option>
-                                <mat-option value="option2">Option 2</mat-option>
-                                <mat-option value="option3">Option 3</mat-option>
+                            <mat-select (selectionChange)="selectedCD($event.value)" [(value)]="Categoryselected">
+                                <mat-option *ngFor="let chude of CD" [value]="chude._id">{{chude.TenChuDe}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -283,22 +293,29 @@
                         <span>Tác Giả: </span>
                         <mat-form-field appearance="fill">
                             <mat-label>Select an option</mat-label>
-                            <mat-select [(value)]="Authorselected">
-                                <mat-option>None</mat-option>
-                                <mat-option value="option1">Option 1</mat-option>
-                                <mat-option value="option2">Option 2</mat-option>
-                                <mat-option value="option3">Option 3</mat-option>
+                            <mat-select (selectionChange)="selectedTG($event.value)" [(value)]="Authorselected">
+                                <mat-option *ngFor="let tacgia of TG" [value]="tacgia._id">{{tacgia.TenTG}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="AddNewBook__Body-BookAuthor">
+                        <span>Nhà Xuất Bản: </span>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Select an option</mat-label>
+                            <mat-select (selectionChange)="selectedNXB($event.value)" [(value)]="NXBselected">
+                                <mat-option *ngFor="let nhaxuatban of NXB" [value]="nhaxuatban._id">
+                                    {{nhaxuatban.TenNXB}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
                     <div class="AddNewBook__Body-BookImage">
-                        <span>Ảnh: </span> 
-                        <input type="file" name="" id="">
+                        <span>Ảnh: </span>
+                        <input type="file" accept="image/*" (change)="onFileSelected($event)">
                         <div class="AddNewBook__Body-Image" *ngIf="true">
-                            <img src="https://prices.vn/photos/8/product/sach-dac-nhan-tam-cua-dale-carnegie.gif" alt="">
+                            <img src="{{img}}" alt="Demo Ảnh">
                         </div>
                     </div>
-                    <div class="AddNewBook__Body-BtnAdd">
+                    <div (click)="InsertBook()" class="AddNewBook__Body-BtnAdd">
                         Thêm Sách
                     </div>
                 </div>
