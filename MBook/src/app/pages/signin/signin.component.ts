@@ -17,17 +17,22 @@ export class SigninComponent implements OnInit {
 
   }
   clickme() {
-    this.bookstore.postLogin(this.username, this.password)
-      .subscribe(
-        data => {
-          this.UserLogined = data;
-          sessionStorage.setItem('UserLogin', JSON.stringify(data))
-          alert(this.UserLogined.Messenger);
-          if (this.UserLogined.Messenger == "Đăng Nhập Thành Công") {
-            this.router.navigate(['']);
+    let check = []
+    check.push(!(this.username == '')); check.push(!(this.password == ''));
+    if (check.every(va => va === true)) {
+      this.bookstore.postLogin(this.username, this.password)
+        .subscribe(
+          data => {
+            this.UserLogined = data;
+            sessionStorage.setItem('UserLogin', JSON.stringify(data))
+            alert(this.UserLogined.Messenger);
+            if (this.UserLogined.Messenger == "Đăng Nhập Thành Công") {
+              this.router.navigate(['']);
+            }
           }
-        }
-      )
+        )
+    } else {
+      alert("Vui Lòng Điền Đầy Đủ Thông Tin")
+    }
   }
-
 }

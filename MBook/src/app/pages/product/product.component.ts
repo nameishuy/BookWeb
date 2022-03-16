@@ -17,6 +17,7 @@ export class ProductComponent implements OnInit {
 
   key = "Giaban";
   reverse: boolean = false;
+  
   ngOnInit(): void {
     this.getCategory();
     this.getbook()

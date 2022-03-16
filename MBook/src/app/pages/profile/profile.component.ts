@@ -57,37 +57,52 @@ export class ProfileComponent implements OnInit {
   }
 
   updateInfo() {
-    if (this.data.id != null) {
-      console.log(this.data.id)
-      let bodyProfile = new reqprofile(this.data.id, this.img, this.hovaten, this.Email, this.diachi, this.sdt, this.date);
-      this.bookstoreapi.putupdateprofile(bodyProfile).subscribe(
-        data => {
-          this.resProfile = data;
-          if (sessionStorage.getItem("UserLogin")) {
-            const UserLogin = JSON.parse(sessionStorage.getItem("UserLogin")!)
-            UserLogin.HoTen = data.HoTen;
-            sessionStorage.setItem("UserLogin", JSON.stringify(UserLogin));
-          }
-          alert(this.resProfile.Messenger);
-        }
-      )
-    }
+    let check: boolean[] = []
+    check.push(!(this.hovaten == "")); check.push(!(this.Email == "")); check.push(!(this.diachi == "")); check.push(!(this.sdt == "")); check.push(!(this.date == ""));
+    let isTrue = (va: boolean) => va === true
 
+    if (check.every(isTrue)) {
+      if (this.data.id != null) {
+        console.log(this.data.id)
+        let bodyProfile = new reqprofile(this.data.id, this.img, this.hovaten, this.Email, this.diachi, this.sdt, this.date);
+        this.bookstoreapi.putupdateprofile(bodyProfile).subscribe(
+          data => {
+            this.resProfile = data;
+            if (sessionStorage.getItem("UserLogin")) {
+              const UserLogin = JSON.parse(sessionStorage.getItem("UserLogin")!)
+              UserLogin.HoTen = data.HoTen;
+              sessionStorage.setItem("UserLogin", JSON.stringify(UserLogin));
+            }
+            alert(this.resProfile.Messenger);
+          }
+        )
+      }
+    } else {
+      alert("Vui Lòng Điền Đầy Đủ Thông Tin")
+    }
   }
 
   UpdataPass() {
-    if (this.data.id != null) {
-      console.log(this.data.id)
-      let bodypass = new reqpass(this.data.id, this.matkhauhientai, this.matkhaumoi, this.xacnhanmatkhau);
-      this.bookstoreapi.putupdatapass(bodypass).subscribe(
-        data => {
-          this.resPass = data;
-          this.matkhauhientai = '';
-          this.matkhaumoi = '';
-          this.xacnhanmatkhau = '';
-          alert(this.resPass.Messenger);
-        }
-      )
+    let check: boolean[] = []
+    check.push(!(this.matkhauhientai == "")); check.push(!(this.matkhaumoi == "")); check.push(!(this.xacnhanmatkhau == ""));
+    let isTrue = (va: boolean) => va === true
+    console.log(check)
+    if (check.every(isTrue)) {
+      if (this.data.id != null) {
+        console.log(this.data.id)
+        let bodypass = new reqpass(this.data.id, this.matkhauhientai, this.matkhaumoi, this.xacnhanmatkhau);
+        this.bookstoreapi.putupdatapass(bodypass).subscribe(
+          data => {
+            this.resPass = data;
+            this.matkhauhientai = '';
+            this.matkhaumoi = '';
+            this.xacnhanmatkhau = '';
+            alert(this.resPass.Messenger);
+          }
+        )
+      }
+    } else {
+      alert("Vui Lòng Điền Đầy Đủ Thông Tin")
     }
   }
 }

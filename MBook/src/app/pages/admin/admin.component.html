@@ -77,8 +77,8 @@
         </div>
         <div class="DialogChangeDetailsProduct__changeDetails">
             <h1>Cập Nhật</h1>
-            Thêm số lượng tồn: <input type="text" [(ngModel)]="SolnTon " name="storageNum" id="">
-            Giá: <input type="text" name="storagePrice" [(ngModel)]="Product__Price " id="">
+            Thêm số lượng tồn: <input type="number" [(ngModel)]="SolnTon " name="storageNum" id="">
+            Giá: <input type="number" name="storagePrice" [(ngModel)]="Product__Price " id="">
         </div>
         <div class="DialogChangeDetailsProduct__Setting-details DialogChangeDetailsProduct__Setting-YES"
             (click)="UpdateBook()">
@@ -259,6 +259,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
         </mat-tab>
         <mat-tab label="Thêm Mới Sách">
