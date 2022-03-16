@@ -326,6 +326,59 @@ mat-form-field{
 .DialogChangeDetailsProduct{
   width: 15vw;
 }
+
+
+/*                                  */
+.AddNewBook__Container{
+  min-height: 70vh;
+}
+.AddNewBook__Body{
+  margin: 50px auto;
+  padding: 50px;
+  border: 1px solid rgba(109, 109, 109, 0.308);
+  height: 100% !important;
+  border-radius: .5rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  font-weight: 600;
+}
+.AddNewBook__Body,
+.AddNewBook__Body-BookImage input,
+.AddNewBook__Body-BtnAdd{
+  width: fit-content;
+}
+.AddNewBook__Body-BookName,
+.AddNewBook__Body-BookCategory,
+.AddNewBook__Body-BookAuthor,
+.AddNewBook__Body-BookImage{
+  margin-bottom: 20px;
+}
+.AddNewBook__Body-Image{
+  display: flex;
+  margin-top: 20px;
+}
+.AddNewBook__Body-BookImage img{
+  width: 80px;
+  height: 100px;
+}
+.AddNewBook__Body-BookName input{
+  padding: 10px 10px;
+  line-height: 20px;
+}
+.AddNewBook__Body-BtnAdd{
+  cursor: pointer;
+  padding: 5px;
+  background-color: rgba(255, 166, 0, 0.658);
+  color: white;
+  transition: 1s;
+  border-radius: .5rem;
+  font-weight: 400;
+}
+.AddNewBook__Body-BtnAdd:hover{
+  background-color: orange;
+  box-shadow: 0 0 10px 0 orange;
+}
 /* Responsive */
 @media screen and (max-width: 415px) {
   .Admin__Container {

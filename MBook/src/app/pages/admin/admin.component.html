@@ -196,8 +196,6 @@
                 <pagination-controls class="my-pagination" (pageChange)="pHangTon = $event" id="hangton">
                 </pagination-controls>
             </div>
-
-
         </mat-tab>
 
         <mat-tab label="Thiết Lập">
@@ -236,6 +234,50 @@
                     </div>
                     <div class="Setting__Banner-Feature-Btn" *ngIf="false">
                         Cập Nhật
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Thêm Mới Sách">
+            <div class="AddNewBook__Container">
+                <div class="AddNewBook__Body">
+                    <div class="AddNewBook__Body-BookName">
+                        <span>Tên Sách: </span>
+                        <input type="text" name="" id="">
+                    </div>
+                    <div class="AddNewBook__Body-BookCategory">
+                        <span>Thể Loại: </span>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Select an option</mat-label>
+                            <mat-select [(value)]="Categoryselected">
+                                <mat-option>None</mat-option>
+                                <mat-option value="option1">Option 1</mat-option>
+                                <mat-option value="option2">Option 2</mat-option>
+                                <mat-option value="option3">Option 3</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="AddNewBook__Body-BookAuthor">
+                        <span>Tác Giả: </span>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Select an option</mat-label>
+                            <mat-select [(value)]="Authorselected">
+                                <mat-option>None</mat-option>
+                                <mat-option value="option1">Option 1</mat-option>
+                                <mat-option value="option2">Option 2</mat-option>
+                                <mat-option value="option3">Option 3</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="AddNewBook__Body-BookImage">
+                        <span>Ảnh: </span> 
+                        <input type="file" name="" id="">
+                        <div class="AddNewBook__Body-Image" *ngIf="false">
+                            <img src="https://prices.vn/photos/8/product/sach-dac-nhan-tam-cua-dale-carnegie.gif" alt="">
+                        </div>
+                    </div>
+                    <div class="AddNewBook__Body-BtnAdd">
+                        Thêm Sách
                     </div>
                 </div>
             </div>

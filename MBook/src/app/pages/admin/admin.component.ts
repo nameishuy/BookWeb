@@ -27,6 +27,8 @@ export class AdminComponent implements OnInit {
   SolnTon: number = 0;
   Product__Price: number = 0;
 
+  Categoryselected = 'option2';
+  Authorselected = 'option2';
   ngOnInit(): void {
     this.Action_ngOnInit()
   }
