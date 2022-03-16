@@ -25,6 +25,39 @@ export interface newBook {
 }
 
 
+export interface resinsertbook {
+    _id: string;
+    Tensach: string;
+    Giaban: number;
+    Mota: string;
+    Anhbia: string;
+    Soluongton: number;
+    MaCD: string[];
+    MaNXB: string;
+    MaTacGia: string;
+}
+export class reqinsertbook {
+
+    constructor(Tensach: string, Giaban: number, Mota: string, Anhbia: string, Soluongton: number, MaCD: any[], MaNXB: string, MaTacGia: string) {
+        this.Tensach = Tensach;
+        this.Giaban = Giaban;
+        this.Mota = Mota;
+        this.Anhbia = Anhbia;
+        this.Soluongton = Soluongton;
+        this.MaCD = MaCD;
+        this.MaNXB = MaNXB;
+        this.MaTacGia = MaTacGia;
+    }
+    Tensach: string = '';
+    Giaban: number = 0;
+    Mota: string = '';
+    Anhbia: string = '';
+    Soluongton: number = 0;
+    MaCD: any[] = [];
+    MaNXB: string = '';
+    MaTacGia: string = '';
+
+}
 export class reqBookSoluongTon {
     constructor(id: any, Soluongton: number, Giaban: number) {
         this.id = id;

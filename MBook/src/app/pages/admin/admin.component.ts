@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+import { reqinsertbook, resinsertbook } from "../../services/Classes/Book";
 import { BookStoreAPI } from 'src/app/services/bookstore.services';
 import { reqBookSoluongTon } from "../../services/Classes/Book"
 @Component({
@@ -9,7 +11,7 @@ import { reqBookSoluongTon } from "../../services/Classes/Book"
 export class AdminComponent implements OnInit {
 
   constructor(private bookapi: BookStoreAPI) { }
-
+  Search:any;
   user: any
   DonHanglist: any
   HangTon: any
@@ -24,11 +26,23 @@ export class AdminComponent implements OnInit {
   Role: any;
   userid: any;
   idbook: any;
+  CD: any;
+  TG: any;
   SolnTon: number = 0;
   Product__Price: number = 0;
-
+  arrayid: any[] = []
+  IDCD: any[] = []
+  IDTG: any;
+  IDNXB: any;
   Categoryselected = 'option2';
   Authorselected = 'option2';
+  NXBselected = 'option2';
+  img: any
+  TenSach: any
+  Mota: any
+  Soluongton: any
+  Giaban: any
+  NXB: any
   ngOnInit(): void {
     this.Action_ngOnInit()
   }
@@ -37,6 +51,61 @@ export class AdminComponent implements OnInit {
     this.getAllTaiKhoan(this.check)
     this.getDonHang()
     this.GetHangTon()
+    this.CallChuDe()
+    this.CallTacGia()
+    this.CallNXB()
+  }
+  selectedCD(event: any) {
+    this.IDCD = []
+    this.IDCD.push(event);
+  }
+  selectedTG(event: any) {
+    this.IDTG = event
+  }
+  selectedNXB(event: any) {
+    this.IDNXB = event
+  }
+
+
+  onFileSelected(event: any) {
+    if (event.target.files) {
+      const reader = new FileReader()
+      reader.readAsDataURL(event.target.files[0])
+      reader.onload = (e) => {
+        this.img = e.target?.result
+      }
+    }
+  }
+
+  InsertBook() {
+
+    let body = new reqinsertbook(this.TenSach, this.Giaban, this.Mota, this.img, this.Soluongton, this.IDCD, this.IDNXB, this.IDTG);
+    this.bookapi.InsertBook(body).subscribe(da => {
+      if (da._id != null) {
+        alert("Thêm Thành Công")
+        this.GetHangTon();
+      } else {
+        alert("Thêm Thất Bại")
+      }
+
+    })
+  }
+
+
+  CallChuDe() {
+    this.bookapi.GetCD().subscribe(data => {
+      this.CD = data;
+    })
+  }
+  CallTacGia() {
+    this.bookapi.GetTG().subscribe(data => {
+      this.TG = data
+    })
+  }
+  CallNXB() {
+    this.bookapi.GetNXB().subscribe(data => {
+      this.NXB = data
+    })
   }
 
   //Get Hàng Tồn
@@ -158,6 +227,24 @@ export class AdminComponent implements OnInit {
     dialog.style.display = "none";
   }
   SetRole(id: any) {
+    let checkk = true
+    for (let i = 0; i < this.arrayid.length; i++) {
+      if (this.arrayid[i] == id) {
+        this.arrayid.splice(i, 1)
+        checkk = false
+      }
+    }
+    if (checkk) {
+      this.arrayid.push(id)
+    }
+    console.log(this.arrayid);
+  }
+
+  CapQuyen() {
+    this.bookapi.CapQuyen(this.arrayid).subscribe(data => {
+    })
+    alert("Cấp Quyền Thành Công")
+    this.getAllTaiKhoan(this.check)
   }
 
   showDialogChangeDetailsProduct(idbook: any, Price: number) {

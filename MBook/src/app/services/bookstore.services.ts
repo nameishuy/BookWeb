@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Account, reqRegister, resRegister } from "./Classes/Login";
-import { Banner, Book, Book1, BookSold, Category, newBook, reqBookSoluongTon } from "./Classes/Book";
+import { Banner, Book, Book1, BookSold, Category, resinsertbook, reqinsertbook, newBook, reqBookSoluongTon } from "./Classes/Book";
 import { reqprofile, resprofile } from "./Classes/profile";
 import { reqpass, respass } from './Classes/changepass'
 import { reqCTDonHang, resCTDonHang, resDatHang } from "./Classes/DonHang";
@@ -27,6 +27,12 @@ export class BookStoreAPI {
     postRegister(bodyRegister: reqRegister) {
 
         return this.httclient.post<resRegister>(this.url + "/khachhang", bodyRegister);
+    }
+
+
+    InsertBook(bodyRegister: reqinsertbook) {
+
+        return this.httclient.post<resinsertbook>(this.url + "/sach", bodyRegister);
     }
     //get
     getbooksold1(): Observable<any> {
@@ -94,8 +100,26 @@ export class BookStoreAPI {
     GetTk(Role: boolean) {
         return this.httclient.get(this.url + "/khachhangforadmin/" + Role);
     }
+    //Cấp Quyền Admin
+    CapQuyen(id: any[]) {
+        console.log({ id: id })
+        return this.httclient.put(this.url + "/setRole", { id: id });
+    }
     //Xóa Tài Khoản Khách Hàng
     deleteTK(id: string) {
         return this.httclient.delete(this.url + "/khachhangbyid/" + id)
+    }
+
+    //Get Chủ Đề
+    GetCD() {
+        return this.httclient.get(this.url + "/chude");
+    }
+
+    //Get Tác Giả
+    GetTG() {
+        return this.httclient.get(this.url + "/tacgia");
+    }
+    GetNXB() {
+        return this.httclient.get(this.url + "/nhaxuatban");
     }
 }
