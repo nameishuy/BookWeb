@@ -19,6 +19,18 @@ export class BookStoreAPI {
     getBanner(): Observable<any> {
         return this.httclient.get<Banner>(this.url + "/Banner")
     }
+    setBanner(anh1: any, anh2: any, anh3: any): Observable<any> {
+        let body = {
+            Anh1: anh1,
+            Anh2: anh2,
+            Anh3: anh3
+        }
+        return this.httclient.put<Banner>(this.url + "/Banner", body)
+    }
+
+    getdonhangforuser(id: string): Observable<any> {
+        return this.httclient.get<resDatHang>(this.url + "/DonHangbyidKH/" + id)
+    }
 
     postLogin(username: String, password: String): Observable<any> {
         return this.httclient.post<Account>(this.url + "/login", { Taikhoan: username, Matkhau: password });

@@ -43,6 +43,9 @@ export class AdminComponent implements OnInit {
   Soluongton: any = ''
   Giaban: any = ''
   NXB: any = ''
+  Anh1: any = ''
+  Anh2: any = ''
+  Anh3: any = ''
   ngOnInit(): void {
     this.Action_ngOnInit()
   }
@@ -76,7 +79,64 @@ export class AdminComponent implements OnInit {
       }
     }
   }
+  onFileSelected1(event: any) {
+    if (event.target.files) {
+      const reader = new FileReader()
+      reader.readAsDataURL(event.target.files[0])
+      reader.onload = (e) => {
+        this.Anh1 = e.target?.result
+      }
+    }
+  }
+  onFileSelected2(event: any) {
+    if (event.target.files) {
+      const reader = new FileReader()
+      reader.readAsDataURL(event.target.files[0])
+      reader.onload = (e) => {
+        this.Anh2 = e.target?.result
+      }
+    }
+  }
+  onFileSelected3(event: any) {
+    if (event.target.files) {
+      const reader = new FileReader()
+      reader.readAsDataURL(event.target.files[0])
+      reader.onload = (e) => {
+        this.Anh3 = e.target?.result
+      }
+    }
+  }
 
+  CapNhatBanner() {
+    let check = []
+    check.push(!(this.Anh1 == '')); check.push(!(this.Anh2 == '')); check.push(!(this.Anh3 == ''));
+
+    if (check.every(va => va === true)) {
+      this.bookapi.setBanner(this.Anh1, this.Anh2, this.Anh3).subscribe(da => {
+        if (da._id != null) {
+          alert("Cập Nhật Thành Công")
+        } else {
+          alert("Cập Nhật Không Thành Công")
+        }
+      })
+    } else {
+      alert("Vui Lòng Chọn Cả 3 Ảnh")
+    }
+  }
+
+  Reset() {
+    let a1 = "https://nxbphunu.com.vn/wp-content/uploads/2020/02/banner-hoi-sach.jpg"
+    let a2 = "https://amovietnam.vn/wp-content/uploads/2016/02/banner-doc-sach-vi-tuong-lai-amo-vietnam-2018.jpg"
+    let a3 = "https://pvm.com.vn/wp-content/uploads/2017/11/banner-sach.jpg"
+    this.bookapi.setBanner(a1, a2, a3).subscribe(da => {
+      if (da._id != null) {
+        alert("Khôi Phục Thành Công")
+      } else {
+        alert("Khôi Phục Không Thành Công")
+      }
+    });
+  }
+  
   InsertBook() {
     let check = []
     check.push(!(this.TenSach == '')); check.push(!(this.Giaban == '')); check.push(!(this.Mota == ''));
