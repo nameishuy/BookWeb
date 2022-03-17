@@ -204,51 +204,63 @@
                 <div class="Admin__Setting-Banner">
                     <h1>Banner</h1>
                     <div class="Setting__Banner">
+                        <div (click)="Reset()" class="Setting__Banner-Feature-Btn">
+                            Khôi Phục Mặc Định
+                        </div>
                         <div class="Setting__Banner-Feature">
                             <div>Banner 1</div>
-                            <input type="file" name="Banner1" id="">
+                            <input (change)="onFileSelected1($event)" type="file" name="Banner1" id="">
                         </div>
-                        <img src="https://i.pinimg.com/736x/86/54/42/8654429a4fbeb82f8210de503dc299ba.jpg" alt=""
-                            *ngIf="false">
-                        <div class="Setting__Banner-Feature-Btn" *ngIf="false">
-                            Cập Nhật
-                        </div>
+                        <img src="{{Anh1}}" alt="">
+
                     </div>
                     <div class="Setting__Banner">
                         <div class="Setting__Banner-Feature">
                             <div>Banner 2</div>
-                            <input type="file" name="Banner2" id="">
+                            <input (change)="onFileSelected2($event)" type="file" name="Banner2" id="">
                         </div>
-                        <img src="https://i.pinimg.com/736x/86/54/42/8654429a4fbeb82f8210de503dc299ba.jpg" alt=""
-                            *ngIf="false">
-                        <div class="Setting__Banner-Feature-Btn" *ngIf="false">
-                            Cập Nhật
-                        </div>
+                        <img src="{{Anh2}}" alt="">
+
                     </div>
                     <div class="Setting__Banner">
                         <div class="Setting__Banner-Feature">
                             <div>Banner 3</div>
-                            <input type="file" name="Banner3" id="">
+                            <input (change)="onFileSelected3($event)" type="file" name="Banner3" id="">
                         </div>
-                        <img src="https://i.pinimg.com/736x/86/54/42/8654429a4fbeb82f8210de503dc299ba.jpg" alt=""
-                            *ngIf="false">
+                        <img src="{{Anh3}}" alt="">
                     </div>
-                    <div class="Setting__Banner-Feature-Btn" *ngIf="false">
+                    <div (click)="CapNhatBanner()" class="Setting__Banner-Feature-Btn">
                         Cập Nhật
                     </div>
                 </div>
 
                 <div class="Admin__Setting-Author">
-                    <h1>Thêm Mới</h1>
+                    <h1>Thêm Tác Giả Mới</h1>
                     <div class="Add__Container">
                         <div class="AddAuthor">
                             <div>Tên Tác Giả</div>
                             <input type="text" name="" id="">
                         </div>
+                        <div class="AddAuthor">
+                            <div>Địa Chỉ</div>
+                            <input type="text" name="" id="">
+                        </div>
+                        <div class="AddAuthor">
+                            <div>Tiểu Sử</div>
+                            <input type="text" name="" id="">
+                        </div>
+                        <div class="AddAuthor">
+                            <div>Điện Thoại</div>
+                            <input type="text" name="" id="">
+                        </div>
                         <div class="Add__Btn">
                             Thêm
                         </div>
-                    </div>
+                    </div>                    
+                </div>
+
+                <div class="Admin__Setting-Author">
+                    <h1>Thêm Chủ Đề Mới</h1>                
                     <div class="Add__Container">
                         <div class="AddCategory">
                             <div>Chủ Đề</div>
@@ -260,6 +272,23 @@
                     </div>
                 </div>
                 
+                <div class="Admin__Setting-Author">
+                    <h1>Nhà Xuất Bản Mới</h1>
+                    <div class="Add__Container">
+                        <div class="AddAuthor">
+                            <div>Tên Nhà Xuất Bản</div>
+                            <input type="text" name="" id="">
+                        </div>                    
+                        <div class="AddAuthor">
+                            <div>Địa Chỉ</div>
+                            <input type="text" name="" id="">
+                        </div>                    
+                        <div class="AddAuthor">
+                            <div>Số Điện Thoại</div>
+                            <input type="text" name="" id="">
+                        </div>                    
+                    </div>                   
+                </div>
             </div>
         </mat-tab>
         <mat-tab label="Thêm Mới Sách">

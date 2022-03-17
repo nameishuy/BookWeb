@@ -12,6 +12,7 @@ export interface Book {
     TenTG: string;
 }
 export interface Banner {
+    _id: string,
     Anh1: string;
     Anh2: string;
     Anh3: string;
