@@ -4,9 +4,10 @@ import { Observable } from "rxjs";
 import { Account, reqRegister, resRegister } from "./Classes/Login";
 import { Banner, Book, Book1, BookSold, Category, resinsertbook, reqinsertbook, newBook, reqBookSoluongTon } from "./Classes/Book";
 import { reqprofile, resprofile } from "./Classes/profile";
-import { reqpass, respass } from './Classes/changepass'
+import { reqpass, respass } from './Classes/changepass';
 import { reqCTDonHang, resCTDonHang, resDatHang } from "./Classes/DonHang";
-
+import { resNXB } from "./Classes/NXB";
+import { resAuthor } from "./Classes/author";
 
 @Injectable({
     providedIn: 'root'
@@ -133,5 +134,20 @@ export class BookStoreAPI {
     }
     GetNXB() {
         return this.httclient.get(this.url + "/nhaxuatban");
+    }
+
+    //New NXB
+    AddNewNXB(bodyNXB:any){
+        return this.httclient.post<resNXB>(this.url + "/nhaxuatban",bodyNXB);
+    }
+
+    //New Category
+    AddNewCategory(TenChuDe:any){
+        return this.httclient.post<Category>(this.url + "/chude", TenChuDe);
+    }
+
+    //New Author
+    AddNewAuthor(bodyAuthor:any){
+        return this.httclient.post<resAuthor>(this.url + "/tacgia", bodyAuthor)
     }
 }

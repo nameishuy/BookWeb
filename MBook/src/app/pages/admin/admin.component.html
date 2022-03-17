@@ -239,21 +239,21 @@
                     <div class="Add__Container">
                         <div class="AddAuthor">
                             <div>Tên Tác Giả</div>
-                            <input type="text" name="" id="">
+                            <input type="text" name="" id="" [(ngModel)]="authorName">
                         </div>
                         <div class="AddAuthor">
                             <div>Địa Chỉ</div>
-                            <input type="text" name="" id="">
+                            <input type="text" name="" id="" [(ngModel)]="authorAddr">
                         </div>
                         <div class="AddAuthor">
                             <div>Tiểu Sử</div>
-                            <input type="text" name="" id="">
+                            <input type="text" name="" id="" [(ngModel)]="authorHist">
                         </div>
                         <div class="AddAuthor">
                             <div>Điện Thoại</div>
-                            <input type="text" name="" id="">
+                            <input type="text" name="" id="" [(ngModel)]="authorPhone">
                         </div>
-                        <div class="Add__Btn">
+                        <div class="Add__Btn" (click)="newAuthor()">
                             Thêm
                         </div>
                     </div>                    
@@ -264,9 +264,9 @@
                     <div class="Add__Container">
                         <div class="AddCategory">
                             <div>Chủ Đề</div>
-                            <input type="text" name="" id="">
+                            <input type="text" name="" id="" [(ngModel)]="category">
                         </div>
-                        <div class="Add__Btn">
+                        <div class="Add__Btn" (click)="newCategory()">
                             Thêm
                         </div>
                     </div>
@@ -277,16 +277,19 @@
                     <div class="Add__Container">
                         <div class="AddAuthor">
                             <div>Tên Nhà Xuất Bản</div>
-                            <input type="text" name="" id="">
+                            <input type="text" name="" id="inputNXB" [(ngModel)]="TenNXB">
                         </div>                    
                         <div class="AddAuthor">
                             <div>Địa Chỉ</div>
-                            <input type="text" name="" id="">
+                            <input type="text" name="" id="inputAddress" [(ngModel)]="DiaChi">
                         </div>                    
                         <div class="AddAuthor">
                             <div>Số Điện Thoại</div>
-                            <input type="text" name="" id="">
-                        </div>                    
+                            <input type="text" name="" id="inputPhone" [(ngModel)]="DienThoai">
+                        </div>
+                        <div class="Add__Btn" (click)="newNXB()">
+                            Thêm
+                        </div>                
                     </div>                   
                 </div>
             </div>

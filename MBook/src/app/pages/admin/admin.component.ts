@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { reqinsertbook, resinsertbook } from "../../services/Classes/Book";
+import { reqChuDe, reqinsertbook, resinsertbook } from "../../services/Classes/Book";
 import { BookStoreAPI } from 'src/app/services/bookstore.services';
-import { reqBookSoluongTon } from "../../services/Classes/Book"
+import { reqBookSoluongTon } from "../../services/Classes/Book";
+import { reqNXB } from 'src/app/services/Classes/NXB';
+import { reqAuthor } from 'src/app/services/Classes/author';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -46,6 +48,22 @@ export class AdminComponent implements OnInit {
   Anh1: any = ''
   Anh2: any = ''
   Anh3: any = ''
+
+  /** Biến của phần thêm mới nxb */
+  TenNXB:any;
+  DiaChi:any;
+  DienThoai:any;
+  
+  /** Biến của phần thêm mới chủ đề */
+  category:any;
+
+  /** Biến của phần thêm mới tác giả */
+  authorName:any;
+  authorAddr:any;
+  authorHist:any;
+  authorPhone:any;
+
+
   ngOnInit(): void {
     this.Action_ngOnInit()
   }
@@ -334,5 +352,49 @@ export class AdminComponent implements OnInit {
     this.idbook = idbook
     this.Product__Price = Price
     console.log()
+  }
+
+
+  /* Hàm cho chức năng thêm NXB */
+  newNXB(){
+    /* Các biến cho phần thêm mới nhà xuất bản */
+    if(this.TenNXB != '' && this.DiaChi != ''){
+      let newNXB= new reqNXB(this.TenNXB,this.DiaChi,this.DienThoai);
+      this.bookapi.AddNewNXB(newNXB).subscribe(data=>{
+
+        if(data.TenNXB != null) alert("Thêm mới thành công!");
+        else alert("Thêm mới thất bại");
+
+      });
+    }
+  }
+
+  newCategory(){
+
+    if(this.category != ''){
+
+      let newCategory = new reqChuDe(this.category);
+      this.bookapi.AddNewCategory(newCategory).subscribe(data=>{
+        
+        if(data.TenChuDe != null) alert("Thêm mới thành công!");
+        else alert("Thêm mới thất bại");
+
+      });
+    }
+  }
+
+  newAuthor(){
+
+    if(this.authorName != '' && this.authorHist != '' && this.authorAddr != ''){
+
+      let newAuthor = new reqAuthor(this.authorName,this.authorAddr,this.authorHist,this.authorPhone)
+
+      this.bookapi.AddNewAuthor(newAuthor).subscribe(data=>{
+                
+        if(data.TenTG != null) alert("Thêm mới thành công!");
+        else alert("Thêm mới thất bại");
+      })
+    }
+
   }
 }

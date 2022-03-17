@@ -83,7 +83,7 @@ export interface Book1 {
     TenNXB: string;
 }
 export interface Category {
-    id: string;
+    _id: string;
     TenChuDe: string;
 }
 
@@ -152,4 +152,12 @@ export class itemCart {
         return this.unitprice;
     }
 
+}
+
+export class reqChuDe{
+    TenChuDe:String = '';
+
+    constructor(TenChuDe:String){
+        this.TenChuDe = TenChuDe;
+    }
 }
