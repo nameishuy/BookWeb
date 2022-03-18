@@ -50,18 +50,18 @@ export class AdminComponent implements OnInit {
   Anh3: any = ''
 
   /** Biến của phần thêm mới nxb */
-  TenNXB:any;
-  DiaChi:any;
-  DienThoai:any;
-  
+  TenNXB: any;
+  DiaChi: any;
+  DienThoai: any;
+
   /** Biến của phần thêm mới chủ đề */
-  category:any;
+  category: any;
 
   /** Biến của phần thêm mới tác giả */
-  authorName:any;
-  authorAddr:any;
-  authorHist:any;
-  authorPhone:any;
+  authorName: any;
+  authorAddr: any;
+  authorHist: any;
+  authorPhone: any;
 
 
   ngOnInit(): void {
@@ -147,14 +147,10 @@ export class AdminComponent implements OnInit {
     let a2 = "https://amovietnam.vn/wp-content/uploads/2016/02/banner-doc-sach-vi-tuong-lai-amo-vietnam-2018.jpg"
     let a3 = "https://pvm.com.vn/wp-content/uploads/2017/11/banner-sach.jpg"
     this.bookapi.setBanner(a1, a2, a3).subscribe(da => {
-      if (da._id != null) {
-        alert("Khôi Phục Thành Công")
-      } else {
-        alert("Khôi Phục Không Thành Công")
-      }
     });
+    alert("Khôi Phục Thành Công")
   }
-  
+
   InsertBook() {
     let check = []
     check.push(!(this.TenSach == '')); check.push(!(this.Giaban == '')); check.push(!(this.Mota == ''));
@@ -356,42 +352,42 @@ export class AdminComponent implements OnInit {
 
 
   /* Hàm cho chức năng thêm NXB */
-  newNXB(){
+  newNXB() {
     /* Các biến cho phần thêm mới nhà xuất bản */
-    if(this.TenNXB != '' && this.DiaChi != ''){
-      let newNXB= new reqNXB(this.TenNXB,this.DiaChi,this.DienThoai);
-      this.bookapi.AddNewNXB(newNXB).subscribe(data=>{
+    if (this.TenNXB != '' && this.DiaChi != '') {
+      let newNXB = new reqNXB(this.TenNXB, this.DiaChi, this.DienThoai);
+      this.bookapi.AddNewNXB(newNXB).subscribe(data => {
 
-        if(data.TenNXB != null) alert("Thêm mới thành công!");
+        if (data.TenNXB != null) alert("Thêm mới thành công!");
         else alert("Thêm mới thất bại");
 
       });
     }
   }
 
-  newCategory(){
+  newCategory() {
 
-    if(this.category != ''){
+    if (this.category != '') {
 
       let newCategory = new reqChuDe(this.category);
-      this.bookapi.AddNewCategory(newCategory).subscribe(data=>{
-        
-        if(data.TenChuDe != null) alert("Thêm mới thành công!");
+      this.bookapi.AddNewCategory(newCategory).subscribe(data => {
+
+        if (data.TenChuDe != null) alert("Thêm mới thành công!");
         else alert("Thêm mới thất bại");
 
       });
     }
   }
 
-  newAuthor(){
+  newAuthor() {
 
-    if(this.authorName != '' && this.authorHist != '' && this.authorAddr != ''){
+    if (this.authorName != '' && this.authorHist != '' && this.authorAddr != '') {
 
-      let newAuthor = new reqAuthor(this.authorName,this.authorAddr,this.authorHist,this.authorPhone)
+      let newAuthor = new reqAuthor(this.authorName, this.authorAddr, this.authorHist, this.authorPhone)
 
-      this.bookapi.AddNewAuthor(newAuthor).subscribe(data=>{
-                
-        if(data.TenTG != null) alert("Thêm mới thành công!");
+      this.bookapi.AddNewAuthor(newAuthor).subscribe(data => {
+
+        if (data.TenTG != null) alert("Thêm mới thành công!");
         else alert("Thêm mới thất bại");
       })
     }
