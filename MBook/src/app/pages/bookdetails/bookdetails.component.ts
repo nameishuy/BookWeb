@@ -46,8 +46,7 @@ export class BookdetailsComponent implements OnInit {
     this.bookapi.get1Book(id).subscribe(data => {
       this.book = data
       this.unitprice = data[0].Giaban;
-      this.Soluongton = data[0].Soluongton;
-
+      this.Soluongton = data[0].Soluongton;   
     })
   }
 
