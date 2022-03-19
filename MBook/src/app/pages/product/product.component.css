@@ -57,7 +57,7 @@
 
 .Product__ListProduct {
     width: 70%;
-    box-shadow: 0 0 0.2rem 0 rgba(0, 0, 0, 0.582);
+    box-shadow: 0 0 0.2rem 0 rgba(119, 114, 114, 0.76);
     border-radius: 0.5rem;
     height: fit-content;
 }
@@ -74,7 +74,7 @@
     flex-wrap: wrap;
     align-items: center;
     margin: 20px 0 20px 0;
-    border-bottom: 1px solid rgba(151, 151, 151, 0.541);
+    border-bottom: 1px solid rgba(119, 114, 114, 0.76);
 }
     .Product__ListProduct-Sort h4 {
         font-weight: 600;
@@ -96,11 +96,11 @@
     border-radius: 0.5rem;
     cursor: pointer;
     margin: 20px 20px 20px 20px;
-    border: 1px solid rgba(0, 0, 0, 0.582);
+    border: 1px solid rgba(119, 114, 114, 0.76);
 }
 
 .Book:hover {
-    box-shadow: 0 0 10px 4px rgba(163, 163, 163, 0.733);
+    box-shadow: 0 0 10px 0 rgba(119, 114, 114, 0.76);
     transform: translateY(-10px) !important;
     transition: .5s;
 }

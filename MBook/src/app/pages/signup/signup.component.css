@@ -1,7 +1,7 @@
 
   .center {
     margin: 150px auto;
-    box-shadow: 0 0 20px 0 black;
+    box-shadow: 0 0 20px 0 rgba(165, 163, 163, 0.473);
     width: 400px;
     background: white;
     border-radius: 10px;
@@ -105,8 +105,7 @@
   }
   
   input[type="submit"]:hover {
-    background: linear-gradient(160deg, rgba(0, 0, 0, 0.705), rgba(167, 166, 166, 0.562));
-    transition: .5s;
+    background: linear-gradient(160deg, rgba(0, 0, 0, 0.342), rgba(167, 166, 166, 0.849));
   }
 
 @keyframes toRight{
