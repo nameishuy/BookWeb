@@ -39,15 +39,22 @@ export class AdminComponent implements OnInit {
   Categoryselected = 'option2';
   Authorselected = 'option2';
   NXBselected = 'option2';
-  img: any = ''
   TenSach: any = ''
   Mota: any = ''
   Soluongton: any = ''
   Giaban: any = ''
   NXB: any = ''
+
+  //Ảnh Hiển Thị Lên Html
+  img: any = ''
   Anh1: any = ''
   Anh2: any = ''
   Anh3: any = ''
+  //Này Để Làm Việc Với Api
+  imgChoose: any = ''
+  AnhChoose1: any = ''
+  AnhChoose2: any = ''
+  AnhChoose3: any = ''
 
   /** Biến của phần thêm mới nxb */
   TenNXB: any;
@@ -75,6 +82,7 @@ export class AdminComponent implements OnInit {
     this.CallChuDe()
     this.CallTacGia()
     this.CallNXB()
+ 
   }
   selectedCD(event: any) {
     this.IDCD = []
@@ -95,8 +103,10 @@ export class AdminComponent implements OnInit {
       reader.onload = (e) => {
         this.img = e.target?.result
       }
+      this.imgChoose = event.target
     }
   }
+
   onFileSelected1(event: any) {
     if (event.target.files) {
       const reader = new FileReader()
@@ -104,8 +114,10 @@ export class AdminComponent implements OnInit {
       reader.onload = (e) => {
         this.Anh1 = e.target?.result
       }
+      this.AnhChoose1 = event.target
     }
   }
+
   onFileSelected2(event: any) {
     if (event.target.files) {
       const reader = new FileReader()
@@ -113,8 +125,10 @@ export class AdminComponent implements OnInit {
       reader.onload = (e) => {
         this.Anh2 = e.target?.result
       }
+      this.AnhChoose2 = event.target
     }
   }
+
   onFileSelected3(event: any) {
     if (event.target.files) {
       const reader = new FileReader()
@@ -122,24 +136,63 @@ export class AdminComponent implements OnInit {
       reader.onload = (e) => {
         this.Anh3 = e.target?.result
       }
+      this.AnhChoose3 = event.target
     }
   }
 
   CapNhatBanner() {
-    let check = []
-    check.push(!(this.Anh1 == '')); check.push(!(this.Anh2 == '')); check.push(!(this.Anh3 == ''));
 
-    if (check.every(va => va === true)) {
-      this.bookapi.setBanner(this.Anh1, this.Anh2, this.Anh3).subscribe(da => {
-        if (da._id != null) {
-          alert("Cập Nhật Thành Công")
-        } else {
-          alert("Cập Nhật Không Thành Công")
-        }
+    if (this.AnhChoose1 != "") {
+      let formdata = new FormData();
+      for (let i = 0; i < this.AnhChoose1.files.length; i++) {
+        formdata.append("img", this.AnhChoose1.files[i]);
+      }
+      this.bookapi.UploadImage(formdata).subscribe(res => {
+        let linkAnh = "https://bookingapiiiii.herokuapp.com/open-image/" + res.data;
+        this.bookapi.set1Banner(linkAnh, "Anh1").subscribe(da => {
+          if (da._id != null) {
+            alert("Cập Nhật Thành Công")
+          } else {
+            alert("Cập Nhật Không Thành Công")
+          }
+        })
       })
-    } else {
-      alert("Vui Lòng Chọn Cả 3 Ảnh")
     }
+
+    if (this.AnhChoose2 != "") {
+      let formdata = new FormData();
+      for (let i = 0; i < this.AnhChoose2.files.length; i++) {
+        formdata.append("img", this.AnhChoose2.files[i]);
+      }
+      this.bookapi.UploadImage(formdata).subscribe(res => {
+        let linkAnh = "https://bookingapiiiii.herokuapp.com/open-image/" + res.data;
+        this.bookapi.set1Banner(linkAnh, "Anh2").subscribe(da => {
+          if (da._id != null) {
+            alert("Cập Nhật Thành Công")
+          } else {
+            alert("Cập Nhật Không Thành Công")
+          }
+        })
+      })
+    }
+
+    if (this.AnhChoose3 != "") {
+      let formdata = new FormData();
+      for (let i = 0; i < this.AnhChoose3.files.length; i++) {
+        formdata.append("img", this.AnhChoose3.files[i]);
+      }
+      this.bookapi.UploadImage(formdata).subscribe(res => {
+        let linkAnh = "https://bookingapiiiii.herokuapp.com/open-image/" + res.data;
+        this.bookapi.set1Banner(linkAnh, "Anh3").subscribe(da => {
+          if (da._id != null) {
+            alert("Cập Nhật Thành Công")
+          } else {
+            alert("Cập Nhật Không Thành Công")
+          }
+        })
+      })
+    }
+
   }
 
   Reset() {
@@ -151,41 +204,18 @@ export class AdminComponent implements OnInit {
     alert("Khôi Phục Thành Công")
   }
 
-  InsertBook() {
-    let check = []
-    check.push(!(this.TenSach == '')); check.push(!(this.Giaban == '')); check.push(!(this.Mota == ''));
-    check.push(!(this.img == '')); check.push(!(this.Soluongton == '')); check.push(!(this.IDCD == []));
-    check.push(!(this.IDNXB == '')); check.push(!(this.IDTG == '')); check.push(!(this.Giaban == 0));
-    check.push(!(this.Soluongton == 0));
-
-    if (check.every(va => va === true)) {
-      let body = new reqinsertbook(this.TenSach, this.Giaban, this.Mota, this.img, this.Soluongton, this.IDCD, this.IDNXB, this.IDTG);
-      this.bookapi.InsertBook(body).subscribe(da => {
-        if (da._id != null) {
-          alert("Thêm Thành Công")
-          this.GetHangTon();
-        } else {
-          alert("Thêm Thất Bại")
-        }
-
-      })
-    } else {
-      alert("Vui Lòng Điền Đầy Đủ Thông Tin");
-    }
-
-
-  }
-
   CallChuDe() {
     this.bookapi.GetCD().subscribe(data => {
       this.CD = data;
     })
   }
+
   CallTacGia() {
     this.bookapi.GetTG().subscribe(data => {
       this.TG = data
     })
   }
+
   CallNXB() {
     this.bookapi.GetNXB().subscribe(data => {
       this.NXB = data
@@ -264,6 +294,7 @@ export class AdminComponent implements OnInit {
     this.check = true;
     this.getAllTaiKhoan(this.check)
   }
+
   ChooseUser() {
     this.select = "Khách Hàng"
     this.check = false;
@@ -358,11 +389,14 @@ export class AdminComponent implements OnInit {
       let newNXB = new reqNXB(this.TenNXB, this.DiaChi, this.DienThoai);
       this.bookapi.AddNewNXB(newNXB).subscribe(data => {
 
-        if (data.TenNXB != null) alert("Thêm mới thành công!");
+        if (data.TenNXB != null) { alert("Thêm mới thành công!"); this.CallNXB() }
         else alert("Thêm mới thất bại");
 
       });
     }
+    this.TenNXB = ""
+    this.DiaChi = ""
+    this.DienThoai = ""
   }
 
   newCategory() {
@@ -372,11 +406,12 @@ export class AdminComponent implements OnInit {
       let newCategory = new reqChuDe(this.category);
       this.bookapi.AddNewCategory(newCategory).subscribe(data => {
 
-        if (data.TenChuDe != null) alert("Thêm mới thành công!");
+        if (data.TenChuDe != null) { alert("Thêm mới thành công!"); this.CallChuDe() }
         else alert("Thêm mới thất bại");
 
       });
     }
+    this.category = ""
   }
 
   newAuthor() {
@@ -387,10 +422,54 @@ export class AdminComponent implements OnInit {
 
       this.bookapi.AddNewAuthor(newAuthor).subscribe(data => {
 
-        if (data.TenTG != null) alert("Thêm mới thành công!");
+        if (data.TenTG != null) { alert("Thêm mới thành công!"); this.CallTacGia() }
         else alert("Thêm mới thất bại");
       })
     }
-
+    this.authorName = ""
+    this.authorAddr = ""
+    this.authorHist = ""
+    this.authorPhone = ""
   }
+
+  //Thêm Sách Mới
+  InsertBook() {
+    let check = []
+    check.push(!(this.TenSach == '')); check.push(!(this.Giaban == '')); check.push(!(this.Mota == ''));
+    check.push(!(this.imgChoose == '')); check.push(!(this.Soluongton == '')); check.push(!(this.IDCD == []));
+    check.push(!(this.IDNXB == '')); check.push(!(this.IDTG == '')); check.push(!(this.Giaban == 0));
+    check.push(!(this.Soluongton == 0));
+    console.log(check)
+    if (check.every(va => va === true)) {
+
+      let formdata = new FormData()
+      for (let i = 0; i < this.imgChoose.files.length; i++) {
+        formdata.append("img", this.imgChoose.files[i]);
+      }
+      this.bookapi.UploadImage(formdata).subscribe(res => {
+        let linkAnh = "https://bookingapiiiii.herokuapp.com/open-image/" + res.data;
+        let body = new reqinsertbook(this.TenSach, this.Giaban, this.Mota, linkAnh, this.Soluongton, this.IDCD, this.IDNXB, this.IDTG);
+        this.bookapi.InsertBook(body).subscribe(da => {
+          if (da._id != null) {
+            alert("Thêm Thành Công")
+            this.IDTG = ''
+            this.IDCD = []
+            this.IDNXB = ''
+            this.TenSach = ''
+            this.Mota = ''
+            this.imgChoose = ''
+            this.Giaban = 0
+            this.Soluongton = 0
+            this.GetHangTon();
+          } else {
+            alert("Thêm Thất Bại")
+          }
+
+        })
+      })
+    } else {
+      alert("Vui Lòng Điền Đầy Đủ Thông Tin");
+    }
+  }
+
 }

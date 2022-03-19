@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookStoreAPI } from '../../services/bookstore.services';
-import { resprofile, reqprofile } from '../../services/Classes/profile'
+import { resprofile, reqprofile, reqprofilenoimg } from '../../services/Classes/profile'
 import { reqpass, respass } from '../../services/Classes/changepass'
 @Component({
   selector: 'app-profile',
@@ -18,7 +18,8 @@ export class ProfileComponent implements OnInit {
   date: any;
 
   data: any
-  img: any = "https://firebasestorage.googleapis.com/v0/b/chat-1e086.appspot.com/o/default.jpg?alt=media&token=b2f7e2de-5a7e-4bd6-8c29-443015246589"
+  img: any = ""
+  imgchoose: any = ""
   resProfile: resprofile | undefined;
 
   matkhauhientai: any;
@@ -33,6 +34,7 @@ export class ProfileComponent implements OnInit {
       reader.onload = (e) => {
         this.img = e.target?.result
       }
+      this.imgchoose = event.target
     }
   }
 
@@ -63,19 +65,41 @@ export class ProfileComponent implements OnInit {
 
     if (check.every(isTrue)) {
       if (this.data.id != null) {
-        console.log(this.data.id)
-        let bodyProfile = new reqprofile(this.data.id, this.img, this.hovaten, this.Email, this.diachi, this.sdt, this.date);
-        this.bookstoreapi.putupdateprofile(bodyProfile).subscribe(
-          data => {
-            this.resProfile = data;
-            if (sessionStorage.getItem("UserLogin")) {
-              const UserLogin = JSON.parse(sessionStorage.getItem("UserLogin")!)
-              UserLogin.HoTen = data.HoTen;
-              sessionStorage.setItem("UserLogin", JSON.stringify(UserLogin));
-            }
-            alert(this.resProfile.Messenger);
+        if (!(this.imgchoose == "")) {
+          const formdata = new FormData();
+          for (let i = 0; i < this.imgchoose.files.length; i++) {
+            formdata.append("img", this.imgchoose.files[i]);
           }
-        )
+          this.bookstoreapi.UploadImage(formdata).subscribe(res => {
+            let linkAnh = "https://bookingapiiiii.herokuapp.com/open-image/" + res.data;
+            let bodyProfile = new reqprofile(this.data.id, linkAnh, this.hovaten, this.Email, this.diachi, this.sdt, this.date);
+            this.bookstoreapi.putupdateprofile(bodyProfile).subscribe(
+              data => {
+                this.resProfile = data;
+                if (sessionStorage.getItem("UserLogin")) {
+                  const UserLogin = JSON.parse(sessionStorage.getItem("UserLogin")!)
+                  UserLogin.HoTen = data.HoTen;
+                  sessionStorage.setItem("UserLogin", JSON.stringify(UserLogin));
+                }
+                alert(this.resProfile.Messenger);
+              }
+            )
+          })
+        } else {
+          let bodyProfilenoimg = new reqprofilenoimg(this.data.id, this.hovaten, this.Email, this.diachi, this.sdt, this.date);
+          this.bookstoreapi.putupdateprofile(bodyProfilenoimg).subscribe(
+            data => {
+              this.resProfile = data;
+              if (sessionStorage.getItem("UserLogin")) {
+                const UserLogin = JSON.parse(sessionStorage.getItem("UserLogin")!)
+                UserLogin.HoTen = data.HoTen;
+                sessionStorage.setItem("UserLogin", JSON.stringify(UserLogin));
+              }
+              alert(this.resProfile.Messenger);
+            }
+          )
+        }
+
       }
     } else {
       alert("Vui Lòng Điền Đầy Đủ Thông Tin")

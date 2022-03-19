@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Account, reqRegister, resRegister } from "./Classes/Login";
 import { Banner, Book, Book1, BookSold, Category, resinsertbook, reqinsertbook, newBook, reqBookSoluongTon } from "./Classes/Book";
-import { reqprofile, resprofile } from "./Classes/profile";
+import { resimg, resprofile } from "./Classes/profile";
 import { reqpass, respass } from './Classes/changepass';
 import { reqCTDonHang, resCTDonHang, resDatHang } from "./Classes/DonHang";
 import { resNXB } from "./Classes/NXB";
@@ -28,6 +28,12 @@ export class BookStoreAPI {
         }
         return this.httclient.put<Banner>(this.url + "/Banner", body)
     }
+
+    set1Banner(anh: any, url: string): Observable<any> {
+        let body = { "Image": anh }
+        return this.httclient.put<Banner>(this.url + "/Banner1/" + url, body)
+    }
+
 
     getdonhangforuser(id: string): Observable<any> {
         return this.httclient.get<resDatHang>(this.url + "/DonHangbyidKH/" + id)
@@ -77,8 +83,12 @@ export class BookStoreAPI {
     getProfile(id: string): Observable<any> {
         return this.httclient.get(this.url + "/khachhangbyid/" + id);
     }
+    //
+    UploadImage(body: FormData) {
+        return this.httclient.post<resimg>(this.url + "/upload-image", body);
+    }
     // cập nhật tài khoản put 
-    putupdateprofile(bodyProfile: reqprofile) {
+    putupdateprofile(bodyProfile: any) {
 
         return this.httclient.put<resprofile>(this.url + "/khachhang", bodyProfile);
     }
@@ -137,17 +147,17 @@ export class BookStoreAPI {
     }
 
     //New NXB
-    AddNewNXB(bodyNXB:any){
-        return this.httclient.post<resNXB>(this.url + "/nhaxuatban",bodyNXB);
+    AddNewNXB(bodyNXB: any) {
+        return this.httclient.post<resNXB>(this.url + "/nhaxuatban", bodyNXB);
     }
 
     //New Category
-    AddNewCategory(TenChuDe:any){
+    AddNewCategory(TenChuDe: any) {
         return this.httclient.post<Category>(this.url + "/chude", TenChuDe);
     }
 
     //New Author
-    AddNewAuthor(bodyAuthor:any){
+    AddNewAuthor(bodyAuthor: any) {
         return this.httclient.post<resAuthor>(this.url + "/tacgia", bodyAuthor)
     }
 }
