@@ -64,7 +64,7 @@
         <div class="HistoryPay__Title-Setting">Thiết Lập</div>
     </div>
     <div class="HistoryPay__Body">
-        <div class="HistoryPay__Details" *ngFor="let donhang of ListDonHang">
+        <div class="HistoryPay__Details" *ngFor="let donhang of ListDonHang | paginate: { itemsPerPage: 5, currentPage: p }">
 
             <div class="HistoryPay__Bill-BillID">{{donhang._id}}</div>
             <div class="HistoryPay__Bill-Username" *ngIf="donhang.Dathanhtoan &&donhang.Tinhtranggiaohang"><span
@@ -82,6 +82,8 @@
                 </div>
             </div>
         </div>
+        <pagination-controls class="my-pagination" (pageChange)="p = $event">
+        </pagination-controls>
     </div>
 
 </div>
