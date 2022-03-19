@@ -295,6 +295,7 @@
                 </div>
             </div>
         </mat-tab>
+
         <mat-tab label="Thêm Mới Sách">
             <div class="AddNewBook__Container">
                 <div class="AddNewBook__Body">
@@ -316,13 +317,10 @@
                     </div>
                     <div class="AddNewBook__Body-BookCategory">
                         <span>Thể Loại: </span>
-                        <mat-form-field appearance="fill">
-                            <mat-label>Select an option</mat-label>
-                            <mat-select (selectionChange)="selectedCD($event.value)" [(value)]="Categoryselected">
-                                <mat-option *ngFor="let chude of CD" [value]="chude._id">{{chude.TenChuDe}}</mat-option>
-                            </mat-select>
-                        </mat-form-field>
                     </div>
+                    <ng-multiselect-dropdown [placeholder]="'Chọn Chủ Đề'" [settings]="dropdownSettings"
+                        [data]="dropdownList"  (onDeSelect)="onItemDeSelectCD($event)" (onSelect)="onItemSelectCD($event)">
+                    </ng-multiselect-dropdown>
                     <div class="AddNewBook__Body-BookAuthor">
                         <span>Tác Giả: </span>
                         <mat-form-field appearance="fill">

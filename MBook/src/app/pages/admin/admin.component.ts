@@ -5,6 +5,7 @@ import { BookStoreAPI } from 'src/app/services/bookstore.services';
 import { reqBookSoluongTon } from "../../services/Classes/Book";
 import { reqNXB } from 'src/app/services/Classes/NXB';
 import { reqAuthor } from 'src/app/services/Classes/author';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -69,7 +70,10 @@ export class AdminComponent implements OnInit {
   authorAddr: any;
   authorHist: any;
   authorPhone: any;
-
+  //Multi Select
+  dropdownList: any;
+  selectedItems = [];
+  dropdownSettings = {};
 
   ngOnInit(): void {
     this.Action_ngOnInit()
@@ -82,19 +86,36 @@ export class AdminComponent implements OnInit {
     this.CallChuDe()
     this.CallTacGia()
     this.CallNXB()
- 
+
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: '_id',
+      textField: 'TenChuDe',
+      itemsShowLimit: 5,
+      enableCheckAll: false,
+      searchPlaceholderText: "Search Here",
+      allowSearchFilter: true
+    };
   }
-  selectedCD(event: any) {
-    this.IDCD = []
-    this.IDCD.push(event);
+
+  onItemSelectCD(item: any) {
+    this.IDCD.push(item._id);
   }
+  
+  onItemDeSelectCD(item: any) {
+    for (let i = 0; i < this.IDCD.length; i++) {
+      if (this.IDCD[i] == item._id) {
+        this.IDCD.splice(i, 1);
+      }
+    }
+  }
+
   selectedTG(event: any) {
     this.IDTG = event
   }
   selectedNXB(event: any) {
     this.IDNXB = event
   }
-
 
   onFileSelected(event: any) {
     if (event.target.files) {
@@ -206,7 +227,7 @@ export class AdminComponent implements OnInit {
 
   CallChuDe() {
     this.bookapi.GetCD().subscribe(data => {
-      this.CD = data;
+      this.dropdownList = data;
     })
   }
 

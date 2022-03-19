@@ -13,7 +13,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import {MatTabsModule} from '@angular/material/tabs';
-
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { HeaderComponent } from './sharepage/header/header.component';
 import { FooterComponent } from './sharepage/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -60,7 +60,8 @@ import { HistorypayComponent } from './pages/historypay/historypay.component';
     Ng2SearchPipeModule,
     NgxPaginationModule,
     Ng2OrderModule,
-    MatTabsModule
+    MatTabsModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [AuthGuard, isLogined],
   bootstrap: [AppComponent]
