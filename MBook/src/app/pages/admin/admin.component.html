@@ -109,11 +109,18 @@
             </div>
 
             <div class="Admin__Account-Body">
+                <div class="Admin__Account-Empty" *ngIf="!user">
+                    <div class="Admin__Account-Empty-image">
+                        <img src="https://i.pinimg.com/originals/ec/0c/0c/ec0c0c652f7a9fb965bf08f45c4403fe.gif" alt="">
+                    </div>
+                    <span>Hiện chưa có thành viên nào đăng ký</span>
+                </div>
                 <div class="Admin__Account-Account-Details"
                     *ngFor="let user of user | paginate: { itemsPerPage: 3, currentPage: p, id: 'user'  }">
                     <div class="Checkbox__Account" *ngIf="!user.Role" (click)="SetRole(user._id)">
                         <input type="checkbox" name="" class="checkbox" id="checkbox__account">
                     </div>
+                    <div class="Checkbox__Account" *ngIf="user.Role"></div>
                     <div class="User__username">{{user.Taikhoan}}</div>
                     <div class="User__email" *ngIf="user.Email !=null">{{user.Email}}</div>
                     <div class="User__email" *ngIf="user.Email ==null">Chưa Cập Nhật Email</div>
@@ -191,6 +198,9 @@
                             (click)="showDialogChangeDetailsProduct(book.id,book.Giaban)">
                             Thay Đổi
                         </div>
+                        <div class="Bill__Setting-delete">
+                            Xóa Sách
+                        </div>
                     </div>
                 </div>
                 <pagination-controls class="my-pagination" (pageChange)="pHangTon = $event" id="hangton">
@@ -235,7 +245,7 @@
 
                 <div class="Admin__Setting-AddNew">
                     <div class="Admin__Setting-Author">
-                        <h1>Thêm Tác Giả Mới</h1>
+                        <h1>Tác Giả</h1>
                         <div class="Add__Container">
                             <div class="AddAuthor">
                                 <div>Tên Tác Giả</div>
@@ -257,10 +267,24 @@
                                 Thêm
                             </div>
                         </div>
+                        <div class="Delete__Container">
+                            <label for="author">Chọn Tác Giả: </label>
+    
+                            <select name="author" id="category">
+                              <option value="volvo">Volvo</option>
+                              <option value="saab">Saab</option>
+                              <option value="mercedes">Mercedes</option>
+                              <option value="audi">Audi</option>
+                            </select>
+
+                            <div class="Delete__Btn">
+                                Xóa Tác Giả
+                            </div>
+                        </div>
                     </div>
 
                     <div class="Admin__Setting-Author">
-                        <h1>Thêm Chủ Đề Mới</h1>
+                        <h1>Chủ Đề</h1>
                         <div class="Add__Container">
                             <div class="AddCategory">
                                 <div>Chủ Đề</div>
@@ -270,10 +294,24 @@
                                 Thêm
                             </div>
                         </div>
+                        <div class="Delete__Container">
+                            <label for="category">Chọn Chủ Đề: </label>
+    
+                            <select name="category" id="category">
+                              <option value="volvo">Volvo</option>
+                              <option value="saab">Saab</option>
+                              <option value="mercedes">Mercedes</option>
+                              <option value="audi">Audi</option>
+                            </select>
+
+                            <div class="Delete__Btn">
+                                Xóa Chủ Đề
+                            </div>
+                        </div>
                     </div>
 
                     <div class="Admin__Setting-Author">
-                        <h1>Nhà Xuất Bản Mới</h1>
+                        <h1>Nhà Xuất Bản</h1>
                         <div class="Add__Container">
                             <div class="AddAuthor">
                                 <div>Tên Nhà Xuất Bản</div>
@@ -291,6 +329,20 @@
                                 Thêm
                             </div>
                         </div>
+                        <div class="Delete__Container">
+                            <label for="nxb">Chọn NXB: </label>
+    
+                            <select name="nxb" id="category">
+                              <option value="volvo">Volvo</option>
+                              <option value="saab">Saab</option>
+                              <option value="mercedes">Mercedes</option>
+                              <option value="audi">Audi</option>
+                            </select>
+
+                            <div class="Delete__Btn">
+                                Xóa NXB
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -299,120 +351,65 @@
         <mat-tab label="Thêm Mới Sách">
             <div class="AddNewBook__Container">
                 <div class="AddNewBook__Body">
-                    <div class="AddNewBook__Body-BookName">
-                        <span>Tên Sách: </span>
-                        <textarea name="" id="" cols="25" rows="5" [required]="true" [(ngModel)]="TenSach"></textarea>
-                    </div>
-                    <div class="AddNewBook__Body-BookName">
-                        <span>Mô Tả: </span>
-                        <textarea name="" id="" cols="25" rows="5" [required]="true" [(ngModel)]="Mota"></textarea>
-                    </div>
-                    <div class="AddNewBook__Body-BookName">
-                        <span>Giá: </span>
-                        <input type="number" [required]="true" [(ngModel)]="Giaban">
-                    </div>
-                    <div class="AddNewBook__Body-BookName">
-                        <span>số Lượng: </span>
-                        <input type="number" [required]="true" [(ngModel)]="Soluongton">
-                    </div>
-                    <div class="AddNewBook__Body-BookCategory">
-                        <span>Thể Loại: </span>
-                    </div>
-                    <ng-multiselect-dropdown [placeholder]="'Chọn Chủ Đề'" [settings]="dropdownSettings"
-                        [data]="dropdownList" (onDeSelect)="onItemDeSelectCD($event)"
-                        (onSelect)="onItemSelectCD($event)">
-                    </ng-multiselect-dropdown>
-                    <div class="AddNewBook__Body-BookAuthor">
-                        <span>Tác Giả: </span>
-                        <mat-form-field appearance="fill">
-                            <mat-label>Select an option</mat-label>
-                            <mat-select (selectionChange)="selectedTG($event.value)" [(value)]="Authorselected">
-                                <mat-option *ngFor="let tacgia of TG" [value]="tacgia._id">{{tacgia.TenTG}}</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="AddNewBook__Body-BookAuthor">
-                        <span>Nhà Xuất Bản: </span>
-                        <mat-form-field appearance="fill">
-                            <mat-label>Select an option</mat-label>
-                            <mat-select (selectionChange)="selectedNXB($event.value)" [(value)]="NXBselected">
-                                <mat-option *ngFor="let nhaxuatban of NXB" [value]="nhaxuatban._id">
-                                    {{nhaxuatban.TenNXB}}</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="AddNewBook__Body-BookImage">
-                        <span>Ảnh: </span>
-                        <input type="file" accept="image/*" (change)="onFileSelected($event)">
-                        <div class="AddNewBook__Body-Image" *ngIf="true">
-                            <img src="{{img}}" alt="Demo Ảnh">
+                    <div>
+                        <div class="AddNewBook__Body-BookName">
+                            <span>Tên Sách: </span>
+                            <textarea name="" id="" cols="17" rows="5" [required]="true" [(ngModel)]="TenSach"></textarea>
+                        </div>
+                        <div class="AddNewBook__Body-BookName">
+                            <span>Mô Tả: </span>
+                            <textarea name="" id="" cols="17" rows="5" [required]="true" [(ngModel)]="Mota"></textarea>
+                        </div>
+                        <div class="AddNewBook__Body-BookName">
+                            <span>Giá: </span>
+                            <input type="number" [required]="true" [(ngModel)]="Giaban">
+                        </div>
+                        <div class="AddNewBook__Body-BookName">
+                            <span>số Lượng: </span>
+                            <input type="number" [required]="true" [(ngModel)]="Soluongton">
                         </div>
                     </div>
-                    <div (click)="InsertBook()" class="AddNewBook__Body-BtnAdd">
-                        Thêm Sách
+                    <div>
+                        <div class="AddNewBook__Body-BookCategory">
+                            <span>Thể Loại: </span>
+                            <ng-multiselect-dropdown [placeholder]="'Chọn Chủ Đề'" [settings]="dropdownSettings"
+                                [data]="dropdownList" (onDeSelect)="onItemDeSelectCD($event)"
+                                (onSelect)="onItemSelectCD($event)">
+                            </ng-multiselect-dropdown>
+                        </div>
+                        <div class="AddNewBook__Body-BookAuthor">
+                            <span>Tác Giả: </span>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Select an option</mat-label>
+                                <mat-select (selectionChange)="selectedTG($event.value)" [(value)]="Authorselected">
+                                    <mat-option *ngFor="let tacgia of TG" [value]="tacgia._id">{{tacgia.TenTG}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="AddNewBook__Body-BookAuthor">
+                            <span>Nhà Xuất Bản: </span>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Select an option</mat-label>
+                                <mat-select (selectionChange)="selectedNXB($event.value)" [(value)]="NXBselected">
+                                    <mat-option *ngFor="let nhaxuatban of NXB" [value]="nhaxuatban._id">
+                                        {{nhaxuatban.TenNXB}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="AddNewBook__Body-BookImage">
+                            <span>Ảnh: </span>
+                            <input type="file" accept="image/*" (change)="onFileSelected($event)">
+                            <div class="AddNewBook__Body-Image" *ngIf="img">
+                                <img src="{{img}}" alt="Demo Ảnh">
+                            </div>
+                        </div>
+                        <div (click)="InsertBook()" class="AddNewBook__Body-BtnAdd">
+                            Thêm Sách
+                        </div>
                     </div>
                 </div>
             </div>
         </mat-tab>
-
-        <mat-tab label="Chỉnh Sửa Sách">
-            <div class="AddNewBook__Container">
-                <div class="AddNewBook__Body">
-                    <div class="AddNewBook__Body-BookName">
-                        <span>Tên Sách: </span>
-                        <textarea name="" id="" cols="25" rows="5" [required]="true" [(ngModel)]="TenSach"></textarea>
-                    </div>
-                    <div class="AddNewBook__Body-BookName">
-                        <span>Mô Tả: </span>
-                        <textarea name="" id="" cols="25" rows="5" [required]="true" [(ngModel)]="Mota"></textarea>
-                    </div>
-                    <div class="AddNewBook__Body-BookName">
-                        <span>Giá: </span>
-                        <input type="number" [required]="true" [(ngModel)]="Giaban">
-                    </div>
-                    <div class="AddNewBook__Body-BookName">
-                        <span>số Lượng: </span>
-                        <input type="number" [required]="true" [(ngModel)]="Soluongton">
-                    </div>
-                    <div class="AddNewBook__Body-BookCategory">
-                        <span>Thể Loại: </span>
-                    </div>
-                    <ng-multiselect-dropdown [placeholder]="'Chọn Chủ Đề'" [settings]="dropdownSettings"
-                        [data]="dropdownList" (onDeSelect)="onItemDeSelectCD($event)"
-                        (onSelect)="onItemSelectCD($event)">
-                    </ng-multiselect-dropdown>
-                    <div class="AddNewBook__Body-BookAuthor">
-                        <span>Tác Giả: </span>
-                        <mat-form-field appearance="fill">
-                            <mat-label>Select an option</mat-label>
-                            <mat-select (selectionChange)="selectedTG($event.value)" [(value)]="Authorselected">
-                                <mat-option *ngFor="let tacgia of TG" [value]="tacgia._id">{{tacgia.TenTG}}</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="AddNewBook__Body-BookAuthor">
-                        <span>Nhà Xuất Bản: </span>
-                        <mat-form-field appearance="fill">
-                            <mat-label>Select an option</mat-label>
-                            <mat-select (selectionChange)="selectedNXB($event.value)" [(value)]="NXBselected">
-                                <mat-option *ngFor="let nhaxuatban of NXB" [value]="nhaxuatban._id">
-                                    {{nhaxuatban.TenNXB}}</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="AddNewBook__Body-BookImage">
-                        <span>Ảnh: </span>
-                        <input type="file" accept="image/*" (change)="onFileSelected($event)">
-                        <div class="AddNewBook__Body-Image" *ngIf="true">
-                            <img src="{{img}}" alt="Demo Ảnh">
-                        </div>
-                    </div>
-                    <div class="AddNewBook__Body-BtnAdd">
-                        Cập Nhật
-                    </div>
-                </div>
-            </div>
-        </mat-tab>
-
     </mat-tab-group>
 </div>

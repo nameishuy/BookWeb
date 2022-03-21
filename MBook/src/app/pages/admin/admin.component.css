@@ -110,6 +110,7 @@ mat-tab-group {
   width: fit-content;
 }
 .Bill__Setting-details,
+.Bill__Setting-delete,
 .User__setting-deleteAccount,
 .DeleteAccount__Setting-details,
 .Setting__Banner-Feature-Btn,
@@ -120,6 +121,10 @@ mat-tab-group {
   padding: 5px 10px;
   cursor: pointer;
   transition: 1s;
+}
+
+.Bill__Setting-details{
+  margin-right: 10px;
 }
 
 .DeleteAccount__Setting,
@@ -135,6 +140,7 @@ mat-tab-group {
 .Bill__Setting-details:hover,
 .DeleteAccount__Setting-details:hover,
 .Setting__Banner-Feature-Btn:hover,
+.Bill__Setting-delete:hover,
 .DialogChangeDetailsProduct__Setting-details:Hover{
   background-color: orange;
   box-shadow: 0 0 10px 0 orange;
@@ -338,11 +344,12 @@ mat-form-field{
 .AddNewBook__Body{
   margin: 50px auto;
   padding: 50px;
+  width: 90% !important;
   border: 1px solid rgba(109, 109, 109, 0.308);
   height: 100% !important;
   border-radius: .5rem;
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row wrap;
   justify-content: space-around;
   font-weight: 600;
 }
@@ -389,7 +396,15 @@ mat-form-field{
   margin-top: 30px;
   width: fit-content;
 }
-.Add__Btn{
+.Delete__Container{
+  display: flex;
+  flex-flow: column nowrap;
+}
+#category{
+  height: 30px;
+}
+.Add__Btn,
+.Delete__Btn{
   cursor: pointer;
   padding: 5px;
   color: white;
@@ -397,13 +412,42 @@ mat-form-field{
   width: fit-content;
   border-radius: .3rem;
   margin: 10px 0;
+  transition: 1s;
+}
+.Add__Btn:hover,
+.Delete__Btn:hover{
+  background-color: rgb(255, 166, 0);
+  box-shadow: 0 0 5px 0 rgb(255, 166, 0);
 }
 .Admin__Setting-AddNew{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
-
+.Admin__Account-Empty{
+  margin: 30px auto;
+  width: fit-content;
+  height: 180px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  animation: toVisible 2s 1 forwards;
+}
+  .Admin__Account-Empty-image{
+      width: 150px;
+      height: 150px;
+      overflow: hidden;
+      border-radius: 10rem;
+  }
+      .Admin__Account-Empty-image img{
+          width: 100%;
+          height: 100%;
+      }
+      .Admin__Account-Empty span{
+          color: red;
+          font-weight: 600;
+      }
 /* Responsive */
 @media screen and (max-width: 415px) {
   .Admin__Container {

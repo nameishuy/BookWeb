@@ -75,9 +75,17 @@ export class AdminComponent implements OnInit {
   selectedItems = [];
   dropdownSettings = {};
 
+
+  selectedValue: string = '';
+  foods = [
+    'steak-0',
+    'pizza-1',
+    'tacos-2'
+  ];
   ngOnInit(): void {
     this.Action_ngOnInit()
   }
+
 
   Action_ngOnInit() {
     this.getAllTaiKhoan(this.check)
@@ -258,7 +266,6 @@ export class AdminComponent implements OnInit {
 
     if (check.every(va => va === true)) {
       let body = new reqBookSoluongTon(this.idbook, (Number(this.SolnTon)), this.Product__Price)
-      console.log(body)
       this.bookapi.CapNhatSoLuongTon(body).subscribe(data => {
         if (data.Tensach != null) {
           alert("Cập Nhật Thành Công")
@@ -384,7 +391,6 @@ export class AdminComponent implements OnInit {
     if (checkk) {
       this.arrayid.push(id)
     }
-    console.log(this.arrayid);
   }
 
   CapQuyen() {
@@ -399,7 +405,6 @@ export class AdminComponent implements OnInit {
     dialog.style.display = "block";
     this.idbook = idbook
     this.Product__Price = Price
-    console.log()
   }
 
 
@@ -460,7 +465,6 @@ export class AdminComponent implements OnInit {
     check.push(!(this.imgChoose == '')); check.push(!(this.Soluongton == '')); check.push(!(this.IDCD == []));
     check.push(!(this.IDNXB == '')); check.push(!(this.IDTG == '')); check.push(!(this.Giaban == 0));
     check.push(!(this.Soluongton == 0));
-    console.log(check)
     if (check.every(va => va === true)) {
 
       let formdata = new FormData()
