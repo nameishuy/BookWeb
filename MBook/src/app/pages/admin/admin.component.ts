@@ -14,6 +14,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 export class AdminComponent implements OnInit {
 
   constructor(private bookapi: BookStoreAPI) { }
+  multiselect: any
   Search: any = '';
   user: any = ''
   DonHanglist: any = ''
@@ -75,7 +76,6 @@ export class AdminComponent implements OnInit {
   selectedItems = [];
   dropdownSettings = {};
 
-
   selectedValue: string = '';
   foods = [
     'steak-0',
@@ -109,7 +109,7 @@ export class AdminComponent implements OnInit {
   onItemSelectCD(item: any) {
     this.IDCD.push(item._id);
   }
-  
+
   onItemDeSelectCD(item: any) {
     for (let i = 0; i < this.IDCD.length; i++) {
       if (this.IDCD[i] == item._id) {
@@ -126,7 +126,9 @@ export class AdminComponent implements OnInit {
   }
 
   onFileSelected(event: any) {
-    if (event.target.files) {
+    if (!event.target.files[0].name.match(/\.(png|jpg)$/)) {
+      alert("Không hỗ trợ file này")
+    } else {
       const reader = new FileReader()
       reader.readAsDataURL(event.target.files[0])
       reader.onload = (e) => {
@@ -137,7 +139,9 @@ export class AdminComponent implements OnInit {
   }
 
   onFileSelected1(event: any) {
-    if (event.target.files) {
+    if (!event.target.files[0].name.match(/\.(png|jpg)$/)) {
+      alert("Không hỗ trợ file này")
+    } else {
       const reader = new FileReader()
       reader.readAsDataURL(event.target.files[0])
       reader.onload = (e) => {
@@ -148,7 +152,9 @@ export class AdminComponent implements OnInit {
   }
 
   onFileSelected2(event: any) {
-    if (event.target.files) {
+    if (!event.target.files[0].name.match(/\.(png|jpg)$/)) {
+      alert("Không hỗ trợ file này")
+    } else {
       const reader = new FileReader()
       reader.readAsDataURL(event.target.files[0])
       reader.onload = (e) => {
@@ -159,7 +165,9 @@ export class AdminComponent implements OnInit {
   }
 
   onFileSelected3(event: any) {
-    if (event.target.files) {
+    if (!event.target.files[0].name.match(/\.(png|jpg)$/)) {
+      alert("Không hỗ trợ file này")
+    } else {
       const reader = new FileReader()
       reader.readAsDataURL(event.target.files[0])
       reader.onload = (e) => {
@@ -339,6 +347,10 @@ export class AdminComponent implements OnInit {
     this.bookapi.GetTk(Role).subscribe(data => {
       this.user = data
       this.p = 1
+    }, err => {
+      if (err.status == 404) {
+        this.user = []
+      }
     })
   }
 
@@ -477,15 +489,18 @@ export class AdminComponent implements OnInit {
         this.bookapi.InsertBook(body).subscribe(da => {
           if (da._id != null) {
             alert("Thêm Thành Công")
-            this.IDTG = ''
-            this.IDCD = []
-            this.IDNXB = ''
+            this.Categoryselected = 'option2';
+            this.Authorselected = 'option2';
+            this.NXBselected = 'option2';
             this.TenSach = ''
             this.Mota = ''
             this.imgChoose = ''
-            this.Giaban = 0
-            this.Soluongton = 0
+            this.Giaban = ''
+            this.Soluongton = ''
+            this.img = ''
+            this.multiselect = []
             this.GetHangTon();
+            document.getElementsByTagName('input')[16].value = ''
           } else {
             alert("Thêm Thất Bại")
           }
@@ -497,4 +512,59 @@ export class AdminComponent implements OnInit {
     }
   }
 
+  //Xóa Sách
+  XoaSach(id: string) {
+    this.bookapi.DeteleBook(id).subscribe(data => {
+      if (data != null) {
+        this.GetHangTon()
+        alert("Xóa Thành Công")
+      } else {
+        alert("Xóa Thất Bại")
+      }
+    })
+  }
+  XoaChuDe() {
+    let id = document.getElementsByTagName('select')[1].value
+    if (id == "--Chọn Chủ Đề Muốn Xóa--") {
+      alert("Vui Lòng Chọn Chủ Đề")
+    } else {
+      if (confirm("Xóa Chủ Đề Này Có Thể Sẽ Xóa Luôn Những Sách Có Liên Quan\n Bạn Chắc Không")) {
+        this.bookapi.DeteleCD(id).subscribe(data => {
+          alert("Đã Xóa Chủ Đề Và Tất Cả Sách Có Liên Quan")
+          this.CallChuDe()
+          this.GetHangTon()
+        })
+      }
+    }
+  }
+  XoaTG() {
+    let id = document.getElementsByTagName('select')[0].value
+    if (id == "--Chọn Tác Giả Muốn Xóa--") {
+      alert("Vui Lòng Chọn Tác Giả")
+    } else {
+      if (confirm("Xóa Tác Giả Này Có Thể Sẽ Xóa Luôn Những Sách Có Liên Quan\n Bạn Chắc Không")) {
+        this.bookapi.DeteleTG(id).subscribe(data => {
+          console.log(data)
+          alert("Đã Xóa Tác Giả Và Tất Cả Sách Có Liên Quan")
+          this.CallTacGia()
+          this.GetHangTon()
+        })
+      }
+
+    }
+  }
+  XoaNXB() {
+    let id = document.getElementsByTagName('select')[2].value
+    if (id == "--Chọn Nhà Xuất Bản Muốn Xóa--") {
+      alert("Vui Lòng Chọn Nhà Xuất Bản")
+    } else {
+      if (confirm("Xóa Nhà Xuất Bản Này Có Thể Sẽ Xóa Luôn Những Sách Có Liên Quan\n Bạn Chắc Không")) {
+        this.bookapi.DeteleNXB(id).subscribe(data => {
+          alert("Đã Xóa Nhà Xuất Bản Và Tất Cả Sách Có Liên Quan")
+          this.CallNXB()
+          this.GetHangTon()
+        })
+      }
+    }
+  }
 }
