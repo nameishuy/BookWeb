@@ -1,9 +1,3 @@
-export interface BookSold {
-    id: string;
-    Tensach: string;
-    Anh: string;
-    TenTG: string;
-}
 export interface Book {
     id: string;
     Tensach: string;
@@ -154,10 +148,10 @@ export class itemCart {
 
 }
 
-export class reqChuDe{
-    TenChuDe:String = '';
+export class reqChuDe {
+    TenChuDe: String = '';
 
-    constructor(TenChuDe:String){
+    constructor(TenChuDe: String) {
         this.TenChuDe = TenChuDe;
     }
 }
