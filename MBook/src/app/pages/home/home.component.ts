@@ -18,17 +18,12 @@ export class HomeComponent implements OnInit {
   }
 
   getbooksold1() {
-    this.bookstore.getbooksold1().subscribe(data => {
-      this.BookSold1 = data
-    })
-    this.bookstore.getbooksold2().subscribe(data => {
-      this.BookSold2 = data
-    })
-    this.bookstore.get3newbook().subscribe(data => {
-      this.newbook = data
-    })
-    this.bookstore.getBanner().subscribe(data => {
-      this.Banner.push(data)
+    this.bookstore.getbookforpagehome().subscribe(data => {
+      this.BookSold1 = data.Book1
+      this.BookSold2 = data.Book2
+      this.newbook = data.Book3
+      this.Banner.push(data.Banner)
+
     })
   }
 
