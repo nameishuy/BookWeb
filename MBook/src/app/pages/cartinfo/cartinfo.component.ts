@@ -87,6 +87,10 @@ export class CartinfoComponent implements OnInit {
                     this.mess = data.Messager;
                   } else {
                     this.mess = "Đặt Hàng Thành Công\nXin Vui Lòng Kiểm Tra Lịch Sử Mua Hàng"
+                    if (this.UserLogin[0].Email != null || typeof this.UserLogin[0].Email != "undefined" || this.UserLogin[0].Email != "") {
+                      this.bookapi.SendMail(this.UserLogin[0].Email).subscribe(res => {                     
+                      })
+                    }
                     sessionStorage.removeItem("listCart")
                     this.Sum();
                     this.Book = null

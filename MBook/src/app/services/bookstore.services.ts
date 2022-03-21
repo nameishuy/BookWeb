@@ -17,9 +17,14 @@ export class BookStoreAPI {
     constructor(private httclient: HttpClient) { }
     url = "https://bookingapiiiii.herokuapp.com";
 
+    SendMail(Mail: string): Observable<any> {
+        return this.httclient.get<Banner>(this.url + "/Sendmail/" + Mail)
+    }
+
     getBanner(): Observable<any> {
         return this.httclient.get<Banner>(this.url + "/Banner")
     }
+
     setBanner(anh1: any, anh2: any, anh3: any): Observable<any> {
         let body = {
             Anh1: anh1,
