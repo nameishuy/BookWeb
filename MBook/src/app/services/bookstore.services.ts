@@ -137,7 +137,18 @@ export class BookStoreAPI {
     deleteTK(id: string) {
         return this.httclient.delete(this.url + "/khachhangbyid/" + id)
     }
-
+    DeteleBook(id: any) {
+        return this.httclient.delete(this.url + "/sachbyid/" + id);
+    }
+    DeteleCD(id: any) {
+        return this.httclient.delete(this.url + "/chudebyid/" + id);
+    }
+    DeteleTG(id: any) {
+        return this.httclient.delete(this.url + "/tacgiabyid/" + id);
+    }
+    DeteleNXB(id: any) {
+        return this.httclient.delete(this.url + "/nhaxuatbanbyid/" + id);
+    }
     //Get Chủ Đề
     GetCD() {
         return this.httclient.get(this.url + "/chude");
