@@ -15,6 +15,7 @@ export class HistorypayComponent implements OnInit {
   CTDH: any
   DonHangByID: any
   p: any
+  pCTDH: any
 
   Messager: any = "";
   ngOnInit(): void {

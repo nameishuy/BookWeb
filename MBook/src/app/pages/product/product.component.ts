@@ -17,7 +17,7 @@ export class ProductComponent implements OnInit {
 
   key = "Giaban";
   reverse: boolean = false;
-  
+
   ngOnInit(): void {
     this.getCategory();
     this.getbook()
@@ -58,6 +58,8 @@ export class ProductComponent implements OnInit {
     console.log('was clicked');
     this.router.navigate(['detail', id]);
   }
-
+  changeText(event: any) {
+    this.p = 1
+  }
 
 }

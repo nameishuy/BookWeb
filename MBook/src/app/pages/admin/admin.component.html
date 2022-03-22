@@ -184,7 +184,7 @@
             </div>
 
             <div class="Admin__Storage-Body">
-                <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="Search" />
+                <input type="text" class="form-control" (ngModelChange)="changeText($event)" placeholder="Search..." [(ngModel)]="Search" />
                 <div class="Admin__Storage-Details"
                     *ngFor="let book of HangTon  | filter: Search  | paginate: { itemsPerPage: 2, currentPage: pHangTon, id: 'hangton' }">
                     <div class="Product__Image">

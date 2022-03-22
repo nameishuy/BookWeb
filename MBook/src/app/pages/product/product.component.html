@@ -7,7 +7,8 @@
     </div>
     <div class="Product__ListProduct">
         <div class="Product__ListProduct-Features">
-            <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="Search" />
+            <input type="text" class="form-control" (ngModelChange)="changeText($event)" placeholder="Search..."
+                [(ngModel)]="Search" />
             <div class="Product__ListProduct-Sort">
                 <h4>Sắp xếp theo: </h4>
                 <mat-form-field appearance="fill">

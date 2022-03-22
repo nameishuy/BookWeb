@@ -91,9 +91,7 @@ export class AdminComponent implements OnInit {
     this.getAllTaiKhoan(this.check)
     this.getDonHang()
     this.GetHangTon()
-    this.CallChuDe()
-    this.CallTacGia()
-    this.CallNXB()
+    this.CallAll()
 
     this.dropdownSettings = {
       singleSelection: false,
@@ -179,6 +177,10 @@ export class AdminComponent implements OnInit {
 
   CapNhatBanner() {
 
+    if (this.AnhChoose1 == "" && this.AnhChoose2 == "" && this.AnhChoose3 == "") {
+      alert("Vui Lòng Chọn 1 Ảnh Nào Đó");
+    }
+
     if (this.AnhChoose1 != "") {
       let formdata = new FormData();
       for (let i = 0; i < this.AnhChoose1.files.length; i++) {
@@ -241,21 +243,11 @@ export class AdminComponent implements OnInit {
     alert("Khôi Phục Thành Công")
   }
 
-  CallChuDe() {
-    this.bookapi.GetCD().subscribe(data => {
-      this.dropdownList = data;
-    })
-  }
-
-  CallTacGia() {
-    this.bookapi.GetTG().subscribe(data => {
-      this.TG = data
-    })
-  }
-
-  CallNXB() {
-    this.bookapi.GetNXB().subscribe(data => {
-      this.NXB = data
+  CallAll() {
+    this.bookapi.GetAll().subscribe(data => {
+      this.dropdownList = data.chude;
+      this.TG = data.tacgia
+      this.NXB = data.NXB
     })
   }
 
@@ -427,7 +419,7 @@ export class AdminComponent implements OnInit {
       let newNXB = new reqNXB(this.TenNXB, this.DiaChi, this.DienThoai);
       this.bookapi.AddNewNXB(newNXB).subscribe(data => {
 
-        if (data.TenNXB != null) { alert("Thêm mới thành công!"); this.CallNXB() }
+        if (data.TenNXB != null) { alert("Thêm mới thành công!"); this.CallAll() }
         else alert("Thêm mới thất bại");
 
       });
@@ -444,7 +436,7 @@ export class AdminComponent implements OnInit {
       let newCategory = new reqChuDe(this.category);
       this.bookapi.AddNewCategory(newCategory).subscribe(data => {
 
-        if (data.TenChuDe != null) { alert("Thêm mới thành công!"); this.CallChuDe() }
+        if (data.TenChuDe != null) { alert("Thêm mới thành công!"); this.CallAll() }
         else alert("Thêm mới thất bại");
 
       });
@@ -460,7 +452,7 @@ export class AdminComponent implements OnInit {
 
       this.bookapi.AddNewAuthor(newAuthor).subscribe(data => {
 
-        if (data.TenTG != null) { alert("Thêm mới thành công!"); this.CallTacGia() }
+        if (data.TenTG != null) { alert("Thêm mới thành công!"); this.CallAll() }
         else alert("Thêm mới thất bại");
       })
     }
@@ -531,7 +523,7 @@ export class AdminComponent implements OnInit {
       if (confirm("Xóa Chủ Đề Này Có Thể Sẽ Xóa Luôn Những Sách Có Liên Quan\n Bạn Chắc Không")) {
         this.bookapi.DeteleCD(id).subscribe(data => {
           alert("Đã Xóa Chủ Đề Và Tất Cả Sách Có Liên Quan")
-          this.CallChuDe()
+          this.CallAll()
           this.GetHangTon()
         })
       }
@@ -546,7 +538,7 @@ export class AdminComponent implements OnInit {
         this.bookapi.DeteleTG(id).subscribe(data => {
           console.log(data)
           alert("Đã Xóa Tác Giả Và Tất Cả Sách Có Liên Quan")
-          this.CallTacGia()
+          this.CallAll()
           this.GetHangTon()
         })
       }
@@ -561,10 +553,16 @@ export class AdminComponent implements OnInit {
       if (confirm("Xóa Nhà Xuất Bản Này Có Thể Sẽ Xóa Luôn Những Sách Có Liên Quan\n Bạn Chắc Không")) {
         this.bookapi.DeteleNXB(id).subscribe(data => {
           alert("Đã Xóa Nhà Xuất Bản Và Tất Cả Sách Có Liên Quan")
-          this.CallNXB()
+          this.CallAll()
           this.GetHangTon()
         })
       }
     }
   }
+
+  changeText(event: any) {
+    this.pHangTon = 1;
+  }
 }
+
+

@@ -6,7 +6,7 @@ import { Banner, Book, Book1, Category, resinsertbook, reqinsertbook, newBook, r
 import { resimg, resprofile } from "./Classes/profile";
 import { reqpass, respass } from './Classes/changepass';
 import { reqCTDonHang, resCTDonHang, resDatHang } from "./Classes/DonHang";
-import { resNXB } from "./Classes/NXB";
+import { resALL, resNXB } from "./Classes/NXB";
 import { resAuthor } from "./Classes/author";
 
 @Injectable({
@@ -145,16 +145,8 @@ export class BookStoreAPI {
         return this.httclient.delete(this.url + "/nhaxuatbanbyid/" + id);
     }
     //Get Chủ Đề
-    GetCD() {
-        return this.httclient.get(this.url + "/chude");
-    }
-
-    //Get Tác Giả
-    GetTG() {
-        return this.httclient.get(this.url + "/tacgia");
-    }
-    GetNXB() {
-        return this.httclient.get(this.url + "/nhaxuatban");
+    GetAll() {
+        return this.httclient.get<resALL>(this.url + "/GetAll");
     }
 
     //New NXB
