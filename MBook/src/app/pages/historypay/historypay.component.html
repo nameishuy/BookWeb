@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <div class="DialogDetailsHistoryPay__Container" id="DialogDetailsHistoryPay__Container">
     <div class="DialogDetailsHistoryPay">
         <div class="DialogDetailsHistoryPay__CloseBtn" (click)="closeDialog_HistoryPay()">
@@ -64,6 +65,13 @@
 
         <div class="HistoryPay__Title-Setting">Thiết Lập</div>
     </div>
+    <div class="DateSearch">
+        <span>From</span>
+        <input type="date" name="dateFrom" id="dateFrom">
+        <span>To</span>
+        <input type="date" name="dateTo" id="dateTo">
+    </div>
+
     <div class="HistoryPay__Body">
         <div class="HistoryPay__Details"
             *ngFor="let donhang of ListDonHang | paginate: { itemsPerPage: 5, currentPage: p }">
@@ -90,4 +98,4 @@
         </pagination-controls>
     </div>
 
-</div>
+</div><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

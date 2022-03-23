@@ -192,12 +192,24 @@
     margin: 20px auto !important;
     width: fit-content !important;
 }
-
+.DateSearch{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0 20px 50px;
+    width: 40%;
+}
+    .DateSearch span{
+        font-weight: 600;
+    }
 @media screen and (max-width:415px) {
     .HistoryPay__Container {
         width: 100%;
     }
-
+    .DateSearch{
+        width: 100%;
+        margin: 20px 0;
+    }
     .HistoryPay__Container h1 {
         margin-left: 30px;
     }

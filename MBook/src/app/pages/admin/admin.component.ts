@@ -76,6 +76,7 @@ export class AdminComponent implements OnInit {
   selectedItems = [];
   dropdownSettings = {};
 
+  SearchBill:any;
   selectedValue: string = '';
   foods = [
     'steak-0',
@@ -562,6 +563,10 @@ export class AdminComponent implements OnInit {
 
   changeText(event: any) {
     this.pHangTon = 1;
+  }
+
+  changeTextBill(event: any) {
+    this.p = 1;
   }
 }
 
