@@ -67,9 +67,11 @@
     </div>
     <div class="DateSearch">
         <span>From:</span>
-        <input type="date" data-date-format="DD MMMM YYYY" name="dateFrom" id="dateFrom">
+        <input type="date" data-date-format="DD MMMM YYYY" name="dateFrom" (change)="dateFrom($event)"
+            [ngModel]="Day | date:'yyyy-MM-dd'" id="dateFrom">
         <span>To:</span>
-        <input type="date" data-date-format="DD MMMM YYYY" name="dateTo" id="dateTo">
+        <input type="date" data-date-format="DD MMMM YYYY" name="dateTo" (change)="dateTo($event)"
+            [ngModel]="Today | date:'yyyy-MM-dd'" id="dateTo">
     </div>
 
     <div class="HistoryPay__Body">
@@ -98,4 +100,5 @@
         </pagination-controls>
     </div>
 
-</div><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

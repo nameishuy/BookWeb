@@ -14,27 +14,51 @@ export class HistorypayComponent implements OnInit {
   ListDonHang: any
   CTDH: any
   DonHangByID: any
+  Day: any
+  userid: any
+  Today: any
   p: any
   pCTDH: any
 
   Messager: any = "";
   ngOnInit(): void {
     this.action_ngOnInit()
+
   }
 
   action_ngOnInit() {
+    this.Today = new Date();
+    this.Day = new Date();
+    this.Day.setDate(this.Day.getDate() - 7);
+
     if (sessionStorage.getItem("UserLogin")) {
       let datauser = JSON.parse(sessionStorage.getItem("UserLogin")!);
       if (datauser["id"] != null) {
-        this.bookapi.getdonhangforuser(datauser["id"]).subscribe(data => {
-          this.ListDonHang = data
-        });
+        this.userid = datauser["id"]
+        this.GetDonHang(this.userid, this.Day, this.Today)
       } else {
       }
     } else {
     }
 
   }
+
+  GetDonHang(id: string, ngaydat: string, gioihan: string) {
+    this.bookapi.getdonhangforuser(id, ngaydat, gioihan).subscribe(data => {
+      this.ListDonHang = data
+    });
+  }
+
+  dateFrom(event: any) {
+    let today = <HTMLInputElement>document.getElementById("dateTo");
+    this.GetDonHang(this.userid, event.target.value, today.value)
+    this.p = 1
+  };
+  dateTo(event: any) {
+    let day = <HTMLInputElement>document.getElementById("dateFrom");
+    this.GetDonHang(this.userid, day.value, event.target.value)
+    this.p = 1
+  };
 
   showDialog_HistoryPay(id: string) {
     let details = <HTMLElement>document.getElementById("DialogDetailsHistoryPay__Container");

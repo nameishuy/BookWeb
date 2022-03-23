@@ -153,9 +153,10 @@
                 <div class="Title__Setting">Thiết Lập</div>
             </div>
             <div class="Admin__HistoryPay-Body">
-                <input type="text" class="form-control" (ngModelChange)="changeTextBill($event)" placeholder="Search..." [(ngModel)]="SearchBill" />
+                <input type="text" class="form-control" (ngModelChange)="changeTextBill($event)" placeholder="Search..."
+                    [(ngModel)]="SearchBill" />
                 <div class="Admin__HistoryPay-Details"
-                    *ngFor="let DonHang of DonHanglist  | paginate: { itemsPerPage: 3, currentPage: p, id: 'DonHang'  } | filter: SearchBill">
+                    *ngFor="let DonHang of DonHanglist | filter: SearchBill  | paginate: { itemsPerPage: 3, currentPage: p, id: 'DonHang'  }">
 
                     <div class="Bill__BillID">{{DonHang.id}}</div>
                     <div class="Bill__Username">{{DonHang.HoTen}}</div>
@@ -185,7 +186,8 @@
             </div>
 
             <div class="Admin__Storage-Body">
-                <input type="text" class="form-control" (ngModelChange)="changeText($event)" placeholder="Search..." [(ngModel)]="Search" />
+                <input type="text" class="form-control" (ngModelChange)="changeText($event)" placeholder="Search..."
+                    [(ngModel)]="Search" />
                 <div class="Admin__Storage-Details"
                     *ngFor="let book of HangTon  | filter: Search  | paginate: { itemsPerPage: 2, currentPage: pHangTon, id: 'hangton' }">
                     <div class="Product__Image">

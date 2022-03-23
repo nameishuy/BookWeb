@@ -40,8 +40,8 @@ export class BookStoreAPI {
     }
 
 
-    getdonhangforuser(id: string): Observable<any> {
-        return this.httclient.get<resDatHang>(this.url + "/DonHangbyidKH/" + id)
+    getdonhangforuser(id: string, ngaydat: string, gioihan: string): Observable<any> {
+        return this.httclient.get<resDatHang>(this.url + "/DonHang/" + id + "/" + ngaydat + "/" + gioihan)
     }
 
     postLogin(username: String, password: String): Observable<any> {
