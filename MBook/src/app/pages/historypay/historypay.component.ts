@@ -17,6 +17,7 @@ export class HistorypayComponent implements OnInit {
   Day: any
   userid: any
   Today: any
+  mess: any
   p: any
   pCTDH: any
 
@@ -46,6 +47,12 @@ export class HistorypayComponent implements OnInit {
   GetDonHang(id: string, ngaydat: string, gioihan: string) {
     this.bookapi.getdonhangforuser(id, ngaydat, gioihan).subscribe(data => {
       this.ListDonHang = data
+      this.mess = "";
+    }, err => {
+      if (err.status == 404) {
+        this.ListDonHang = []
+        this.mess = "Không Có Đơn Hàng Trong Ngày Này";
+      }
     });
   }
 
