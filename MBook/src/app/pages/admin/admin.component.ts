@@ -583,6 +583,12 @@ export class AdminComponent implements OnInit {
   changeTextBill(event: any) {
     this.p = 1;
   }
+
+  changeStatus(event:any){
+    let select = <HTMLSelectElement> document.getElementById("Setting__Status");
+    //get value and waiting call API
+    select.value;
+  }
 }
 
 
