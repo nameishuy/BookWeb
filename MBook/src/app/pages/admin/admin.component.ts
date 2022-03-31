@@ -49,6 +49,8 @@ export class AdminComponent implements OnInit {
   Giaban: any = ''
   NXB: any = ''
 
+  findidorder: any = '';
+
   //Ảnh Hiển Thị Lên Html
   img: any = ''
   Anh1: any = ''
@@ -584,10 +586,22 @@ export class AdminComponent implements OnInit {
     this.p = 1;
   }
 
-  changeStatus(event:any){
-    let select = <HTMLSelectElement> document.getElementById("Setting__Status");
+  changeStatus(event: any) {
+    let select = <HTMLSelectElement>document.getElementById("Setting__Status");
     //get value and waiting call API
     select.value;
+  }
+
+
+
+  confirm_change(id: any, Tinhtranggiaohang: any) {
+    if (Tinhtranggiaohang) {
+      alert("Đơn Đã Được Giao");
+    } else {
+      this.bookapi.change(id).subscribe(data => {
+        this.getDonHang();
+      })
+    }
   }
 }
 
