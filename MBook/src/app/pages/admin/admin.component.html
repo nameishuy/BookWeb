@@ -171,13 +171,13 @@
                             Chi Tiết
                         </div>
                         <div class="Bill__Setting-status">
-                            <select id="Setting__Status">
-                                <option *ngIf="!(DonHang.Tinhtranggiaohang)" value="false">Chưa Giao</option>
-                                <option *ngIf="DonHang.Tinhtranggiaohang" value="true">Đã Giao</option>
+                            <div class="Status" style="color: rgb(10, 103, 10); font-weight: 700;" *ngIf="DonHang.Tinhtranggiaohang">
+                                Đã Giao Hàng
+                            </div>
+                            <select *ngIf="!DonHang.Tinhtranggiaohang" (change)="changeStatus(DonHang.id)" id="Setting__Status">
+                                <option value="true" >Đã Giao Hàng</option>
+                                <option selected hidden value="">Chưa Giao Hàng</option>
                             </select>
-                            <button class="confirm_Setting_staus" (click)="confirm_change(DonHang.id,DonHang.Tinhtranggiaohang)">
-                                xác nhận đã giao
-                            </button>
 
                         </div>
                     </div>

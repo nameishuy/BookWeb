@@ -586,23 +586,16 @@ export class AdminComponent implements OnInit {
     this.p = 1;
   }
 
-  changeStatus(event: any) {
+  changeStatus(id: any) {
     let select = <HTMLSelectElement>document.getElementById("Setting__Status");
     //get value and waiting call API
-    select.value;
+    this.bookapi.change(id).subscribe(data => {
+      this.getDonHang();
+
+    })
   }
 
 
-
-  confirm_change(id: any, Tinhtranggiaohang: any) {
-    if (Tinhtranggiaohang) {
-      alert("Đơn Đã Được Giao");
-    } else {
-      this.bookapi.change(id).subscribe(data => {
-        this.getDonHang();
-      })
-    }
-  }
 }
 
 
