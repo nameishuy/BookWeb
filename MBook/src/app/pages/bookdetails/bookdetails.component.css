@@ -92,6 +92,15 @@
         .Book__info-About h3{
             font-weight: 600;
         }
+    .owl-carousel__Container{
+        width: 70%;
+        margin: 0 auto;
+    }
+        .SameCategoryBooksTitle{
+            font-size: 20px;
+            color: rgba(239, 6, 6, 0.825);
+            font-weight: 700;
+        }
 @media screen and (max-width:821px) {  
     .Book__image,
     .Book__info{

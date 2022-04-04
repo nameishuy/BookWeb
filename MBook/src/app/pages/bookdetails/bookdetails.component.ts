@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookStoreAPI } from 'src/app/services/bookstore.services';
 import { itemCart } from 'src/app/services/Classes/Book';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 @Component({
   selector: 'app-bookdetails',
   templateUrl: './bookdetails.component.html',
@@ -82,6 +83,31 @@ export class BookdetailsComponent implements OnInit {
       this.listCart.push(newItem);
       sessionStorage.setItem('listCart', JSON.stringify(this.listCart))
     }
+  }
+
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: true,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: true
   }
 }
 
