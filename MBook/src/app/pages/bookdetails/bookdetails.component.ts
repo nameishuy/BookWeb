@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BookStoreAPI } from 'src/app/services/bookstore.services';
 import { itemCart } from 'src/app/services/Classes/Book';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-bookdetails',
   templateUrl: './bookdetails.component.html',
@@ -14,12 +15,13 @@ export class BookdetailsComponent implements OnInit {
   unitprice: number = 0;
   Soluongton: number = 0;
   listCart: itemCart[] = [];
+  listSameCategoryBooks:any;
 
-  constructor(private router: ActivatedRoute, private bookapi: BookStoreAPI) { }
+  constructor(private router:Router,private Activateroute: ActivatedRoute, private bookapi: BookStoreAPI) { }
 
   ngOnInit(): void {
     //Get param id on router link /detail/:id
-    this.id = "" + this.router.snapshot.params['id'];
+    this.id = "" + this.Activateroute.snapshot.params['id'];
 
     //You can call api details book with that id in the following line down here:
     //Code:
@@ -45,9 +47,10 @@ export class BookdetailsComponent implements OnInit {
 
   getBook(id: any) {
     this.bookapi.get1Book(id).subscribe(data => {
-      this.book = data
-      this.unitprice = data[0].Giaban;
-      this.Soluongton = data[0].Soluongton;   
+      this.book = data.data
+      this.listSameCategoryBooks = data.BookLienQuan
+      this.unitprice = data.data[0].Giaban;
+      this.Soluongton = data.data[0].Soluongton;
     })
   }
 
@@ -108,6 +111,13 @@ export class BookdetailsComponent implements OnInit {
       }
     },
     nav: true
+  }
+
+  goDetails(id: string) {
+    console.log('was clicked');
+    this.router.navigate(['detail', id]).then(() => {
+      window.location.reload();
+    })
   }
 }
 
