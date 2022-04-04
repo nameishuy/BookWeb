@@ -90,18 +90,18 @@ export class BookdetailsComponent implements OnInit {
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
-    dots: true,
+    dots: false,
     navSpeed: 700,
-    navText: ['', ''],
+    navText: ['Trước', 'Sau'],
     responsive: {
       0: {
-        items: 1
-      },
-      400: {
         items: 2
       },
-      740: {
+      400: {
         items: 3
+      },
+      740: {
+        items: 4
       },
       940: {
         items: 4

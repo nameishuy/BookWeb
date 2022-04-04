@@ -116,7 +116,9 @@
     .Book__info-Publishing-company{
         width: 100% !important;
     }
-    
+    .owl-carousel__Container{
+        width: 85%;
+    }
 }
 @media screen and (max-width: 415px) {
     .container{
@@ -146,6 +148,12 @@
         
         .Book__info-About{
             padding: 0 20px 0 20px;
+        }
+    .owl-carousel__Container{
+        width: 90%;
+    }
+        .SameCategoryBooksTitle{
+            font-size: 17px;
         }
 }
 
