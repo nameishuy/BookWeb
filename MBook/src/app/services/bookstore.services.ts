@@ -72,6 +72,8 @@ export class BookStoreAPI {
     getdeleted(): Observable<any> {
         return this.httclient.get<Book>(this.url + "/getdeleted");
     }
+    
+    
     get1Book(id: string): Observable<any> {
         return this.httclient.get<Book1>(this.url + "/sachbyid/" + id);
     }
